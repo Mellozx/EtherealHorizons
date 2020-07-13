@@ -2,14 +2,11 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
-using Mono.Cecil.Cil;
 
 namespace EtherealHorizons.NPCs.Enemies.Forest
 {
 	public class SmallTreeEnt : ModNPC
     {
-        private Player player;
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Tree Ent");
@@ -18,78 +15,61 @@ namespace EtherealHorizons.NPCs.Enemies.Forest
 
         public override void SetDefaults()
         {
+            npc.noTileCollide = false;
+            npc.noGravity = false;
+            npc.lavaImmune = false;
+
+            npc.buffImmune[BuffID.Confused] = true;
+
             npc.width = 38;
             npc.height = 38;
 
-            npc.lifeMax = 70;
+            npc.lifeMax = 80;
+            npc.damage = 8;
+            npc.defense = 2;
+            npc.aiStyle = 3;
 
-            npc.noGravity = false;
-            npc.noTileCollide = false;
+            npc.knockBackResist = 1f;
+
+            npc.value = Item.sellPrice(copper: 40);
+
+            npc.HitSound = SoundID.NPCHit1;
+            npc.DeathSound = SoundID.NPCDeath1;
         }
 
         public override void FindFrame(int frameHeight)
         {
+            npc.spriteDirection = npc.direction;
             if (npc.frameCounter++ > 4)
             {
                 npc.frameCounter = 0;
                 npc.frame.Y += frameHeight;
             }
-
             if (npc.frame.Y >= frameHeight * 9)
             {
                 npc.frame.Y = 0;
+                return;
+            }
+        }
+
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (npc.life <= 0)
+            {
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SmallTreeEntGore1"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SmallTreeEntGore2"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SmallTreeEntGore3"), 1f);
             }
         }
 
         public override void NPCLoot()
         {
             Item.NewItem(npc.getRect(), ItemID.Wood, Main.rand.Next(3, 5));
-        }
 
-
-        public override void AI()
-        {
-            Target();
-
-            // npc.ai[0] for attacks
-            // npc.ai[1] n/A
-            // npc.ai[2] for timers
-            // npc.ai[3] n/A
-
-            if (npc.ai[0] == 0f)
+            if (Main.rand.NextBool(4))
             {
-                if (++npc.ai[2] >= 300f) 
-                {
-                    npc.ai[0] = 1f; 
-                    npc.ai[2] = 0f;
-                }
+
             }
-
-            if (npc.ai[0] == 1f || npc.ai[0] == 1.1f)
-            {
-                if(npc.ai[0] == 1f)
-                {
-                    // Placeholder projectile
-                    int projectiles = Main.rand.Next(2, 4); // 2 - 3 (4 is excluded)    
-                    for (int i = 0; i < projectiles; i++)
-                    {
-
-                    }
-
-                    npc.ai[0] = 1.1f; // Flag the projectile was shot
-                }
-
-                if (++npc.ai[2] >= 30)
-                {
-                    npc.ai[0] = 0f;
-                    npc.ai[2] = 0f;
-                }
-            }
-        }
-
-        private void Target()
-        {
-            player = Main.player[npc.target];
         }
     }
 }
