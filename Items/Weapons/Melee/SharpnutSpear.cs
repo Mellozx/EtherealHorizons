@@ -21,10 +21,17 @@ namespace EtherealHorizons.Items.Weapons.Melee
             item.shoot = ModContent.ProjectileType<SharpnutSpearProj>();
             item.shootSpeed = 10f;
 
-            item.useStyle = ItemUseStyleID.SwingThrow;
+            item.useStyle = ItemUseStyleID.HoldingOut;
 
+            item.useTime = 40;
+            item.useAnimation = 40;
             item.width = 28;
             item.height = 28;
+        }
+
+        public override bool CanUseItem(Player player)
+        {
+            return player.ownedProjectileCounts[ModContent.ProjectileType<SharpnutSpearProj>()] < 1; // only 1 spear
         }
     }
 }
