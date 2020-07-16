@@ -32,7 +32,7 @@ namespace EtherealHorizons.Items.Placeables.Banners
 
             item.value = Item.sellPrice(silver: 10);
 
-            item.createTile = ModContent.TileType<SmallTreeEntBannerTile>();
+            item.createTile = ModContent.TileType<Tiles.Banners.Banners>();
 
             item.placeStyle = 0;
         }
