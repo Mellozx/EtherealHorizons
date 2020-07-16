@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace EtherealHorizons.Tiles.Banners
 {
-	public class SmallTreeEntBannerTile : ModTile
+	public class Banners : ModTile
     {
         public override void SetDefaults()
         {

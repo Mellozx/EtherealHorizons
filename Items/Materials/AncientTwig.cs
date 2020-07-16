@@ -16,14 +16,10 @@ namespace EtherealHorizons.Items.Materials
         public override void SetDefaults()
         {
             item.material = true;
-
             item.width = 10;
             item.height = 10;
-
             item.maxStack = 999;
-
             item.rare = ItemRarityID.Green;
-
             item.value = Item.sellPrice(silver: 5);
         }
     }

@@ -1,3 +1,4 @@
+using EtherealHorizons.Items.Accessories;
 using EtherealHorizons.Items.Materials;
 using Terraria;
 using Terraria.ID;
@@ -11,7 +12,7 @@ namespace EtherealHorizons.Items.TreasureBags
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Awake Cheeks Bag");
-            Tooltip.SetDefault("${CommonItemTooltip.RightClickToOpen}");
+            Tooltip.SetDefault("Right click to open");
         }
 
         public override void SetDefaults()
@@ -34,6 +35,7 @@ namespace EtherealHorizons.Items.TreasureBags
             player.TryGettingDevArmor();
 
             player.QuickSpawnItem(ModContent.ItemType<Nut>(), Main.rand.Next(25, 29));
+            player.QuickSpawnItem(ModContent.ItemType<GluttonAmulet>());
         }
     }   
 }
