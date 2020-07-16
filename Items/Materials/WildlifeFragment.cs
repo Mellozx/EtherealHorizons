@@ -6,7 +6,7 @@ namespace EtherealHorizons.Items.Materials
 {
 	public class WildlifeFragment : ModItem
     {
-        public override string Texture => "EtherealHorizos/PLACEHOLDER";
+        public override string Texture => "EtherealHorizons/PLACEHOLDER";
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Wildlife Fragment");

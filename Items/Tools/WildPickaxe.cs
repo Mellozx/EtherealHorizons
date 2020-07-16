@@ -6,7 +6,7 @@ namespace EtherealHorizons.Items.Tools.Wild
 {
 	public class WildPickaxe : ModItem
     {
-        public override string Texture => "EtherealHorizos/PLACEHOLDER";
+        public override string Texture => "EtherealHorizons/PLACEHOLDER";
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Wild Pickaxe");
