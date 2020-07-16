@@ -11,7 +11,7 @@ namespace EtherealHorizons.Items.Accessories
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Bear's Clothing");
-            Tooltip.SetDefault("Reduces damage taken by 3%" + "4% increased melee damage");
+            Tooltip.SetDefault("Reduces damage taken by 3%" + "\n4% increased melee damage");
         }
 
         public override void SetDefaults()
