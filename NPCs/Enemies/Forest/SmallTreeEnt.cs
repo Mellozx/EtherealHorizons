@@ -2,6 +2,8 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
+using EtherealHorizons.Items.Materials;
+using System.IO;
 
 namespace EtherealHorizons.NPCs.Enemies.Forest
 {
@@ -9,7 +11,7 @@ namespace EtherealHorizons.NPCs.Enemies.Forest
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Tree Ent");
+            DisplayName.SetDefault("Small Tree Ent");
             Main.npcFrameCount[npc.type] = 9;
         }
 
@@ -18,6 +20,7 @@ namespace EtherealHorizons.NPCs.Enemies.Forest
             npc.noTileCollide = false;
             npc.noGravity = false;
             npc.lavaImmune = false;
+            npc.friendly = false;
 
             npc.buffImmune[BuffID.Confused] = true;
 
@@ -27,7 +30,7 @@ namespace EtherealHorizons.NPCs.Enemies.Forest
             npc.lifeMax = 80;
             npc.damage = 8;
             npc.defense = 2;
-            npc.aiStyle = 3;
+            npc.aiStyle = -1;
 
             npc.knockBackResist = 1f;
 
@@ -35,6 +38,9 @@ namespace EtherealHorizons.NPCs.Enemies.Forest
 
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
+
+            // banner = ModContent.NPCType<SmallTreeEnt>();
+            // bannerItem = ModContent.ItemType<SmallTreeEntBanner>();
         }
 
         public override void FindFrame(int frameHeight)
@@ -52,6 +58,11 @@ namespace EtherealHorizons.NPCs.Enemies.Forest
             }
         }
 
+        public override void AI()
+        {
+            // TODO - Actual AI
+        }
+
         public override void HitEffect(int hitDirection, double damage)
         {
             if (npc.life <= 0)
@@ -59,6 +70,11 @@ namespace EtherealHorizons.NPCs.Enemies.Forest
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SmallTreeEntGore1"), 1f);
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SmallTreeEntGore2"), 1f);
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SmallTreeEntGore3"), 1f);
+
+                for (int k = 0; k < 10; k++)
+                {
+                    Dust.NewDust(npc.position, 0, 0, DustID.Grass);
+                }
             }
         }
 
@@ -68,8 +84,13 @@ namespace EtherealHorizons.NPCs.Enemies.Forest
 
             if (Main.rand.NextBool(4))
             {
-
+                Item.NewItem(npc.getRect(), ModContent.ItemType<AncientTwig>(), Main.rand.Next(1, 3));
             }
+        }
+
+        public override float SpawnChance(NPCSpawnInfo spawnInfo)
+        {
+            return SpawnCondition.OverworldDay.Chance * 0.3f;
         }
     }
 }

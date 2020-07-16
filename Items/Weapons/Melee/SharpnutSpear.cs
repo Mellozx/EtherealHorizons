@@ -1,7 +1,8 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using EtherealHorizons.Projectiles.Melee;
+using EtherealHorizons.Projectiles.Melee.Spears;
+using Microsoft.Xna.Framework;
 
 namespace EtherealHorizons.Items.Weapons.Melee
 {
@@ -23,8 +24,10 @@ namespace EtherealHorizons.Items.Weapons.Melee
 
             item.useStyle = ItemUseStyleID.HoldingOut;
 
-            item.useTime = 40;
-            item.useAnimation = 40;
+            item.damage = 8;
+            item.useTime = 25;
+            item.useAnimation = 25;
+
             item.width = 28;
             item.height = 28;
         }
