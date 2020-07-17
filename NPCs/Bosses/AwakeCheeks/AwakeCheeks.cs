@@ -16,7 +16,7 @@ namespace EtherealHorizons.NPCs.Bosses.AwakeCheeks
     {
         private Player player;
 
-        public override string Texture => "EtherealHorizons/PLACEHOLDER";
+        public override string Texture => Helpers.PLACEHOLDER;
 
         public override void SetStaticDefaults()
         {
