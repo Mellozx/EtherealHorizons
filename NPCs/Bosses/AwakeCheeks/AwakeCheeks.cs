@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -7,12 +8,11 @@ using Terraria.Localization;
 using Microsoft.Xna.Framework;
 using EtherealHorizons.Items.Materials;
 using EtherealHorizons.Items.TreasureBags;
-using System.IO;
 
 namespace EtherealHorizons.NPCs.Bosses.AwakeCheeks
 {
     // [AutoloadBossHead]
-	public class AwakeCheeks : ModNPC
+    public class AwakeCheeks : ModNPC
     {
         private Player player;
 
@@ -75,7 +75,7 @@ namespace EtherealHorizons.NPCs.Bosses.AwakeCheeks
             {
                 npc.dontTakeDamage = false;
 
-                shootTimer++; 
+                shootTimer++;
                 if (shootTimer >= 300)
                 {
                     Projectile.NewProjectile(npc.position, default, ProjectileID.WoodenArrowHostile, 0, 0f, Main.myPlayer);
@@ -130,7 +130,8 @@ namespace EtherealHorizons.NPCs.Bosses.AwakeCheeks
                 shootTimer++;
                 if (shootTimer == 120)
                 {
-                    for (int i = 0; i < Main.rand.Next(11, 14); i ++)
+                    int shoots = Main.rand.Next(11, 14);
+                    for (int i = 0; i < shoots; i++)
                     {
                         Projectile.NewProjectile(npc.Center, new Vector2(0f, 0f), ProjectileID.WoodenArrowHostile, 12, 2f, Main.myPlayer);
                     }
@@ -145,9 +146,9 @@ namespace EtherealHorizons.NPCs.Bosses.AwakeCheeks
             // Attack 3 - It would give a jump and fly with its tail, while falling it would glide, causing to shoot nuts.
             else if (npc.ai[0] == 3f)
             {
-                    
+
             }
-            
+
             // Making so that it enters second phase
             if (npc.life <= npc.lifeMax / 2)
             {

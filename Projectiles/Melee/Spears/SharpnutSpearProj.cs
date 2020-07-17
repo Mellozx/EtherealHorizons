@@ -29,8 +29,8 @@ namespace EtherealHorizons.Projectiles.Melee.Spears
 
         public override void ModifyDamageHitbox(ref Rectangle hitbox)
         {
-            int x = 20;
-            int y = 20;
+            const int x = 20;
+            const int y = 20;
             hitbox.Width -= x;
             hitbox.X += x / 2;
             hitbox.Height -= y;
