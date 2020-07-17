@@ -59,7 +59,6 @@ namespace EtherealHorizons.NPCs.Bosses.AwakeCheeks
             npc.spriteDirection = npc.direction;
         }
 
-        private bool secondPhase;
         private int shootTimer;
 
         public override void AI()
@@ -159,7 +158,6 @@ namespace EtherealHorizons.NPCs.Bosses.AwakeCheeks
             else if (npc.ai[0] == 4f)
             {
                 npc.TargetClosest(true);
-                secondPhase = true;
                 npc.dontTakeDamage = true;
                 npc.velocity = new Vector2(0f, 0f);
 

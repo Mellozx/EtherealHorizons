@@ -1,16 +1,16 @@
-using EtherealHorizons.Items.Materials;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using EtherealHorizons.Items.Materials;
 
 namespace EtherealHorizons.Items.Tools.Wild
 {
-	public class WildPickaxe : ModItem
+	public class WildAxe : ModItem
     {
         public override string Texture => "EtherealHorizons/PLACEHOLDER";
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Wild Pickaxe");
+            DisplayName.SetDefault("Wild Axe");
         }
 
         public override void SetDefaults()
@@ -20,11 +20,11 @@ namespace EtherealHorizons.Items.Tools.Wild
             item.autoReuse = true;
             item.width = 20;
             item.height = 20;
-            item.damage = 5;
-            item.useTime = 21;
-            item.useAnimation = 21;
-            item.knockBack = 2f;
-            item.pick = 45;
+            item.damage = 7;
+            item.useTime = 27;
+            item.useAnimation = 27;
+            item.knockBack = 3.5f;
+            item.axe = 9;
             item.rare = ItemRarityID.Green;
             item.useStyle = ItemUseStyleID.SwingThrow;
             item.UseSound = SoundID.Item1;

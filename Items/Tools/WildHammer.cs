@@ -1,16 +1,16 @@
-using EtherealHorizons.Items.Materials;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using EtherealHorizons.Items.Materials;
 
 namespace EtherealHorizons.Items.Tools.Wild
 {
-	public class WildPickaxe : ModItem
+	public class WildHammer : ModItem
     {
         public override string Texture => "EtherealHorizons/PLACEHOLDER";
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Wild Pickaxe");
+            DisplayName.SetDefault("Wild Hammer");
         }
 
         public override void SetDefaults()
@@ -20,11 +20,11 @@ namespace EtherealHorizons.Items.Tools.Wild
             item.autoReuse = true;
             item.width = 20;
             item.height = 20;
-            item.damage = 5;
-            item.useTime = 21;
-            item.useAnimation = 21;
-            item.knockBack = 2f;
-            item.pick = 45;
+            item.damage = 7;
+            item.useTime = 28;
+            item.useAnimation = 28;
+            item.knockBack = 5f;
+            item.hammer = 42;
             item.rare = ItemRarityID.Green;
             item.useStyle = ItemUseStyleID.SwingThrow;
             item.UseSound = SoundID.Item1;
@@ -34,7 +34,7 @@ namespace EtherealHorizons.Items.Tools.Wild
         public override void AddRecipes()
         {
             var recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ModContent.ItemType<WildlifeFragment>(), 8);
+            recipe.AddIngredient(ModContent.ItemType<WildlifeFragment>(), 9);
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this);
             recipe.AddRecipe();

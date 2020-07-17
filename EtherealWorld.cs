@@ -2,6 +2,8 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
+using Terraria.World.Generation;
+using Terraria.GameContent.Generation;
 using System;
 using System.Linq;
 using System.IO;
@@ -54,6 +56,22 @@ namespace EtherealHorizons
             BitsByte flags = reader.ReadByte();
 
             downedAwakeCheeks = flags[0];
+        }
+
+        public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
+        {
+            int sunflowersIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Sunflowers"));
+            if (sunflowersIndex != 1)
+            {
+                tasks.Insert(sunflowersIndex, new PassLegacy("Scattered Flowers", ScatteredFlowers));
+            }
+        }
+
+        private void ScatteredFlowers(GenerationProgress progress)
+        {
+            progress.Message = "Generating Scattered Flowers";
+
+
         }
     }
 }
