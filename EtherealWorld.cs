@@ -9,6 +9,7 @@ using System.Linq;
 using System.IO;
 using System.Collections.Generic;
 using Terraria.ModLoader.IO;
+using EtherealHorizons.Tiles.Flowers;
 
 namespace EtherealHorizons
 {
@@ -58,7 +59,7 @@ namespace EtherealHorizons
             downedAwakeCheeks = flags[0];
         }
 
-        public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
+        /* public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
         {
             int sunflowersIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Sunflowers"));
             if (sunflowersIndex != 1)
@@ -70,8 +71,6 @@ namespace EtherealHorizons
         private void ScatteredFlowers(GenerationProgress progress)
         {
             progress.Message = "Generating Scattered Flowers";
-
-
-        }
+        } */
     }
 }

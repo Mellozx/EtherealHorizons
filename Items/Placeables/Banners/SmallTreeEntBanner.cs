@@ -32,11 +32,7 @@ namespace EtherealHorizons.Items.Placeables.Banners
 
             item.value = Item.sellPrice(silver: 10);
 
-<<<<<<< HEAD
             item.createTile = ModContent.TileType<EnemiesBanners>();
-=======
-            item.createTile = ModContent.TileType<Tiles.Banners.Banners>();
->>>>>>> 79035af49f52995a1ec889dec83c567bf5f0b505
 
             item.placeStyle = 0;
         }

@@ -2,7 +2,6 @@ using System;
 using Terraria;
 using Terraria.ModLoader;
 using EtherealHorizons.NPCs.Bosses.AwakeCheeks;
-using EtherealHorizons.Events;
 
 namespace EtherealHorizons
 {
@@ -24,19 +23,11 @@ namespace EtherealHorizons
         public override void Load()
         {
             instance = this;
-            ModEventLoader.Load();
-            ModEventLoader.LoadEvents(this);
-        }
-
-        public override void MidUpdateTimeWorld()
-        {
-            ModEventLoader.UpdateEvents();
         }
 
         public override void Unload()
         {
             instance = null;
-            ModEventLoader.Unload();
         }
 
         public override void PostSetupContent()

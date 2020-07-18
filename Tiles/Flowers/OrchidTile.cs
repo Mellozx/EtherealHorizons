@@ -3,6 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Microsoft.Xna.Framework;
+using EtherealHorizons.Items.Materials;
 
 namespace EtherealHorizons.Tiles.Flowers
 {
@@ -32,5 +33,10 @@ namespace EtherealHorizons.Tiles.Flowers
         {
             num = fail ? 1 : 3;
         }
+
+        public override void KillMultiTile(int i, int j, int frameX, int frameY)
+        {
+
+        }   
     }
 }

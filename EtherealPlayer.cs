@@ -1,3 +1,5 @@
+using EtherealHorizons.Projectiles.Ranged;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -5,6 +7,10 @@ namespace EtherealHorizons
 {
 	public class EtherealPlayer : ModPlayer
     {
+        // Armor Sets
+        public bool wildWarriorHelmet;
+
+        // Accessories
         public bool gluttonAmulet;
         public bool bearsClothing;
 
@@ -12,6 +18,7 @@ namespace EtherealHorizons
         {
             gluttonAmulet = false;
             bearsClothing = false;
+            wildWarriorHelmet = false;
         }
 
         public override void GetHealLife(Item item, bool quickHeal, ref int healValue)
@@ -20,6 +27,21 @@ namespace EtherealHorizons
             {
                 healValue = (int)(healValue * 1.30f);
             }
+        }
+
+        public override bool Shoot(Item item, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        {
+            if (wildWarriorHelmet)
+            {
+                if (item.ranged)
+                {
+                    if (Main.rand.NextBool(4))
+                    {
+                        Projectile.NewProjectile(position, new Vector2(speedX, speedY), ModContent.ProjectileType<NutProj>(), 0, 0f, Main.myPlayer);
+                    }
+                }
+            }
+            return true;
         }
     }
 }
