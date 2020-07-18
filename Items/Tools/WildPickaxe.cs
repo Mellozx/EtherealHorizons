@@ -3,11 +3,10 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace EtherealHorizons.Items.Tools.Wild
+namespace EtherealHorizons.Items.Tools
 {
 	public class WildPickaxe : ModItem
     {
-        public override string Texture => Helpers.PLACEHOLDER;
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Wild Pickaxe");

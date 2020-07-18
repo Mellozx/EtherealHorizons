@@ -6,8 +6,6 @@ namespace EtherealHorizons.Items.Materials
 {
 	public class Nut : ModItem
     {
-        public override string Texture => Helpers.PLACEHOLDER;
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Nut");
