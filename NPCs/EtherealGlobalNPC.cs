@@ -1,8 +1,12 @@
+<<<<<<< HEAD
 using EtherealHorizons.Items.Materials;
+=======
+>>>>>>> c22045657b96d74129264b856931c21e5edbbf96
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using EtherealHorizons.Items.Materials;
 
 namespace EtherealHorizons.NPCs
 {

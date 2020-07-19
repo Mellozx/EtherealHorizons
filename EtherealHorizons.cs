@@ -23,6 +23,13 @@ namespace EtherealHorizons
         public override void Load()
         {
             instance = this;
+<<<<<<< HEAD
+=======
+        }
+
+        public override void MidUpdateTimeWorld()
+        {
+>>>>>>> c22045657b96d74129264b856931c21e5edbbf96
         }
 
         public override void Unload()

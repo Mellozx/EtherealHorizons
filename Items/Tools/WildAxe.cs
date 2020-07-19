@@ -3,11 +3,10 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using EtherealHorizons.Items.Materials;
 
-namespace EtherealHorizons.Items.Tools.Wild
+namespace EtherealHorizons.Items.Tools
 {
 	public class WildAxe : ModItem
     {
-        public override string Texture => "EtherealHorizons/PLACEHOLDER";
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Wild Axe");
