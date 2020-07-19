@@ -1,4 +1,3 @@
-using EtherealHorizons.Tiles.Flowers;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -21,7 +20,6 @@ namespace EtherealHorizons.Items
             item.useTime = 20;
             item.useAnimation = 20;
             item.useStyle = ItemUseStyleID.SwingThrow;
-            item.createTile = ModContent.TileType<OrchidTile>();
         }
     }
 }

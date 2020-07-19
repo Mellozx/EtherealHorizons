@@ -6,8 +6,7 @@ namespace EtherealHorizons.Items.Accessories
 {
     public class GluttonAmulet : ModItem
     {
-        public override string Texture => Helpers.PLACEHOLDER;
-
+        public override string Texture => "EtherealHorizons/PLACEHOLDER";
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Glutton Amulet");

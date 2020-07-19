@@ -5,8 +5,9 @@ using Microsoft.Xna.Framework;
 
 namespace EtherealHorizons.Projectiles.Ranged
 {
-	public class NutProj : ModProjectile
+	public class FriendlyNutProj : ModProjectile
     {
+        public override string Texture => "EtherealHorizons/PLACEHOLDER";
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Nut");
@@ -26,6 +27,12 @@ namespace EtherealHorizons.Projectiles.Ranged
         public override void AI()
         {
             projectile.rotation += 0.4f * projectile.direction;
+
+            projectile.ai[2]++;
+            if(projectile.ai[2] >= 15)
+            {
+                projectile.velocity.Y = 3f;
+            }
         }
     }
 }

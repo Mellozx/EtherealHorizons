@@ -9,6 +9,7 @@ namespace EtherealHorizons.Items.Armor.WildWarrior
     // [AutoloadEquip(EquipType.Body)]
 	public class WildWarriorChestplate : ModItem
     {
+        public override string Texture => "EtherealHorizons/PLACEHOLDER";
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Wild Warrior Chestplate");

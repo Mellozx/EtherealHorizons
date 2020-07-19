@@ -8,6 +8,7 @@ namespace EtherealHorizons.Items.Armor.WildWarrior
     // [AutoloadEquip(EquipType.Legs)]
 	public class WildWarriorGreaves : ModItem
     {
+        public override string Texture => "EtherealHorizons/PLACEHOLDER";
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Wild Warrior Greaves");

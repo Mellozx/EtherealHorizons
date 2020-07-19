@@ -10,6 +10,7 @@ namespace EtherealHorizons.Items.Armor.WildWarrior
     // [AutoloadEquip(EquipType.Head)]
 	public class WildWarriorHelmet : ModItem
     {
+        public override string Texture => "EtherealHorizons/PLACEHOLDER";
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Wild Warrior Helmet");

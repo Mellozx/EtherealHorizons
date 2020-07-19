@@ -37,7 +37,7 @@ namespace EtherealHorizons
                 {
                     if (Main.rand.NextBool(4))
                     {
-                        Projectile.NewProjectile(position, new Vector2(speedX, speedY), ModContent.ProjectileType<NutProj>(), 0, 0f, Main.myPlayer);
+                        
                     }
                 }
             }
