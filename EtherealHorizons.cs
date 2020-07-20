@@ -1,7 +1,6 @@
 using System;
 using Terraria;
 using Terraria.ModLoader;
-using EtherealHorizons.NPCs.Bosses.AwakeCheeks;
 
 namespace EtherealHorizons
 {
