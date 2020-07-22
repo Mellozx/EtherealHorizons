@@ -21,32 +21,18 @@ namespace EtherealHorizons.Items.Weapons.Ranged
 			item.autoReuse = false;
 			item.width = 20;
 			item.height = 20;
-			item.useTime = 22;
-			item.useAnimation = 22;
-			item.damage = 5;
+			item.useTime = 30;
+			item.useAnimation = 30;
+			item.UseSound = SoundID.Item56;
+			item.damage = 24;
 			item.knockBack = 2f;
-			item.shootSpeed = 6f;
+			item.shootSpeed = 4f;
 			item.shoot = ModContent.ProjectileType<FriendlyNutProj>();
 			item.useStyle = ItemUseStyleID.HoldingOut;
 			item.rare = ItemRarityID.White;
 			item.value = Item.sellPrice(silver: 4);
 			item.useAmmo = ModContent.ItemType<Nut>();
         }
-
-        public override Vector2? HoldoutOffset()
-        {
-			return new Vector2(8f, 0f);
-        }
-
-		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
-		{
-			Vector2 muzzleOffset = Vector2.Normalize(new Vector2(speedX, speedY)) * 25f;
-			if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
-			{
-				position += muzzleOffset;
-			}
-			return true;
-		}
 
 		public override void AddRecipes()
         {
@@ -57,5 +43,20 @@ namespace EtherealHorizons.Items.Weapons.Ranged
 			recipe.SetResult(this);
 			recipe.AddRecipe();
         }
+		
+		public override Vector2? HoldoutOffset()
+		{
+			return new Vector2(-24f, -4f);
+		}
+		
+		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+		{
+			Vector2 muzzleOffset = Vector2.Normalize(new Vector2(speedX, speedY)) * 25f;
+			if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
+			{
+				position += muzzleOffset;
+			}
+			return true;
+		}
     }
 }
