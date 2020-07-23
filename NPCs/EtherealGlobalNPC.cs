@@ -1,7 +1,7 @@
+using EtherealHorizons.Items.Materials;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using EtherealHorizons.Items.Materials;
 
 namespace EtherealHorizons.NPCs
 {
@@ -9,12 +9,9 @@ namespace EtherealHorizons.NPCs
     {
         public override void NPCLoot(NPC npc)
         {
-            if (npc.type == NPCID.Squirrel || npc.type == NPCID.SquirrelRed || npc.type == NPCID.SquirrelGold)
+            if (npc.type == NPCID.Squirrel || npc.type == NPCID.SquirrelGold || npc.type == NPCID.SquirrelRed)
             {
-                if (Main.rand.NextBool(3))
-                {
-                    Item.NewItem(npc.getRect(), ModContent.ItemType<Nut>(), Main.rand.Next(1, 3));
-                }
+                Item.NewItem(npc.getRect(), ModContent.ItemType<Nut>(), Main.rand.Next(2, 4));
             }
         }
     }
