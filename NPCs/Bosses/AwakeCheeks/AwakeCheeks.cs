@@ -30,13 +30,12 @@ namespace EtherealHorizons.NPCs.Bosses.AwakeCheeks
             npc.noGravity = false;
             npc.lavaImmune = true;
 
-            npc.buffImmune[BuffID.Confused] = true;
-
             npc.width = 46;
             npc.height = 46;
             npc.lifeMax = 2200;
             npc.damage = 20;
             npc.defense = 4;
+			npc.knockBackResist = 0f;
 
             music = MusicID.Boss2;
             musicPriority = MusicPriority.BossMedium;
@@ -164,7 +163,29 @@ namespace EtherealHorizons.NPCs.Bosses.AwakeCheeks
                         }
                     }
 
-                    jumpTimer++;
+					if (npc.velocity.Y == 0)
+					{
+						jumpTimer++;
+					}
+					else
+					{
+						jumpTimer = 0;
+					}
+
+					//if have been on ground for at least 1.5 seonds, and are hitting wall or there is a hole
+					if (jumpTimer >= 90 && (HoleBelow() || (npc.collideX && npc.position.X == npc.oldPosition.X)))
+					{
+						//jump
+						npc.velocity.Y = Main.rand.Next(-11, -8);
+						npc.netUpdate = true;
+					}
+
+					if (npc.velocity.Y >= 0f)
+					{
+						Collision.StepUp(ref npc.position, ref npc.velocity, npc.width, npc.height, ref npc.stepSpeed, ref npc.gfxOffY, 1, false, 1);
+					}
+
+                    /*jumpTimer++;
                     if (jumpTimer >= 180)
                     {
                         if (npc.position.Y > player.position.Y - -12 * 16f && npc.velocity.Y == 0)
@@ -181,12 +202,13 @@ namespace EtherealHorizons.NPCs.Bosses.AwakeCheeks
                             npc.netUpdate = true;
                             return;
                         }
-                    }
+                    }*/
 
                     AttackTimer++;
                     if (AttackTimer >= 900)
                     {
-                        Attack = StompAttack;
+						//Attack = StompAttack;
+						AttackTimer = 0;
                         npc.netUpdate = true;
                     }
                 }
@@ -250,7 +272,29 @@ namespace EtherealHorizons.NPCs.Bosses.AwakeCheeks
                         }
                     }
 
-                    jumpTimer++;
+					if (npc.velocity.Y == 0)
+					{
+						jumpTimer++;
+					}
+					else
+					{
+						jumpTimer = 0;
+					}
+
+					//if have been on ground for at least 1.5 seonds, and are hitting wall or there is a hole
+					if (jumpTimer >= 90 && (HoleBelow() || (npc.collideX && npc.position.X == npc.oldPosition.X)))
+					{
+						//jump
+						npc.velocity.Y = Main.rand.Next(-12, -9);
+						npc.netUpdate = true;
+					}
+
+					if (npc.velocity.Y >= 0f)
+					{
+						Collision.StepUp(ref npc.position, ref npc.velocity, npc.width, npc.height, ref npc.stepSpeed, ref npc.gfxOffY, 1, false, 1);
+					}
+
+                    /*jumpTimer++;
                     if (jumpTimer >= 180)
                     {
                         if (npc.position.Y > player.position.Y - -12 * 16f && npc.velocity.Y == 0)
@@ -267,9 +311,32 @@ namespace EtherealHorizons.NPCs.Bosses.AwakeCheeks
                             npc.netUpdate = true;
                             return;
                         }
+                    }*/
+                }
+            }
+        }
+
+        private bool HoleBelow()
+        {
+            //width of npc in tiles
+            int tileWidth = (int)Math.Round(npc.width / 16f);
+            int tileX = (int)(npc.Center.X / 16f) - tileWidth;
+            if (npc.velocity.X > 0) //if moving right
+            {
+                tileX += tileWidth;
+            }
+            int tileY = (int)((npc.position.Y + npc.height) / 16f);
+            for (int y = tileY; y < tileY + 2; y++)
+            {
+                for (int x = tileX; x < tileX + tileWidth; x++)
+                {
+                    if (Main.tile[x, y].active())
+                    {
+                        return false;
                     }
                 }
             }
+            return true;
         }
 
         public override void SendExtraAI(BinaryWriter writer)
