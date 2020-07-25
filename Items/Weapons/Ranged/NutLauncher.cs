@@ -12,6 +12,7 @@ namespace EtherealHorizons.Items.Weapons.Ranged
 		public override void SetStaticDefaults() 
 		{ 
 			DisplayName.SetDefault("Nut Launcher"); 
+            Tooltip.SetDefault("Uses nuts as ammo");
 		}
 
         public override void SetDefaults()
@@ -46,7 +47,7 @@ namespace EtherealHorizons.Items.Weapons.Ranged
 		
 		public override Vector2? HoldoutOffset()
 		{
-			return new Vector2(-24f, -4f);
+			return new Vector2(-2f, -4f);
 		}
 		
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

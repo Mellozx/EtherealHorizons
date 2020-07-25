@@ -28,9 +28,8 @@ namespace EtherealHorizons.Projectiles.Ranged
         public override void AI()
         {
             projectile.rotation += 0.2f * projectile.direction;
-            projectile.ai[0] += 1f;
-            projectile.velocity.Y = projectile.velocity.Y + 0.15f;
-            projectile.velocity.X = projectile.velocity.X * 1.2f;
+projectile.velocity.Y = MathHelper.SmoothStep(projectile.velocity.Y, 16f, 0.075f);
+projectile.velocity.X *= 0.975f;
         }
 
         public override void Kill(int timeLeft)

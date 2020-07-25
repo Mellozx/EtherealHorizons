@@ -10,7 +10,7 @@ namespace EtherealHorizons.Items.Weapons.Ranged
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Copper Dagger");
+            DisplayName.SetDefault("Tungsten Dagger");
         }        
 
         public override void SetDefaults()
@@ -27,7 +27,7 @@ namespace EtherealHorizons.Items.Weapons.Ranged
             item.damage = 16;
             item.knockBack = 2f;
             item.shootSpeed = 12f;
-            item.shoot = ModContent.ProjectileType<CopperDaggerProjectile>();
+            item.shoot = ModContent.ProjectileType<TungstenDaggerProjectile>();
 			item.useStyle = ItemUseStyleID.SwingThrow;
             item.rare = ItemRarityID.White;
             item.value = Item.sellPrice(copper: 25);
