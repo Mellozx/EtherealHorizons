@@ -18,7 +18,7 @@ namespace EtherealHorizons.Items.Tools.Wild
 			item.autoReuse = true;
 			item.useTurn = true;
 			item.width = 34; 
-			item.height = 34;
+			item.height = 30;
             item.damage = 6;
 			item.useTime = 20;
 			item.useAnimation = 20;
