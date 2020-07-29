@@ -27,6 +27,8 @@ namespace EtherealHorizons.Items.Weapons.Ranged
             item.damage = 16;
             item.knockBack = 2f;
             item.shootSpeed = 12f;
+            item.noMelee = true;
+            item.noUseGraphic = true;
             item.shoot = ModContent.ProjectileType<TungstenDaggerProjectile>();
 			item.useStyle = ItemUseStyleID.SwingThrow;
             item.rare = ItemRarityID.White;
