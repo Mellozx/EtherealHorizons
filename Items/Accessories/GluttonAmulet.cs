@@ -19,8 +19,9 @@ namespace EtherealHorizons.Items.Accessories
             item.accessory = true;
             item.width = 30;
             item.height = 28;
-            item.rare = ItemRarityID.Blue;
+            item.rare = ItemRarityID.Expert;
             item.value = Item.buyPrice(0, 1, 15, 0);
+            item.expert = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
