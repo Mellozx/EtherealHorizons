@@ -10,16 +10,17 @@ namespace EtherealHorizons.Items.Armor.Wild
 	{
 		public override void SetStaticDefaults() 
 		{
-			Tooltip.SetDefault("");
+			Tooltip.SetDefault("Ancient spirits are said to protect the wearer of this armor"
+			+ "\nIncreased melee damage by 9%");
 		}
 
 		public override void SetDefaults() 
 		{
 			item.width = 32;
 			item.height = 22;
-			item.value = 0;
+			item.value = Item.buyPrice(0, 0, 0, 0);
 			item.rare = 2;
-			item.defense = 1;
+			item.defense = 5;
 		}
 
 		public override bool IsArmorSet(Item head, Item body, Item legs) 
@@ -29,6 +30,7 @@ namespace EtherealHorizons.Items.Armor.Wild
 		
 		public override void UpdateEquip(Player player) 
 		{
+			player.meleeDamage += 0.09f;
 		}
 
 		//set bonus
@@ -36,13 +38,13 @@ namespace EtherealHorizons.Items.Armor.Wild
 		{
 		}
 
-		/*public override void AddRecipes() 
+		public override void AddRecipes() 
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemType<EquipMaterial>(), 30);
-			recipe.AddTile(TileType<ExampleWorkbench>());
+			recipe.AddIngredient(mod.ItemType("WildlifeFragment"), 3);
+			recipe.AddTile(TileID.WorkBenches);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
-		}*/
+		}
 	}
 }

@@ -10,29 +10,29 @@ namespace EtherealHorizons.Items.Armor.Wild
 	{
 		public override void SetStaticDefaults() 
 		{
-			Tooltip.SetDefault("");
+			Tooltip.SetDefault("Ancient spirits are said to protect the wearer of this armor");
 		}
 
 		public override void SetDefaults() 
 		{
 			item.width = 22;
 			item.height = 16;
-			item.value = 0;
+			item.value = Item.buyPrice(0, 0, 0, 0);
 			item.rare = 2;
-			item.defense = 1;
+			item.defense = 3;
 		}
 
 		public override void UpdateEquip(Player player) 
 		{
 		}
 
-		/*public override void AddRecipes() 
+		public override void AddRecipes() 
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemType<EquipMaterial>(), 45);
-			recipe.AddTile(TileType<ExampleWorkbench>());
+			recipe.AddIngredient(mod.ItemType("WildlifeFragment"), 4);
+			recipe.AddTile(TileID.WorkBenches);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
-		}*/
+		}
 	}
 }
