@@ -20,9 +20,9 @@ namespace EtherealHorizons.Items.Weapons.Melee
 			item.noMelee = true;
 			item.useStyle = ItemUseStyleID.HoldingOut;
 			item.useAnimation = 40;
-			item.useTime = 18;
+			item.useTime = 20;
 			item.knockBack = 6f;
-			item.damage = 16;
+			item.damage = 12;
 			item.noUseGraphic = true;
 			item.shoot = mod.ProjectileType("TheWallnutProjectile");
 			item.shootSpeed = 15.1f;
