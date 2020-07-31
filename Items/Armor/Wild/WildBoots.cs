@@ -10,25 +10,27 @@ namespace EtherealHorizons.Items.Armor.Wild
 	{
 		public override void SetStaticDefaults() 
 		{
-			Tooltip.SetDefault("Ancient spirits are said to protect the wearer of this armor");
+			DisplayName.SetDefault("Wild Warrior Greaves");
+			Tooltip.SetDefault("Increases movement speed by 10%");
 		}
 
 		public override void SetDefaults() 
 		{
 			item.width = 22;
 			item.height = 16;
-			item.value = Item.buyPrice(0, 0, 0, 0);
-			item.rare = 2;
-			item.defense = 3;
+			item.value = Item.sellPrice(silver: 40);
+			item.rare = 1;
+			item.defense = 4;
 		}
 
 		public override void UpdateEquip(Player player) 
 		{
+            player.moveSpeed += 0.1f;
 		}
 
 		public override void AddRecipes() 
 		{
-			ModRecipe recipe = new ModRecipe(mod);
+			var recipe = new ModRecipe(mod);
 			recipe.AddIngredient(mod.ItemType("WildlifeFragment"), 4);
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.SetResult(this);

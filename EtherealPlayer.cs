@@ -9,6 +9,7 @@ namespace EtherealHorizons
 	public class EtherealPlayer : ModPlayer
     {
         public bool gluttonAmulet;
+        public bool natureSpirit;
         public float ScreenRandom;
         public float ScreenRandomDecrease;
         Vector2 ScreenAdd;
@@ -21,6 +22,14 @@ namespace EtherealHorizons
         public override void ResetEffects()
         {
             gluttonAmulet = false;
+            natureSpirit = true;
+        }
+        public override void PostUpdate()
+        {
+            if (natureSpirit && player.statLife <= player.statLifeMax2 / 2)
+            {
+                player.AddBuff(mod.BuffType("NatureSpirits"), 2);
+            }
         }
 
         // Shake effect
@@ -48,7 +57,7 @@ namespace EtherealHorizons
         {
             if (gluttonAmulet)
             {
-                healValue = (int)(healValue * 1.30f);
+                healValue = (int)(healValue * 1.20f);
             }
         }
     }

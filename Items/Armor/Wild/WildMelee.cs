@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Microsoft.Xna.Framework;
 using static Terraria.ModLoader.ModContent;
 
 namespace EtherealHorizons.Items.Armor.Wild
@@ -10,16 +11,16 @@ namespace EtherealHorizons.Items.Armor.Wild
 	{
 		public override void SetStaticDefaults() 
 		{
-			Tooltip.SetDefault("Ancient spirits are said to protect the wearer of this armor"
-			+ "\nIncreased melee damage by 9%");
+			DisplayName.SetDefault("Wild Warrior Horned Greathelm");
+			Tooltip.SetDefault("Increases melee damage by 9%");
 		}
 
 		public override void SetDefaults() 
 		{
 			item.width = 32;
 			item.height = 22;
-			item.value = Item.buyPrice(0, 0, 0, 0);
-			item.rare = 2;
+			item.value = Item.sellPrice(silver: 30);
+			item.rare = 1;
 			item.defense = 5;
 		}
 
@@ -30,17 +31,20 @@ namespace EtherealHorizons.Items.Armor.Wild
 		
 		public override void UpdateEquip(Player player) 
 		{
-			player.meleeDamage += 0.09f;
+            player.meleeDamage += 0.09f;
 		}
 
 		//set bonus
 		public override void UpdateArmorSet(Player player) 
 		{
+            player.setBonus = "When under half health, nature spirits will protect you";
+            var modPlayer = player.GetModPlayer<EtherealPlayer>();
+            modPlayer.natureSpirit = true;
 		}
 
 		public override void AddRecipes() 
 		{
-			ModRecipe recipe = new ModRecipe(mod);
+			var recipe = new ModRecipe(mod);
 			recipe.AddIngredient(mod.ItemType("WildlifeFragment"), 3);
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.SetResult(this);

@@ -10,29 +10,32 @@ namespace EtherealHorizons.Items.Armor.Wild
 	{
 		public override void SetStaticDefaults() 
 		{
-			Tooltip.SetDefault("Ancient spirits are said to protect the wearer of this armor"
-			+ "\nIncreased crit chance by 4");
+            DisplayName.SetDefault("Wild Warrior Chestplate");
+			Tooltip.SetDefault("Increases critical strike chance by 4%");
 		}
 
 		public override void SetDefaults() 
 		{
 			item.width = 38;
 			item.height = 22;
-			item.value = Item.buyPrice(0, 0, 0, 0);
-			item.rare = 2;
-			item.defense = 4;
+			item.value = Item.sellPrice(silver: 50);
+			item.rare = 1;
+			item.defense = 6;
 		}
 
 		public override void UpdateEquip(Player player) 
 		{
-			player.magicCrit += 4;
-			player.meleeCrit += 4;
-			player.rangedCrit += 4;
+            player.meleeCrit += 4;
+            player.rangedCrit += 4;
+            player.magicCrit += 4;
+            player.thrownCrit += 4;
+            
+            //don't feel like adding mod support for modded classes right now
 		}
 
 		public override void AddRecipes() 
 		{
-			ModRecipe recipe = new ModRecipe(mod);
+			var recipe = new ModRecipe(mod);
 			recipe.AddIngredient(mod.ItemType("WildlifeFragment"), 6);
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.SetResult(this);
