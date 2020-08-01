@@ -27,7 +27,6 @@ namespace EtherealHorizons.Items.Weapons.Melee
 			item.value = Item.sellPrice(silver: 15);
 			item.rare = 2;
 			item.UseSound = SoundID.Item1;
-			item.autoReuse = true;
             item.scale = 1.2f;
 		}
         public override void AddRecipes()
