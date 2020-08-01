@@ -22,6 +22,8 @@ namespace EtherealHorizons.Items.Materials
 			item.rare = ItemRarityID.White;
 			item.value = Item.sellPrice(copper: 15);
             item.ammo = item.type;
+            item.ranged = true;
+            item.damage = 2;
             item.shoot = ModContent.ProjectileType<FriendlyNutProj>();
             item.shootSpeed = 4f;
 		}
