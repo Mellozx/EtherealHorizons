@@ -7,7 +7,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 
-namespace CIRMod.Items.Accessories
+namespace EtherealHorizons.Items.Accessories
 {
     [AutoloadEquip(EquipType.Wings)]
     public class LegacyWings : ModItem
