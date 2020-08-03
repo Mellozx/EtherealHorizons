@@ -21,10 +21,10 @@ namespace EtherealHorizons.Items.Weapons.Ranged
 			item.autoReuse = true;
 			item.width = 20;
 			item.height = 20;
-			item.useTime = 27;
-			item.useAnimation = 27;
+			item.useTime = 24;
+			item.useAnimation = 24;
 			item.UseSound = SoundID.Item5;
-			item.damage = 16;
+			item.damage = 15;
 			item.knockBack = 3f;
 			item.shootSpeed = 7f;
 			item.shoot = 1;
