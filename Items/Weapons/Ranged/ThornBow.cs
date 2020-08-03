@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using System;
 using EtherealHorizons.Projectiles.Ranged;
+using EtherealHorizons.Items.Materials;
 
 namespace EtherealHorizons.Items.Weapons.Ranged
 {
@@ -16,7 +17,7 @@ namespace EtherealHorizons.Items.Weapons.Ranged
 		}
 		public override void SetDefaults()
 		{
-			item.damage = 9;
+			item.damage = 7;
 			item.ranged = true;
 			item.width = 24;
 			item.height = 38;
@@ -44,6 +45,7 @@ public override bool Shoot(Player player, ref Vector2 position, ref float speedX
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(ModContent.ItemType<Thorn>());
 			recipe.AddIngredient(ItemID.Sandstone, 13);
 			recipe.AddIngredient(ItemID.Cactus, 8);
 			recipe.AddTile(TileID.WorkBenches);
