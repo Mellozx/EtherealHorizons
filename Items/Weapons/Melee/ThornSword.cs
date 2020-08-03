@@ -7,27 +7,30 @@ using EtherealHorizons.Projectiles.Melee;
 
 namespace EtherealHorizons.Items.Weapons.Melee
 {
-	public class WildNature : ModItem
+	public class ThornSword : ModItem
 	{
 		public override void SetStaticDefaults() 
 		{
-            DisplayName.SetDefault("Wild Nature");
+            DisplayName.SetDefault("Thorn Sword");
 		}
 
 		public override void SetDefaults() 
 		{
-			item.damage = 21;
+			item.damage = 9;
 			item.melee = true;
-			item.width = 48;
-			item.height = 48;
-			item.useTime = 18;
-			item.useAnimation = 18;
+			item.width = 56;
+			item.height = 60;
+			item.useTime = 22;
+			item.useAnimation = 22;
 			item.useStyle = 1;
 			item.knockBack = 5f;
-			item.value = Item.buyPrice(0, 0, 11, 30);
-			item.rare = 2;
+			item.value = Item.buyPrice(0, 0, 3, 16);
+			item.rare = 0;
 			item.UseSound = SoundID.Item1;
-            item.scale = 1.2f;
+		}
+		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit) 
+		{
+			target.AddBuff(BuffID.Poisoned, 180);
 		}
         public override void AddRecipes()
         {
