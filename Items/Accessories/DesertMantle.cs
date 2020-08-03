@@ -33,6 +33,7 @@ namespace EtherealHorizons.Items.Accessories
         public override void AddRecipes() 
 		{
 			ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(mod.ItemType("AntlionChitin"), 15);
             recipe.AddIngredient(ItemID.AntlionMandible, 5);
             recipe.AddIngredient(ItemID.Amber, 3);
 			recipe.AddTile(TileID.Anvils);
