@@ -8,7 +8,7 @@ using Terraria.ModLoader.IO;
 
 namespace EtherealHorizons
 {
-	public class EtherealWorld : ModWorld
+    public class EtherealWorld : ModWorld
     {
         public static bool downedAwakeCheeks;
 
@@ -28,7 +28,7 @@ namespace EtherealHorizons
 
             return new TagCompound()
             {
-                {"downed", downed}
+                ["downed"] = downed,
             };
         }
 

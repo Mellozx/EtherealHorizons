@@ -10,6 +10,8 @@ namespace EtherealHorizons.Items.Accessories
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Glutton Amulet");
+             Tooltip.SetDefault("The glutton of the forest's amulet is in your hands."
+            + "\nIncreased healing from potions by 30% and increased damage reduction by 8%");
         }
 
         public override void SetDefaults()
@@ -17,14 +19,16 @@ namespace EtherealHorizons.Items.Accessories
             item.accessory = true;
             item.width = 30;
             item.height = 28;
-            item.rare = ItemRarityID.Blue;
-            item.value = Item.sellPrice(gold: 1);
+            item.rare = ItemRarityID.Expert;
+            item.value = Item.buyPrice(0, 1, 15, 0);
+            item.expert = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         { 
             var modPlayer = player.GetModPlayer<EtherealPlayer>();
             modPlayer.gluttonAmulet = true;
+            player.endurance += 0.08f;
         }
     }
 }

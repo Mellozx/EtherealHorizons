@@ -27,7 +27,7 @@ namespace EtherealHorizons.Items.Tools.Wild
 			item.rare = ItemRarityID.Green;
 			item.useStyle = ItemUseStyleID.SwingThrow;
 			item.UseSound = SoundID.Item1;
-			item.value = Item.sellPrice(silver: 26);
+			item.value = Item.buyPrice(0, 0, 26, 0);
 		}
 
 		public override void AddRecipes()

@@ -24,7 +24,6 @@ namespace EtherealHorizons.Projectiles.Ranged
 			projectile.penetrate = 1;
 			projectile.tileCollide = true;
 			projectile.timeLeft = 2000;
-			projectile.extraUpdates = 1;
 			projectile.aiStyle = 0;
 		}
 		
