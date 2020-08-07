@@ -4,7 +4,6 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using System;
 using EtherealHorizons.Projectiles.Ranged;
-using EtherealHorizons.Items.Materials;
 
 namespace EtherealHorizons.Items.Weapons.Ranged
 {
@@ -22,14 +21,14 @@ namespace EtherealHorizons.Items.Weapons.Ranged
 			item.width = 24;
 			item.height = 38;
 			item.useTime = 22;
-			item.useAnimation = 20;
+			item.useAnimation = 22;
 			item.useStyle = 5;
 			item.knockBack = 1;
-			item.value = Item.buyPrice(0, 0, 2, 36);;
-			item.rare = 2;
+			item.value = Item.buyPrice(0, 0, 2, 40);
+			item.rare = 1;
 			item.UseSound = SoundID.Item5;
 			item.autoReuse = true;
-			item.useAmmo = AmmoID.Arrow;;
+			item.useAmmo = AmmoID.Arrow;
 			item.shoot = 2;
 			item.shootSpeed = 5f;
 		}
@@ -45,12 +44,12 @@ public override bool Shoot(Player player, ref Vector2 position, ref float speedX
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ModContent.ItemType<Thorn>());
 			recipe.AddIngredient(ItemID.Sandstone, 13);
+            recipe.AddIngredient(mod.ItemType("Thorn"), 4);
 			recipe.AddIngredient(ItemID.Cactus, 8);
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
         }
     }
-}            
+}             

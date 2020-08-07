@@ -22,7 +22,7 @@ namespace EtherealHorizons
         public override void ResetEffects()
         {
             gluttonAmulet = false;
-            natureSpirit = true;
+            natureSpirit = false;
         }
         public override void PostUpdate()
         {
