@@ -14,7 +14,8 @@ namespace EtherealHorizons.Items.Accessories
     {
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("The wings of a legendary beast");
+            Tooltip.SetDefault("The wings of a legendary beast"
+				+ "\nAllows flight and slow fall");
         }
         public override void SetDefaults()
         {
