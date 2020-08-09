@@ -35,11 +35,11 @@ namespace EtherealHorizons.NPCs.Desert
             npc.knockBackResist = 0.80f;
             npc.aiStyle = -1;
             banner = npc.type;
-			bannerItem = mod.ItemType("SerpentBanner");  
+            bannerItem = mod.ItemType("SerpentBanner");
         }
         private int jumpTimer;
         private float speed = 1.25f;
-        
+
         public override void SendExtraAI(BinaryWriter writer)
         {
             writer.Write(jumpTimer);
@@ -54,27 +54,27 @@ namespace EtherealHorizons.NPCs.Desert
         {
             Target();
             npc.TargetClosest(true);
-            
-            MoveTowardsPlayerX(speed, 4f);
-            
-            if (npc.velocity.Y == 0)
-					{
-						jumpTimer++;
-					}
-					else
-					{
-						jumpTimer = 0;
-					}
-            if (jumpTimer >= 90 && (HoleBelow() || (npc.collideX && npc.position.X == npc.oldPosition.X)))
-					{
-						npc.velocity.Y = Main.rand.Next(-7, -5);
-						npc.netUpdate = true;
-					}
 
-				if (npc.velocity.Y >= 0f)
-					{
-						Collision.StepUp(ref npc.position, ref npc.velocity, npc.width, npc.height, ref npc.stepSpeed, ref npc.gfxOffY, 1, false, 1);
-					}
+            MoveTowardsPlayerX(speed, 4f);
+
+            if (npc.velocity.Y == 0)
+            {
+                jumpTimer++;
+            }
+            else
+            {
+                jumpTimer = 0;
+            }
+            if (jumpTimer >= 90 && (HoleBelow() || (npc.collideX && npc.position.X == npc.oldPosition.X)))
+            {
+                npc.velocity.Y = Main.rand.Next(-7, -5);
+                npc.netUpdate = true;
+            }
+
+            if (npc.velocity.Y >= 0f)
+            {
+                Collision.StepUp(ref npc.position, ref npc.velocity, npc.width, npc.height, ref npc.stepSpeed, ref npc.gfxOffY, 1, false, 1);
+            }
             if (Main.rand.NextBool(300))
             {
                 float Ppeed = 4f;
@@ -85,12 +85,12 @@ namespace EtherealHorizons.NPCs.Desert
                 }
                 int pamage = 8;
                 int pype = mod.ProjectileType("SerpentSpit");
-                Main.PlaySound(2, (int)npc.position.X, (int)npc.position.Y, 17);
+                Main.PlaySound(SoundID.Item, (int)npc.position.X, (int)npc.position.Y, 17);
                 float potation = (float)Math.Atan2(pector8.Y - (player.position.Y + (player.height * 0.5f)), pector8.X - (player.position.X + (player.width * 0.5f)));
-                int pew = Projectile.NewProjectile(pector8.X, pector8.Y, (float)((Math.Cos(potation) * Ppeed) * -1), (float)((Math.Sin(potation) * Ppeed) * -1), pype, pamage, 0f, 0);   
+                int pew = Projectile.NewProjectile(pector8.X, pector8.Y, (float)((Math.Cos(potation) * Ppeed) * -1), (float)((Math.Sin(potation) * Ppeed) * -1), pype, pamage, 0f, 0);
             }
         }
-                public override bool CheckDead()
+        public override bool CheckDead()
         {
             {
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/Serpent1"), 1f);
@@ -102,14 +102,14 @@ namespace EtherealHorizons.NPCs.Desert
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            if (spawnInfo.player.ZoneDesert) 
-                {
+            if (spawnInfo.player.ZoneDesert)
+            {
                 return 0.25f;
-                }
+            }
             else
-                {
+            {
                 return 0f;
-                }
+            }
         }
         private void MoveTowardsPlayerX(float speed, float direction)
         {
@@ -158,25 +158,30 @@ namespace EtherealHorizons.NPCs.Desert
             npc.frameCounter++;
             if (npc.velocity.Y != 0)
             {
-					npc.frame.Y = 2 * frameHeight;
+                npc.frame.Y = 2 * frameHeight;
             }
             else
             {
-                if (npc.frameCounter < 10) {
-					npc.frame.Y = 0 * frameHeight;
-				}
-				else if (npc.frameCounter < 20) {
-					npc.frame.Y = 1 * frameHeight;
-				}
-                else if (npc.frameCounter < 30) {
-					npc.frame.Y = 2 * frameHeight;
-				}
-                else if (npc.frameCounter < 40) {
-					npc.frame.Y = 3 * frameHeight;
-				}
-				else {
-					npc.frameCounter = 0;
-				} 
+                if (npc.frameCounter < 10)
+                {
+                    npc.frame.Y = 0 * frameHeight;
+                }
+                else if (npc.frameCounter < 20)
+                {
+                    npc.frame.Y = 1 * frameHeight;
+                }
+                else if (npc.frameCounter < 30)
+                {
+                    npc.frame.Y = 2 * frameHeight;
+                }
+                else if (npc.frameCounter < 40)
+                {
+                    npc.frame.Y = 3 * frameHeight;
+                }
+                else
+                {
+                    npc.frameCounter = 0;
+                }
             }
         }
 
@@ -184,7 +189,7 @@ namespace EtherealHorizons.NPCs.Desert
         {
             if (Main.rand.NextBool(100))
             {
-            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 887, Main.rand.Next(1, 2));
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 887, Main.rand.Next(1, 2));
             }
         }
     }
