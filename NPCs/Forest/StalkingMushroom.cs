@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
@@ -24,11 +25,14 @@ namespace EtherealHorizons.NPCs.Forest
             npc.height = 32;
             npc.damage = 10;
             npc.lifeMax = 100;
+            npc.knockBackResist = 0f;
+            npc.HitSound = new LegacySoundStyle( 3, 1);
+            npc.DeathSound = new LegacySoundStyle(4, 32);
         }
 
         private float state { get => npc.ai[0]; set => npc.ai[0] = value; }
-        private float timer { get => npc.ai[1]; set => npc.ai[1] = value; }
-        private float jumptimer { get => npc.ai[2]; set => npc.ai[2] = value; }
+        //private float timer { get => npc.ai[1]; set => npc.ai[1] = value; }
+        //private float jumptimer { get => npc.ai[2]; set => npc.ai[2] = value; }
         private float shootTimer { get => npc.ai[3]; set => npc.ai[3] = value; }
 
         public override void AI()
@@ -40,22 +44,12 @@ namespace EtherealHorizons.NPCs.Forest
                     npc.netUpdate = true;
                     break;
 
-                case 1: // while it hasn't been attacked
-                    if (jumptimer > 0)
-                        jumptimer--;
-                    else
-                    {
-                        jumptimer = Main.rand.NextFloat(40) + 80;
-                        npc.velocity.Y -= Main.rand.NextFloat(4) + 2;
-                        npc.velocity.X = 4 * (Main.rand.NextBool() ? 1 : -1);
-                        npc.netUpdate = true;
-                    }
+                case 1: // while it hasn't been attacked or deres no targets
                     break;
 
                 case 2:
                     state = 3;
-                    jumptimer = 0;
-                    timer = 0;
+                    shootTimer = 20;
                     goto case 3;
 
                 case 3: // attack
@@ -64,21 +58,7 @@ namespace EtherealHorizons.NPCs.Forest
                         npc.TargetClosest(); // retarget
                     target = Main.player[npc.target]; // reindex
                     if (!target.active || target.dead || target.ghost) // if still no target
-                    {
                         goto case 1;
-                    }
-
-                    if (timer < 30) // waiting after being hit for attacking
-                        timer++;
-                    else if (jumptimer > 0) // jump cooldown
-                        jumptimer--;
-                    else if(npc.collideY) // jump
-                    {
-                        jumptimer = Main.rand.NextFloat(41) + 80; // jump cooldown
-                        npc.velocity.Y -= Main.rand.NextFloat(4) + 2;
-                        npc.velocity.X = 4 * npc.direction;
-                        npc.netUpdate = true;
-                    }
 
                     if (shootTimer > 0) // atacc cooldown
                         shootTimer--;
