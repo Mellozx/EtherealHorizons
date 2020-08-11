@@ -34,6 +34,7 @@ namespace EtherealHorizons.NPCs.Forest
         //private float timer { get => npc.ai[1]; set => npc.ai[1] = value; }
         //private float jumptimer { get => npc.ai[2]; set => npc.ai[2] = value; }
         private float shootTimer { get => npc.ai[3]; set => npc.ai[3] = value; }
+        private float localTimer1 { get => npc.localAI[1]; set => npc.localAI[1] = value; }
 
         public override void AI()
         {
@@ -45,6 +46,20 @@ namespace EtherealHorizons.NPCs.Forest
                     break;
 
                 case 1: // while it hasn't been attacked or deres no targets
+                    if (localTimer1 > 0)
+                        localTimer1--;
+                    else if (Main.rand.NextBool(1000))
+                    {
+                        string text;
+                        switch (Main.rand.Next(3))
+                        {
+                            case 1: text = "oweegee"; break;
+                            case 2: text = "mushreem"; break;
+                            default: text = "ae"; break;
+                        }
+                        CombatText.NewText(npc.getRect(), Color.MediumVioletRed, text);
+                        localTimer1 = 200;
+                    }
                     break;
 
                 case 2:
@@ -58,7 +73,7 @@ namespace EtherealHorizons.NPCs.Forest
                         npc.TargetClosest(); // retarget
                     target = Main.player[npc.target]; // reindex
                     if (!target.active || target.dead || target.ghost) // if still no target
-                        goto case 1;
+                        break;
 
                     if (shootTimer > 0) // atacc cooldown
                         shootTimer--;
