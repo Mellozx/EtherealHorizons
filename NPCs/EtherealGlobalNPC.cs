@@ -17,6 +17,14 @@ namespace EtherealHorizons.NPCs
             {
                 Item.NewItem(npc.getRect(), ModContent.ItemType<AntlionChitin>(), Main.rand.Next(1, 3));
             }
+	    if (npc.type == mod.NPCType("StalkingMushroom"))
+            {
+                Item.NewItem(npc.getRect(), ItemID.Mushroom, Main.rand.Next(1, 3));
+                if(Main.rand.Next(100) < 5) // a 5 in 100 chance
+                    {
+                    Item.NewItem(npc.getRect(), mod.ItemType("Mushbat"), Main.rand.Next(5, 8));
+                    }
+            }
         }
     }
 }
