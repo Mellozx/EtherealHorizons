@@ -22,6 +22,8 @@ namespace EtherealHorizons.NPCs.Forest
             npc.lifeMax = 200;
             npc.aiStyle = -1;
             aiType = -1;
+            npc.HitSound = SoundID.NPCHit1;
+            npc.DeathSound = SoundID.NPCDeath1;
         }
 
         public override void AI()

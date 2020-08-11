@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria;
-using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using EtherealHorizons.Items.Weapons.Melee;
 
 namespace EtherealHorizons.NPCs.Forest
 {
@@ -25,16 +25,14 @@ namespace EtherealHorizons.NPCs.Forest
             npc.height = 32;
             npc.damage = 10;
             npc.lifeMax = 100;
-            npc.knockBackResist = 0f;
-            npc.HitSound = new LegacySoundStyle( 3, 1);
-            npc.DeathSound = new LegacySoundStyle(4, 32);
+            npc.HitSound = SoundID.NPCHit1;
+            npc.DeathSound = SoundID.NPCDeath1;
         }
 
         private float state { get => npc.ai[0]; set => npc.ai[0] = value; }
-        //private float timer { get => npc.ai[1]; set => npc.ai[1] = value; }
-        //private float jumptimer { get => npc.ai[2]; set => npc.ai[2] = value; }
+        private float timer { get => npc.ai[1]; set => npc.ai[1] = value; }
+        private float jumptimer { get => npc.ai[2]; set => npc.ai[2] = value; }
         private float shootTimer { get => npc.ai[3]; set => npc.ai[3] = value; }
-        private float localTimer1 { get => npc.localAI[1]; set => npc.localAI[1] = value; }
 
         public override void AI()
         {
@@ -45,26 +43,22 @@ namespace EtherealHorizons.NPCs.Forest
                     npc.netUpdate = true;
                     break;
 
-                case 1: // while it hasn't been attacked or deres no targets
-                    if (localTimer1 > 0)
-                        localTimer1--;
-                    else if (Main.rand.NextBool(1000))
+                case 1: // while it hasn't been attacked
+                    if (jumptimer > 0)
+                        jumptimer--;
+                    else
                     {
-                        string text;
-                        switch (Main.rand.Next(3))
-                        {
-                            case 1: text = "oweegee"; break;
-                            case 2: text = "mushreem"; break;
-                            default: text = "ae"; break;
-                        }
-                        CombatText.NewText(npc.getRect(), Color.MediumVioletRed, text);
-                        localTimer1 = 200;
+                        jumptimer = Main.rand.NextFloat(40) + 80;
+                        npc.velocity.Y -= Main.rand.NextFloat(4) + 2;
+                        npc.velocity.X = 4 * (Main.rand.NextBool() ? 1 : -1);
+                        npc.netUpdate = true;
                     }
                     break;
 
                 case 2:
                     state = 3;
-                    shootTimer = 20;
+                    jumptimer = 0;
+                    timer = 0;
                     goto case 3;
 
                 case 3: // attack
@@ -73,7 +67,21 @@ namespace EtherealHorizons.NPCs.Forest
                         npc.TargetClosest(); // retarget
                     target = Main.player[npc.target]; // reindex
                     if (!target.active || target.dead || target.ghost) // if still no target
-                        break;
+                    {
+                        goto case 1;
+                    }
+
+                    if (timer < 30) // waiting after being hit for attacking
+                        timer++;
+                    else if (jumptimer > 0) // jump cooldown
+                        jumptimer--;
+                    else if(npc.collideY) // jump
+                    {
+                        jumptimer = Main.rand.NextFloat(41) + 80; // jump cooldown
+                        npc.velocity.Y -= Main.rand.NextFloat(4) + 2;
+                        npc.velocity.X = 4 * npc.direction;
+                        npc.netUpdate = true;
+                    }
 
                     if (shootTimer > 0) // atacc cooldown
                         shootTimer--;
@@ -121,6 +129,14 @@ namespace EtherealHorizons.NPCs.Forest
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
             return SpawnCondition.OverworldDay.Active ? SpawnCondition.OverworldDay.Chance * 0.2f : 0f;
+        }
+
+        public override void NPCLoot()
+        {
+            if(Main.rand.Next(100) < 5) // a 2 in 7 chance
+            {
+                Item.NewItem(npc.getRect(), ModContent.ItemType<Mushbat>(), Main.rand.Next(5, 8));
+            }
         }
     }
 }
