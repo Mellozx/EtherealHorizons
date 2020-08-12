@@ -25,7 +25,7 @@ namespace EtherealHorizons.Items.Weapons.Magic
 			item.rare = 5;
 			item.knockBack = 2;
 			item.noMelee = true;
-			item.mana = 5;
+			item.mana = 8;
 			item.UseSound = SoundID.Item20;
 			item.shoot = mod.ProjectileType("SineWaveLeaf");
 			item.shootSpeed = 8f;
