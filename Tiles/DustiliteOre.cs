@@ -23,6 +23,7 @@ namespace EtherealHorizons.Tiles
 			TileID.Sets.Ore[Type] = true;
 			Main.tileSpelunker[Type] = true; // The tile will be affected by spelunker highlighting
 			dustType = 84;
+			minPick = 55;
 			soundType = SoundID.Tink;
 			soundStyle = 1;
 			ModTranslation name = CreateMapEntryName();
