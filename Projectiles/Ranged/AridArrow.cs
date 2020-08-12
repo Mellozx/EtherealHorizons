@@ -3,6 +3,8 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria.Graphics.Shaders;
 
 namespace EtherealHorizons.Projectiles.Ranged
 {
@@ -15,6 +17,8 @@ namespace EtherealHorizons.Projectiles.Ranged
 
 		public override void SetDefaults()
 		{
+            projectile.damage = 4;
+            projectile.knockBack = 4f;
 			projectile.width = 14;
 			projectile.height = 36;
 			projectile.aiStyle = 1;
@@ -25,11 +29,9 @@ namespace EtherealHorizons.Projectiles.Ranged
 		}
         public override void OnHitNPC (NPC target, int damage, float knockback, bool crit)
         {
-            if(Main.rand.Next(15) > 10)
+            if (Main.rand.Next(15) > 10 && projectile.owner == Main.myPlayer)
 				{
-                float projectileknockBack = 4f;
-                int projectiledamage = 4;
-				Projectile.NewProjectile(target.Center, Vector2.Zero, ProjectileID.SandnadoFriendly, projectiledamage, projectileknockBack, projectile.owner, 0f, 0f);
+				Projectile.NewProjectile(target.Center, Vector2.Zero, ProjectileID.SandnadoFriendly, projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
 				}
         }
     }
