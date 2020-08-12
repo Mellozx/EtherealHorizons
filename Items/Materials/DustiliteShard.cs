@@ -15,10 +15,17 @@ namespace EtherealHorizons.Items.Materials
         {
             item.material = true;
             item.maxStack = 999;
-            item.width = 28;
-            item.height = 24;
+            item.width = 14;
+            item.height = 18;
             item.rare = ItemRarityID.Blue;
             item.value = Item.sellPrice(silver: 3);
+            item.useAnimation = 20;
+			item.useTime = 20;
+            item.useStyle = 1;
+            item.useTurn = true;
+            item.autoReuse = true;
+            item.consumable = true;
+            item.createTile = mod.TileType("DustiliteOre");
         }
     }
 }
