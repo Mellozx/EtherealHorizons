@@ -22,9 +22,5 @@ namespace EtherealHorizons.Projectiles.Magic
 			projectile.timeLeft = 100;
 			projectile.arrow = false;
 		}
-		public override void AI()
-		{
-			projectile.velocity = (projectile.velocity).RotatedBy(MathHelper.ToRadians(Main.rand.Next(90)));
-		}
 	}
 }
