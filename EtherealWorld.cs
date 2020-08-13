@@ -74,7 +74,7 @@ namespace EtherealHorizons
                         Tile tile = Framing.GetTileSafely(x,y);
                         if(tile.type == TileID.Sandstone || tile.type == TileID.Sand)
                         {
-                            WorldGen.TileRunner(x,y,4,3,ModContent.TileType<DustiliteOre>());//Replace fossilOre with Dustilite Ore :wegud:
+                            WorldGen.TileRunner(x,y,3,2,ModContent.TileType<DustiliteOre>());//Replace fossilOre with Dustilite Ore :wegud:
                         }
                     }
                 }
