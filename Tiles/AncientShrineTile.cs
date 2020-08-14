@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace EtherealHorizons.Tiles 
 {
-	public class AncientShrine : ModTile
+	public class AncientShrineTile : ModTile
 	{
 		public override void SetDefaults()
 		{

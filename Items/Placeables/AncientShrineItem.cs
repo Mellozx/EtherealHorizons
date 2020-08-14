@@ -1,17 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+using EtherealHorizons.Tiles;
 
-namespace EtherealHorizons.Items.Tiles
+namespace EtherealHorizons.Items.Placeables
 {
-	public class AncientShrineItem : ModItem
+	public class AncientShrine : ModItem
 	{
 		public override void SetStaticDefaults()
         {
@@ -29,13 +23,13 @@ namespace EtherealHorizons.Items.Tiles
 			item.useTime = 20;
 			item.useStyle = 1;
 			item.consumable = true;
-			item.createTile = mod.TileType("AncientShrine");
+			item.createTile = ModContent.TileType<AncientShrineTile>();
 		}
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(mod.ItemType("HardenedWood"), 10);
+			var recipe = new ModRecipe(mod);
+			recipe.AddIngredient(ModContent.ItemType<HardenedWood>(), 10);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

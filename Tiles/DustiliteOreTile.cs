@@ -2,12 +2,11 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 using Terraria.ObjectData;
 
 namespace EtherealHorizons.Tiles
 {
-	public class DustiliteOre : ModTile
+	public class DustiliteOreTile : ModTile
 	{
 		public override void SetDefaults()
 		{
