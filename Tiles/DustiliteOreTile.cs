@@ -1,3 +1,4 @@
+using EtherealHorizons.Items.Materials;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -10,23 +11,42 @@ namespace EtherealHorizons.Tiles
 	{
 		public override void SetDefaults()
 		{
+            TileID.Sets.Ore[Type] = true;
+            Main.tileValue[Type] = 280;
 			Main.tileSolid[Type] = true;
-			Main.tileMergeDirt[Type] = true;
-			Main.tileBlockLight[Type] = true;
-			Main.tileLighted[Type] = false;
-			drop = mod.ItemType("DustiliteShard");
-			AddMapEntry(new Color(172, 113, 96));
-			// Set other values here
-			Main.tileShine2[Type] = true; // Modifies the draw color slightly.
-			Main.tileShine[Type] = 975; // How often tiny dust appear off this tile. Larger is less frequently
-			TileID.Sets.Ore[Type] = true;
-			Main.tileSpelunker[Type] = true; // The tile will be affected by spelunker highlighting
-			dustType = 84;
-			minPick = 55;
-			soundType = SoundID.Tink;
-			soundStyle = 1;
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Dustilite Ore");
+            Main.tileLighted[Type] = true;
+            Main.tileBlockLight[Type] = true;
+            Main.tileSpelunker[Type] = true;
+            Main.tileMerge[Type][TileID.Sand] = true;
+            Main.tileMerge[Type][TileID.Dirt] = true;
+            Main.tileMerge[Type][TileID.Stone] = true;
+
+            drop = ModContent.ItemType<DustiliteShard>();
+            minPick = 55;
+            mineResist = 2f;
+            soundType = SoundID.Tink;
+            soundStyle = 1;
+
+            ModTranslation name = CreateMapEntryName();
+            name.SetDefault("Dustilite Ore");
+            AddMapEntry(Color.Yellow, name);
 		}
-	}
+
+        public override bool CanExplode(int i, int j)
+        {
+            return NPC.downedSlimeKing;
+        }
+
+        public override void NumDust(int i, int j, bool fail, ref int num)
+        {
+            num = fail ? 1 : 3;
+        }
+
+        public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
+        {
+            r = 0f;
+            g = 0.2f;
+            b = 0.2f;
+        }
+    }
 }
