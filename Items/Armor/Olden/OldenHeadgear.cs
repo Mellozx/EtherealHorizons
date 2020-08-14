@@ -6,10 +6,11 @@ using static Terraria.ModLoader.ModContent;
 namespace EtherealHorizons.Items.Armor.Olden
 {
 	[AutoloadEquip(EquipType.Head)]
-	public class OldenSummon : ModItem
+	public class OldenHeadgear : ModItem
 	{
 		public override void SetStaticDefaults() 
 		{
+			DisplayName.SetDefault("Olden Headgear");
 			Tooltip.SetDefault("");
 		}
 
@@ -18,7 +19,7 @@ namespace EtherealHorizons.Items.Armor.Olden
 			item.width = 30;
 			item.height = 22;
 			item.value = 0;
-			item.rare = 2;
+			item.rare = ItemRarityID.Blue;
 			item.defense = 1;
 		}
 
@@ -29,11 +30,12 @@ namespace EtherealHorizons.Items.Armor.Olden
 		
 		public override void UpdateEquip(Player player) 
 		{
+
 		}
 
-		//set bonus
 		public override void UpdateArmorSet(Player player) 
 		{
+
 		}
 
 		/*public override void AddRecipes() 

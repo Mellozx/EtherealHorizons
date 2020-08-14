@@ -1,3 +1,4 @@
+using EtherealHorizons.Tiles;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -20,12 +21,12 @@ namespace EtherealHorizons.Items.Materials
             item.rare = ItemRarityID.Blue;
             item.value = Item.sellPrice(silver: 3);
             item.useAnimation = 20;
-			item.useTime = 20;
-            item.useStyle = 1;
+			item.useTime = 15;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.useTurn = true;
             item.autoReuse = true;
             item.consumable = true;
-            item.createTile = mod.TileType("DustiliteOre");
+            item.createTile = ModContent.TileType<DustiliteOreTile>();
         }
     }
 }

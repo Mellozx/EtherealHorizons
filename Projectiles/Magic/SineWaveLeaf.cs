@@ -1,6 +1,4 @@
-using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 using System;
 
@@ -28,13 +26,17 @@ namespace EtherealHorizons.Projectiles.Magic
 		}
 		public override void AI()
 		{
-			//making it move in a sine wave
-			projectile.position.Y = projectile.position.Y - (float)Math.Sin(Main.GlobalTime * 4) * 2;
+			// Making it move in a sine wave
+			projectile.position.Y = projectile.position.Y - (float)Math.Sin(Main.GlobalTime * 4f) * 2f;
+
 			if(++projectile.ai[0] >= 10)
 			{
-			projectile.frame++;
-			projectile.ai[0] = 0;
-			if(projectile.frame == 4) projectile.frame = 0;
+				projectile.frame++;
+				projectile.ai[0] = 0;
+				if (projectile.frame == 4)
+				{
+					projectile.frame = 0;
+				}
 			}
 		}
 	}
