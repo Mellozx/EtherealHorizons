@@ -31,11 +31,18 @@ namespace EtherealHorizons.Projectiles.Magic
 
 		public override void Kill(int timeLeft)
 		{
-		Player player = Main.player[projectile.owner];
-   		float speedX = projectile.velocity.X;
-		float speedY = projectile.velocity.Y;
-		// Spawn the Projectile.
-		Projectile.NewProjectile(projectile.position.X + speedX, projectile.position.Y + speedY, speedX, speedY, mod.ProjectileType("PetalProj"), (int)(projectile.damage * 0.5), 0f, projectile.owner, 0f, 0f);
+			Player player = Main.player[projectile.owner];
+   			float speedX = projectile.velocity.X;
+			float speedY = projectile.velocity.Y;
+			// Spawn the Projectile.
+			for (int i = 0; i < 4; i++)
+			{
+				float spreadAmt = 15f;
+				float SpeedX = speedX + Main.rand.NextFloat(-spreadAmt, spreadAmt) * 0.05f;
+    			float SpeedY = speedY + Main.rand.NextFloat(-spreadAmt, spreadAmt) * 0.05f;
+				Projectile.NewProjectile(projectile.position.X + speedX, projectile.position.Y + speedY, speedX, speedY, mod.ProjectileType("PetalProj"), (int)(projectile.damage * 0.5), 0f, projectile.owner, 0f, 0f);
+			}
 		}
+
 	}
 }

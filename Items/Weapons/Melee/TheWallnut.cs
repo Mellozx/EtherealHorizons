@@ -35,7 +35,7 @@ namespace EtherealHorizons.Items.Weapons.Melee
 		public override void AddRecipes()
 		{
 			var recipe = new ModRecipe(mod);
-			recipe.AddRecipeGroup(ItemID.Wood, 3);
+			recipe.AddIngredient(ItemID.Wood, 3);
 			recipe.AddIngredient(mod.ItemType("Nut"), 18);
 			recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
