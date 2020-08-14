@@ -8,10 +8,11 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using EtherealHorizons.Items.Placeables.Banners;
 using EtherealHorizons.NPCs.Desert;
+using EtherealHorizons.NPCs.Forest;
 
 namespace EtherealHorizons.Tiles
 {
-	public class Banners : ModTile
+	public class EnemyBanners : ModTile
     {
         public override void SetDefaults()
         {
@@ -37,12 +38,17 @@ namespace EtherealHorizons.Tiles
 
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
         {
+			// This stands for item.placeStyle
 			int style = frameX / 18;
 			int item;
 			switch (style)
             {
+				// For example, item.placeStyle 0 is serpent banner, so only the serpent banner should use it while placing this tile
 				case 0:
 					item = ModContent.ItemType<SerpentBanner>();
+					break;
+				case 1:
+					item = ModContent.ItemType<SmallTreeEntBanner>();
 					break;
 				default:
 					return;
@@ -61,6 +67,9 @@ namespace EtherealHorizons.Tiles
 				{
 					case 0:
 						type = ModContent.NPCType<Serpent>();
+						break;
+					case 1:
+						type = ModContent.NPCType<SmallTreeEnt>();
 						break;
 					default:
 						return;

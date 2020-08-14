@@ -5,11 +5,11 @@ using EtherealHorizons.Tiles;
 
 namespace EtherealHorizons.Items.Placeables.Banners
 {
-	public class SerpentBanner : ModItem
+	public class SmallTreeEntBanner : ModItem
 	{
 		public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Serpent Banner");
+		{
+			DisplayName.SetDefault("Small Tree Ent Banner");
 		}
 
 		public override void SetDefaults()
@@ -24,7 +24,7 @@ namespace EtherealHorizons.Items.Placeables.Banners
 			item.useStyle = ItemUseStyleID.SwingThrow;
 			item.consumable = true;
 			item.createTile = ModContent.TileType<EnemyBanners>();
-			item.placeStyle = 0;
+			item.placeStyle = 1;
 		}
 	}
 }
