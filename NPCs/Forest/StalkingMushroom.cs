@@ -1,4 +1,4 @@
-﻿using Terraria;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -14,6 +14,7 @@ namespace EtherealHorizons.NPCs.Forest
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Stalking Mushroom");
+            Main.npcFrameCount[npc.type] = 5;
         }
 
         public override void SetDefaults()
@@ -76,10 +77,11 @@ namespace EtherealHorizons.NPCs.Forest
                     else if (Main.rand.NextBool(1000))
                     {
                         string text;
-                        switch (Main.rand.Next(3))
+                        switch (Main.rand.Next(4))
                         {
                             case 1: text = "oweegee"; break;
                             case 2: text = "mushreem"; break;
+                            case 3: text = "you are nosy"; break;
                             default: text = "ae"; break;
                         }
                         CombatText.NewText(npc.getRect(), Color.MediumVioletRed, text);
@@ -157,6 +159,32 @@ namespace EtherealHorizons.NPCs.Forest
             }
             npc.target = projectile.owner;
         }
+        public override void FindFrame(int frameHeight)
+        {
+            npc.frameCounter++;
+            if (npc.ai[0] >= 2)
+            {
+                if (npc.frameCounter < 15) {
+					npc.frame.Y = 0 * frameHeight;
+				}
+				else if (npc.frameCounter < 30) {
+					npc.frame.Y = 1 * frameHeight;
+				}
+				else if (npc.frameCounter < 45) {
+					npc.frame.Y = 2 * frameHeight;
+				}
+                else if (npc.frameCounter < 60) {
+					npc.frame.Y = 3 * frameHeight;
+				}
+				else {
+					npc.frameCounter = 0;
+				}
+            }
+            else
+            {
+                npc.frame.Y = 4 * frameHeight;
+            }
+        }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
@@ -165,9 +193,10 @@ namespace EtherealHorizons.NPCs.Forest
 
         public override void NPCLoot()
         {
+            Item.NewItem(npc.getRect(), ItemID.Mushroom, Main.rand.Next(1, 3));
             if (Main.rand.NextBool(20)) // 5% chance
             {
-                Item.NewItem(npc.getRect(), ModContent.ItemType<Mushbat>(), Main.rand.Next(5, 8));
+                Item.NewItem(npc.getRect(), ModContent.ItemType<Mushbat>(), 1);
             }
         }
     }
