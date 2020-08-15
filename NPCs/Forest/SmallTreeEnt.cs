@@ -1,7 +1,8 @@
-﻿using Terraria;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using EtherealHorizons.Items.Placeables.Banners;
+using EtherealHorizons.Items.Materials;
 
 namespace EtherealHorizons.NPCs.Forest
 {
@@ -60,6 +61,10 @@ namespace EtherealHorizons.NPCs.Forest
             {
                 return 0f;
             }
+        }
+        public override void NPCLoot()
+        {
+            Item.NewItem(npc.getRect(), ModContent.ItemType<AncientTwig>(), Main.rand.Next(1, 3));
         }
     }
 }
