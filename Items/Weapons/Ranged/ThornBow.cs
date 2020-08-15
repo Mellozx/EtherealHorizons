@@ -41,12 +41,6 @@ namespace EtherealHorizons.Items.Weapons.Ranged
             {
                 type = ModContent.ProjectileType<SpikeArrow>(); 
             }
-
-			Vector2 muzzleOffset = Vector2.Normalize(new Vector2(speedY, speedX)) * 25f;
-			if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
-			{
-				position += muzzleOffset;
-			}
 			return true; 
         }
 

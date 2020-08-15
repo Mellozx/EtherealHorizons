@@ -13,7 +13,7 @@ namespace EtherealHorizons.NPCs
             {
                 Item.NewItem(npc.getRect(), ModContent.ItemType<Nut>(), Main.rand.Next(2, 4));
             }
-            if (npc.type == 69 || npc.type == 508 || npc.type == 509)
+            if (npc.type == NPCID.Antlion || npc.type == NPCID.WalkingAntlion || npc.type == NPCID.FlyingAntlion)
             {
                 Item.NewItem(npc.getRect(), ModContent.ItemType<AntlionChitin>(), Main.rand.Next(1, 3));
             }

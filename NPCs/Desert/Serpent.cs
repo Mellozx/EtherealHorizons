@@ -1,16 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
-using Terraria.Localization;
-using Terraria.DataStructures;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using EtherealHorizons.Items.Placeables.Banners;
 
 namespace EtherealHorizons.NPCs.Desert
@@ -44,6 +34,16 @@ namespace EtherealHorizons.NPCs.Desert
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
             return SpawnCondition.OverworldDayDesert.Chance * 0.2f;
+        }
+
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (npc.life <= 0)
+            {
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SerpentGore1"));
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SerpentGore2"));
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SerpentGore3"));
+            }
         }
 
         public override void FindFrame(int frameHeight)

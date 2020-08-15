@@ -2,6 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 using EtherealHorizons.Items.Placeables.Banners;
+using EtherealHorizons.Items.Materials;
 
 namespace EtherealHorizons.NPCs.Forest
 {
@@ -30,9 +31,14 @@ namespace EtherealHorizons.NPCs.Forest
             npc.knockBackResist = 1f;
             banner = npc.type;
             bannerItem = ModContent.ItemType<SmallTreeEntBanner>();
-            npc.value = Item.sellPrice(copper: 40);
+            npc.value = Item.sellPrice(copper: 60);
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
+        }
+
+        public override void NPCLoot()
+        {
+            Item.NewItem(npc.getRect(), ModContent.ItemType<AncientTwig>());
         }
 
         public override void FindFrame(int frameHeight)

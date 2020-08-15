@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
+using EtherealHorizons.Items.Materials;
 
 namespace EtherealHorizons.NPCs.Forest
 {
@@ -12,6 +10,7 @@ namespace EtherealHorizons.NPCs.Forest
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Wood Log");
+            Main.npcFrameCount[npc.type] = 4;
         }
 
         public override void SetDefaults()
@@ -36,6 +35,28 @@ namespace EtherealHorizons.NPCs.Forest
         public override void NPCLoot()
         {
             Item.NewItem(npc.getRect(), ItemID.Wood, Main.rand.Next(2, 5));
+            if (EtherealWorld.downedAwakeCheeks)
+            {
+                if (Main.rand.NextBool(2))
+                {
+                    Item.NewItem(npc.getRect(), ModContent.ItemType<AncientTwig>());
+                }
+            }
+        }
+
+        public override void FindFrame(int frameHeight)
+        {
+            npc.spriteDirection = npc.direction;
+            if (npc.frameCounter++ > 4)
+            {
+                npc.frameCounter = 0;
+                npc.frame.Y += frameHeight;
+            }
+            if (npc.frame.Y >= frameHeight * Main.npcFrameCount[npc.type])
+            {
+                npc.frame.Y = 0;
+                return;
+            }
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)

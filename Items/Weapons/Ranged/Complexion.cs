@@ -11,7 +11,7 @@ namespace EtherealHorizons.Items.Weapons.Ranged
 	{ 
 		public override void SetStaticDefaults() 
 		{ 
-            Tooltip.SetDefault("Has a chance to shoot nuts");
+            Tooltip.SetDefault("Has a 10% chance to shoot nuts");
 		}
 
         public override void SetDefaults()
@@ -39,12 +39,6 @@ namespace EtherealHorizons.Items.Weapons.Ranged
 			if (Main.rand.NextBool(10))
 			{
 				Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ModContent.ProjectileType<FriendlyNutProj>(), damage, knockBack, player.whoAmI);
-			}
-
-			Vector2 muzzleOffset = Vector2.Normalize(new Vector2(speedY, speedX)) * 25f;
-			if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
-			{
-				position += muzzleOffset;
 			}
 			return true;
 		}
