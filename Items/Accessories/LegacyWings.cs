@@ -23,7 +23,7 @@ namespace EtherealHorizons.Items.Accessories
             item.width = 20;
             item.height = 20;
             item.value = Item.sellPrice(silver: 80);
-            item.rare = ItemRarityID.Green;
+            item.rare = ItemRarityID.Blue;
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
