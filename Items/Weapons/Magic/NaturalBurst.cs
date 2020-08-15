@@ -22,10 +22,10 @@ namespace EtherealHorizons.Items.Weapons.Magic
 			item.useAnimation = 16;
 			item.useStyle = 5;
 			item.value = Item.buyPrice(0, 0, 10, 50);
-			item.rare = 5;
-			item.knockBack = 2;
+			item.rare = 2;
+			item.knockBack = 5;
 			item.noMelee = true;
-			item.mana = 5;
+			item.mana = 8;
 			item.UseSound = SoundID.Item20;
 			item.shoot = mod.ProjectileType("SineWaveLeaf");
 			item.shootSpeed = 8f;

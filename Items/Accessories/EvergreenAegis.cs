@@ -7,8 +7,6 @@ namespace EtherealHorizons.Items.Accessories
 {
 	public class EvergreenAegis : ModItem
     {
-        public override string Texture => "EtherealHorizons/PLACEHOLDER";
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Evergreen Aegis");
@@ -21,7 +19,8 @@ namespace EtherealHorizons.Items.Accessories
             item.width = 20;
             item.height = 20;
             item.defense = 3;
-            item.value = Item.sellPrice(silver: 5);
+            item.rare = ItemRarityID.Blue;
+            item.value = Item.sellPrice(silver: 25);
         }
 
         public override void UpdateEquip(Player player)
