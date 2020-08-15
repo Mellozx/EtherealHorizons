@@ -10,6 +10,7 @@ namespace EtherealHorizons.Items.Accessories
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("The Magnolia");
+            Tooltip.SetDefault("Increases your life regen and movement speed");
         }
 
         public override void SetDefaults()
@@ -23,8 +24,9 @@ namespace EtherealHorizons.Items.Accessories
         public override void UpdateEquip(Player player)
         {
             player.GetModPlayer<EtherealPlayer>().theMagnolia = true;
-            // According to source, most armor sets and accessories use moveSpeed instead of properties such as maxRunSpeed, and accRunSpeed
+            // According to source, most armor sets and accessories use moveSpeed instead of properties such as maxRunSpeed, and accRunSpeed. But we use it anyways because only moveSpeed increased a single mph
             player.moveSpeed += 0.05f;
+            player.maxRunSpeed += 0.05f;
         }
     }
 }

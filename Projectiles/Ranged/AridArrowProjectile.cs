@@ -1,14 +1,9 @@
-using System;
 using Terraria;
 using Terraria.ModLoader;
-using Terraria.ID;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria.Graphics.Shaders;
 
 namespace EtherealHorizons.Projectiles.Ranged
 {
-    public class AridArrow : ModProjectile
+    public class AridArrowProjectile : ModProjectile
     {
         public override void SetStaticDefaults()
         {
@@ -28,10 +23,7 @@ namespace EtherealHorizons.Projectiles.Ranged
 		}
         public override void OnHitNPC (NPC target, int damage, float knockback, bool crit)
         {
-            if (Main.rand.Next(15) > 10 && projectile.owner == Main.myPlayer)
-				{
-				Projectile.NewProjectile(target.Center, Vector2.Zero, ProjectileID.SandnadoFriendly, 4, projectile.knockBack, projectile.owner, 0f, 0f);
-				}
+
         }
     }
 }

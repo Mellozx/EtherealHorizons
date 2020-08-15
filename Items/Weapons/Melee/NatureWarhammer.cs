@@ -21,20 +21,11 @@ namespace EtherealHorizons.Items.Weapons.Melee
 			item.height = 34;
 			item.useTime = 20;
 			item.useAnimation = 20;
-			item.useStyle = 1;
+			item.useStyle = ItemUseStyleID.SwingThrow;
 			item.knockBack = 4f;
-			item.value = Item.sellPrice(0, 0, 24, 13);
-			item.rare = 1;
+			item.value = Item.sellPrice(silver: 10);
+			item.rare = ItemRarityID.Blue;
 			item.UseSound = SoundID.Item1;
-            item.scale = 1.1f;
 		}
-        public override void AddRecipes()
-        {
-			var recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.Wood, 15);
-			recipe.AddTile(TileID.WorkBenches);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
-        }
 	}
 }

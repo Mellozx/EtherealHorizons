@@ -25,7 +25,7 @@ namespace EtherealHorizons.NPCs.Forest
             npc.lifeMax = 80;
             npc.damage = 8;
             npc.defense = 2;
-            npc.aiStyle = NPCID.Crawdad;
+            npc.aiStyle = 3;
             aiType = NPCID.Crawdad;
             npc.knockBackResist = 1f;
             banner = npc.type;

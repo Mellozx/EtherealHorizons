@@ -12,6 +12,7 @@ namespace EtherealHorizons.Items.Accessories
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Evergreen Aegis");
+            Tooltip.SetDefault("Defense increased by 3 when you are below half of your life");
         }
 
         public override void SetDefaults()
@@ -38,7 +39,7 @@ namespace EtherealHorizons.Items.Accessories
             recipe.AddIngredient(ItemID.Wood, 15);
             recipe.AddIngredient(ItemID.StoneBlock, 15);
             recipe.AddRecipeGroup("IronBar", 8);
-            recipe.AddIngredient(ModContent.ItemType<WildlifeFragment>(), 8);
+            recipe.AddIngredient(ModContent.ItemType<WildlifeFragment>(), 6);
             recipe.AddTile(TileID.Anvils);
         }
     }

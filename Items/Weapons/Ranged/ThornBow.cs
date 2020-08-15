@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using System;
 using EtherealHorizons.Projectiles.Ranged;
+using EtherealHorizons.Items.Materials;
 
 namespace EtherealHorizons.Items.Weapons.Ranged
 {
@@ -18,35 +19,43 @@ namespace EtherealHorizons.Items.Weapons.Ranged
 		{
 			item.damage = 7;
 			item.ranged = true;
+			item.noMelee = true;
 			item.width = 24;
 			item.height = 38;
 			item.useTime = 22;
 			item.useAnimation = 22;
-			item.useStyle = 5;
+			item.useStyle = ItemUseStyleID.HoldingOut;
 			item.knockBack = 1;
-			item.value = Item.buyPrice(0, 0, 2, 40);
-			item.rare = 1;
+			item.value = Item.sellPrice(silver: 2);
+			item.rare = ItemRarityID.Blue;
 			item.UseSound = SoundID.Item5;
 			item.autoReuse = true;
 			item.useAmmo = AmmoID.Arrow;
-			item.shoot = 2;
+			item.shoot = 1;
 			item.shootSpeed = 5f;
 		}
-public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+
+		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             if (type == ProjectileID.WoodenArrowFriendly) 
             {
                 type = ModContent.ProjectileType<SpikeArrow>(); 
             }
-            return true; 
+
+			Vector2 muzzleOffset = Vector2.Normalize(new Vector2(speedY, speedX)) * 25f;
+			if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
+			{
+				position += muzzleOffset;
+			}
+			return true; 
         }
 
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.Sandstone, 13);
-            recipe.AddIngredient(mod.ItemType("Thorn"), 4);
 			recipe.AddIngredient(ItemID.Cactus, 8);
+			recipe.AddIngredient(ModContent.ItemType<Thorn>(), 4);
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

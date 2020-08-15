@@ -2,7 +2,6 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
-using static Terraria.ModLoader.ModContent;
 
 namespace EtherealHorizons.Items.Weapons.Ranged
 {
@@ -20,14 +19,14 @@ namespace EtherealHorizons.Items.Weapons.Ranged
 			item.height = 22;
 			item.useTime = 25;
 			item.useAnimation = 24;
-			item.useStyle = 5;
-			item.value = Item.buyPrice(0, 0, 9, 10);
-			item.rare = 0;
+			item.useStyle = ItemUseStyleID.HoldingOut;
+			item.value = Item.buyPrice(silver: 2);
+			item.rare = ItemRarityID.White;
 			item.noMelee = true;
             item.knockBack = 5;
 			item.useAmmo = AmmoID.Bullet;
 			item.UseSound = SoundID.Item11;
-			item.shoot = 14;
+			item.shoot = ProjectileID.Bullet;
 			item.shootSpeed = 7f;
 			item.ranged = true;
 		}
@@ -40,7 +39,17 @@ namespace EtherealHorizons.Items.Weapons.Ranged
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}
-		
+
+		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+		{
+			Vector2 muzzleOffset = Vector2.Normalize(new Vector2(speedY, speedX)) * 25f;
+			if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
+			{
+				position += muzzleOffset;
+			}
+			return true;
+		}
+
 		public override Vector2? HoldoutOffset()
 		{
 			return new Vector2(4, 2);

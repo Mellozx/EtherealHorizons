@@ -23,23 +23,29 @@ namespace EtherealHorizons.Items.Weapons.Ranged
 			item.height = 56;
 			item.useTime = 25;
 			item.useAnimation = 25;
-			item.useStyle = 5;
+			item.useStyle = ItemUseStyleID.HoldingOut;
 			item.knockBack = 1;
-			item.value = Item.buyPrice(0, 0, 21, 45);;
-			item.rare = 1;
+			item.value = Item.sellPrice(silver: 20);
+			item.rare = ItemRarityID.Blue;
 			item.UseSound = SoundID.Item5;
 			item.autoReuse = true;
 			item.useAmmo = AmmoID.Arrow;;
-			item.shoot = 2;
+			item.shoot = 1;
 			item.shootSpeed = 10f;
 		}
-public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             if (type == ProjectileID.WoodenArrowFriendly) 
             {
-                type = ModContent.ProjectileType<AridArrow>(); 
+                type = ModContent.ProjectileType<AridArrowProjectile>(); 
             }
-            return true; 
+
+			Vector2 muzzleOffset = Vector2.Normalize(new Vector2(speedY, speedX)) * 25f;
+			if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
+			{
+				position += muzzleOffset;
+			}
+			return true; 
         }
     }
 }            

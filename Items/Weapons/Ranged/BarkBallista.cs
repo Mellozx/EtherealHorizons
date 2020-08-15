@@ -30,13 +30,24 @@ namespace EtherealHorizons.Items.Weapons.Ranged
 			item.shoot = 1;
 			item.useStyle = ItemUseStyleID.HoldingOut;
 			item.rare = ItemRarityID.Green;
-			item.value = Item.sellPrice(silver: 18);
-			item.useAmmo = 40;
+			item.value = Item.sellPrice(silver: 20);
+			item.useAmmo = AmmoID.Arrow;
         }
-		public override void AddRecipes()
+
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        {
+			Vector2 muzzleOffset = Vector2.Normalize(new Vector2(speedY, speedX)) * 25f;
+			if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
+            {
+				position += muzzleOffset;
+            }
+			return true;
+        }
+
+        public override void AddRecipes()
         {
 			var recipe = new ModRecipe(mod);
-			recipe.AddIngredient(mod.ItemType("WildlifeFragment"), 6);
+			recipe.AddIngredient(ModContent.ItemType<WildlifeFragment>(), 6);
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

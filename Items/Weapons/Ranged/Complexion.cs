@@ -34,22 +34,29 @@ namespace EtherealHorizons.Items.Weapons.Ranged
 			item.useAmmo = 40;
         }
 
+		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+		{
+			if (Main.rand.NextBool(10))
+			{
+				Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ModContent.ProjectileType<FriendlyNutProj>(), damage, knockBack, player.whoAmI);
+			}
+
+			Vector2 muzzleOffset = Vector2.Normalize(new Vector2(speedY, speedX)) * 25f;
+			if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
+			{
+				position += muzzleOffset;
+			}
+			return true;
+		}
+
 		public override void AddRecipes()
-        {
+		{
 			var recipe = new ModRecipe(mod);
-			recipe.AddIngredient(mod.ItemType("WildlifeFragment"), 4);
+			recipe.AddIngredient(ModContent.ItemType<WildlifeFragment>(), 4);
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
-        }
-		
-		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
-		{
-            if (Main.rand.NextBool(10))
-            {
-			Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ModContent.ProjectileType<FriendlyNutProj>(), damage, knockBack, player.whoAmI);
-            }
-            return true;
 		}
-    }
+
+	}
 }

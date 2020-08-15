@@ -20,7 +20,7 @@ namespace EtherealHorizons.Items.Materials
 			item.width = 20;
 			item.height = 24;
 			item.rare = ItemRarityID.White;
-			item.value = Item.sellPrice(copper: 15);
+			item.value = Item.sellPrice(copper: 10);
             item.ammo = item.type;
             item.ranged = true;
             item.damage = 2;

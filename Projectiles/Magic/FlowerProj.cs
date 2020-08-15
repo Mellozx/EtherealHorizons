@@ -1,13 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
+﻿using Terraria.ModLoader;
 
 namespace EtherealHorizons.Projectiles.Magic
 {
@@ -25,13 +16,8 @@ namespace EtherealHorizons.Projectiles.Magic
 			projectile.aiStyle = 0;
 			projectile.friendly = true;
 			projectile.magic = true;
-			projectile.timeLeft = 600;
+			projectile.timeLeft = 120;
 			projectile.arrow = false;
-		}
-
-		public override void Kill(int timeLeft)
-		{
-			// I'll do this soon:tm:
 		}
 	}
 }

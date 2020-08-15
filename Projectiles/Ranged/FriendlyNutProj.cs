@@ -29,15 +29,15 @@ namespace EtherealHorizons.Projectiles.Ranged
 		
 		public override void AI()
 		{
-			projectile.rotation += 0.1f * (float)projectile.direction;
+			projectile.rotation += 0.1f * projectile.direction;
 			projectile.ai[0] += 1f;
-			projectile.velocity.Y = projectile.velocity.Y + 0.11f;    // projectile fall velocity
-			projectile.velocity.X = projectile.velocity.X * 0.99f;    // projectile velocity
+			projectile.velocity.Y = projectile.velocity.Y + 0.11f; 
+			projectile.velocity.X = projectile.velocity.X * 0.99f; 
 		}
 		
 		public override void Kill(int timeLeft) 
 		{
-			Main.PlaySound(SoundID.Item49, projectile.position);
+			Main.PlaySound(SoundID.Dig, projectile.position);
 		}
 	}
 }
