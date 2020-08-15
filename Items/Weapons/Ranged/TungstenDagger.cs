@@ -25,14 +25,14 @@ namespace EtherealHorizons.Items.Weapons.Ranged
             item.useTime = 19;
             item.useAnimation = 19;
             item.damage = 16;
-            item.knockBack = 2f;
-            item.shootSpeed = 12f;
+            item.knockBack = 3f;
+            item.shootSpeed = 9f;
             item.noMelee = true;
             item.noUseGraphic = true;
             item.shoot = ModContent.ProjectileType<TungstenDaggerProjectile>();
 			item.useStyle = ItemUseStyleID.SwingThrow;
             item.rare = ItemRarityID.White;
-            item.value = Item.sellPrice(copper: 25);
+            item.value = Item.sellPrice(copper: 15);
         }
 
         public override void AddRecipes()

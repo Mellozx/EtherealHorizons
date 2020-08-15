@@ -1,7 +1,6 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
 using EtherealHorizons.Projectiles.Ranged;
 
 namespace EtherealHorizons.Items.Weapons.Ranged
@@ -22,11 +21,11 @@ namespace EtherealHorizons.Items.Weapons.Ranged
             item.maxStack = 999;
             item.width = 22;
             item.height = 22;
-            item.useTime = 18;
-            item.useAnimation = 18;
-            item.damage = 14;
-            item.knockBack = 1f;
-            item.shootSpeed = 12f;
+            item.useTime = 17;
+            item.useAnimation = 17;
+            item.damage = 13;
+            item.knockBack = 2f;
+            item.shootSpeed = 10f;
             item.noMelee = true;
             item.noUseGraphic = true;
             item.shoot = ModContent.ProjectileType<IronDaggerProjectile>();

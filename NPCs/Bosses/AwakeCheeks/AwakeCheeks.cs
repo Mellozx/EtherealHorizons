@@ -315,7 +315,7 @@ namespace EtherealHorizons.NPCs.Bosses.AwakeCheeks
                             {
                                 if (npc.velocity.Y == 0f)
                                 {
-                                    player.GetModPlayer<EtherealPlayer>().StartScreenShake(2f, 1);
+                                    // player.GetModPlayer<EtherealPlayer>().StartScreenShake(2f, 1);
 
                                     for (int k = 0; k < 25; k++)
                                     {
@@ -357,7 +357,7 @@ namespace EtherealHorizons.NPCs.Bosses.AwakeCheeks
                             {
                                 if (npc.velocity.Y == 0f)
                                 {
-                                    player.GetModPlayer<EtherealPlayer>().StartScreenShake(4f, 1);
+                                    //player.GetModPlayer<EtherealPlayer>().StartScreenShake(4f, 1);
 
                                     for (int k = 0; k < 50; k++)
                                     {

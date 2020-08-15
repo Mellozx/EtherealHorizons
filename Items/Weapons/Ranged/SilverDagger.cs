@@ -22,17 +22,17 @@ namespace EtherealHorizons.Items.Weapons.Ranged
             item.maxStack = 999;
             item.width = 22;
             item.height = 22;
-            item.useTime = 18;
-            item.useAnimation = 18;
-            item.damage = 15;
+            item.useTime = 15;
+            item.useAnimation = 15;
+            item.damage = 13;
             item.knockBack = 1f;
-            item.shootSpeed = 13f;
+            item.shootSpeed = 11f;
             item.noMelee = true;
             item.noUseGraphic = true;
             item.shoot = ModContent.ProjectileType<SilverDaggerProjectile>();
             item.useStyle = ItemUseStyleID.SwingThrow;
             item.rare = ItemRarityID.White;
-            item.value = Item.sellPrice(copper: 25);
+            item.value = Item.sellPrice(copper: 15);
         }
 
         public override void AddRecipes()

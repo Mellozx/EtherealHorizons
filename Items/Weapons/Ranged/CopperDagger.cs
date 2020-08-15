@@ -1,7 +1,6 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
 using EtherealHorizons.Projectiles.Ranged;
 
 namespace EtherealHorizons.Items.Weapons.Ranged
@@ -22,17 +21,17 @@ namespace EtherealHorizons.Items.Weapons.Ranged
 			item.maxStack = 999;
             item.width = 22;
             item.height = 22;
-            item.useTime = 17;
-            item.useAnimation = 17;
-            item.damage = 12;
-            item.knockBack = 1f;
-            item.shootSpeed = 12f;
+            item.useTime = 16;
+            item.useAnimation = 16;
+            item.damage = 10;
+            item.knockBack = 2f;
+            item.shootSpeed = 8f;
             item.noMelee = true;
             item.noUseGraphic = true;
             item.shoot = ModContent.ProjectileType<CopperDaggerProjectile>();
 			item.useStyle = ItemUseStyleID.SwingThrow;
             item.rare = ItemRarityID.White;
-            item.value = Item.sellPrice(copper: 10);
+            item.value = Item.sellPrice(copper: 20);
         }
 
         public override void AddRecipes()

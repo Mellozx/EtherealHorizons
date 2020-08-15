@@ -1,17 +1,16 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using static Terraria.ModLoader.ModContent;
+using EtherealHorizons.Items.Materials;
 
-namespace EtherealHorizons.Items.Armor.Wild
+namespace EtherealHorizons.Items.Armor.WildWarrior
 {
 	[AutoloadEquip(EquipType.Head)]
-	public class WildRanged : ModItem
+	public class WildWarriorMask : ModItem
 	{
 		public override void SetStaticDefaults() 
 		{
-			DisplayName.SetDefault("Wild Warrior Helmet");
+			DisplayName.SetDefault("Wild Warrior Mask");
 			Tooltip.SetDefault("Increases ranged damage by 8%");
 		}
 
@@ -20,18 +19,18 @@ namespace EtherealHorizons.Items.Armor.Wild
 			item.width = 24;
 			item.height = 22;
 			item.value = Item.sellPrice(silver: 30);
-			item.rare = 1;
+			item.rare = ItemRarityID.Blue;
 			item.defense = 4;
 		}
 		
 		public override void DrawHair(ref bool drawHair, ref bool drawAltHair)
         {
-            drawHair = true;  //player make so the player hair does not show when the vanity mask is equipped.  add true if you want to show the player hair.
+            drawHair = true; 
         }
 
 		public override bool IsArmorSet(Item head, Item body, Item legs) 
 		{
-			return body.type == ItemType<WildGarb>() && legs.type == ItemType<WildBoots>();
+			return body.type == ModContent.ItemType<WildWarriorGarb>() && legs.type == ModContent.ItemType<WildWarriorGreaves>();
 		}
 		
 		public override void UpdateEquip(Player player) 
@@ -39,18 +38,16 @@ namespace EtherealHorizons.Items.Armor.Wild
             player.rangedDamage += 0.08f;
 		}
 
-		//set bonus
 		public override void UpdateArmorSet(Player player) 
 		{
-            player.setBonus = "When under half health, nature spirits will protect you";
-            var modPlayer = player.GetModPlayer<EtherealPlayer>();
-            modPlayer.natureSpirit = true;
+			player.setBonus = "When under half health, nature spirits will protect you";
+			player.GetModPlayer<EtherealPlayer>().wildWarriorSet = true;
 		}
 
 		public override void AddRecipes() 
 		{
 			var recipe = new ModRecipe(mod);
-			recipe.AddIngredient(mod.ItemType("WildlifeFragment"), 3);
+			recipe.AddIngredient(ModContent.ItemType<WildlifeFragment>(), 3);
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

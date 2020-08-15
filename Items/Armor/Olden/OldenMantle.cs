@@ -1,7 +1,7 @@
+using EtherealHorizons.Items.Materials;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 namespace EtherealHorizons.Items.Armor.Olden
 {
@@ -10,30 +10,35 @@ namespace EtherealHorizons.Items.Armor.Olden
 	{
 		public override void SetStaticDefaults() 
 		{
-			Tooltip.SetDefault("");
+			DisplayName.SetDefault("Olden Mantle");
+			Tooltip.SetDefault("Increases critical strike chance by 2%");
 		}
 
 		public override void SetDefaults() 
 		{
 			item.width = 34;
 			item.height = 18;
-			item.value = 0;
+			item.value = Item.sellPrice(silver: 35);
 			item.rare = ItemRarityID.Blue;
-			item.defense = 1;
+			item.defense = 5;
 		}
 
 		public override void UpdateEquip(Player player) 
 		{
+			player.meleeCrit += 4;
+			player.rangedCrit += 4;
+			player.magicCrit += 4;
+			player.thrownCrit += 4;
 		}
 
-		/*public override void AddRecipes() 
+		public override void AddRecipes() 
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemType<EquipMaterial>(), 60);
-			recipe.AddTile(TileType<ExampleWorkbench>());
+			var recipe = new ModRecipe(mod);
+			recipe.AddIngredient(ModContent.ItemType<AncientTwig>(), 8);
+			recipe.AddTile(TileID.WorkBenches);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
-		}*/
+		}
 		
 		public override void DrawHands(ref bool drawHands, ref bool drawArms) 
 		{

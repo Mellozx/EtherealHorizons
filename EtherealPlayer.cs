@@ -3,16 +3,19 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
+using EtherealHorizons.Projectiles;
 
 namespace EtherealHorizons
 {
 	public class EtherealPlayer : ModPlayer
     {
+        // Accessories
         public bool gluttonAmulet;
-        public bool natureSpirit;
-        public float ScreenRandom;
-        public float ScreenRandomDecrease;
-        Vector2 ScreenAdd;
+        public bool evergreenAegis;
+        public bool theMagnolia;
+        // Armor sets
+        public bool oldenSet;
+        public bool wildWarriorSet;
 
         public static bool ZoneForest(Player player)
         {
@@ -21,36 +24,13 @@ namespace EtherealHorizons
 
         public override void ResetEffects()
         {
+            // Accessories
             gluttonAmulet = false;
-            natureSpirit = false;
-        }
-        public override void PostUpdate()
-        {
-            if (natureSpirit && player.statLife <= player.statLifeMax2 / 2)
-            {
-                player.AddBuff(mod.BuffType("NatureSpirits"), 2);
-            }
-        }
-
-        // Shake effect
-        public void StartScreenShake(float ScreenPosRandomizer, float ScreenPosRandomizerDecrease = 1)
-        {
-            ScreenRandom = ScreenPosRandomizer; // 'Intensity' of the shakes
-            ScreenRandomDecrease = Math.Abs(ScreenPosRandomizerDecrease); // 'Speed the shake ends'
-        }
-
-        public override void ModifyScreenPosition()
-        {
-            if (ScreenRandom > 0)
-            {
-                if (!(Main.gamePaused || Main.gameInactive))
-                {
-                    ScreenRandom -= ScreenRandomDecrease;
-                    ScreenAdd.X = Main.rand.NextFloat(ScreenRandom);
-                    ScreenAdd.Y = Main.rand.NextFloat(ScreenRandom);
-                }
-                Main.screenPosition += ScreenAdd;
-            }
+            evergreenAegis = false;
+            theMagnolia = false;
+            // Armor sets
+            oldenSet = false;
+            wildWarriorSet = false;
         }
 
         public override void GetHealLife(Item item, bool quickHeal, ref int healValue)
@@ -58,6 +38,15 @@ namespace EtherealHorizons
             if (gluttonAmulet)
             {
                 healValue = (int)(healValue * 1.20f);
+            }
+        }
+
+        public override void UpdateLifeRegen()
+        {
+            if (theMagnolia)
+            {
+                // 1 HP per second
+                player.lifeRegen += 2;
             }
         }
     }

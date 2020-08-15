@@ -7,6 +7,7 @@ namespace EtherealHorizons.Items.Placeables.Banners
 {
 	public class SmallTreeEntBanner : ModItem
 	{
+		public override string Texture => "EtherealHorizons/PLACEHOLDER";
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Small Tree Ent Banner");

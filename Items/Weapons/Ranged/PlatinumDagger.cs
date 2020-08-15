@@ -22,11 +22,11 @@ namespace EtherealHorizons.Items.Weapons.Ranged
             item.maxStack = 999;
             item.width = 22;
             item.height = 22;
-            item.useTime = 17;
-            item.useAnimation = 17;
-            item.damage = 20;
+            item.useTime = 16;
+            item.useAnimation = 16;
+            item.damage = 18;
             item.knockBack = 2f;
-            item.shootSpeed = 15f;
+            item.shootSpeed = 13f;
             item.noMelee = true;
             item.noUseGraphic = true;
             item.shoot = ModContent.ProjectileType<PlatinumDaggerProjectile>();

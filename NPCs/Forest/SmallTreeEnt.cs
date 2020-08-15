@@ -19,25 +19,18 @@ namespace EtherealHorizons.NPCs.Forest
             npc.noGravity = false;
             npc.lavaImmune = false;
             npc.friendly = false;
-
             npc.buffImmune[BuffID.Confused] = true;
-
             npc.width = 38;
             npc.height = 38;
-
             npc.lifeMax = 80;
             npc.damage = 8;
             npc.defense = 2;
-            npc.aiStyle = 3;
-            aiType = NPCID.GoblinScout;
-
+            npc.aiStyle = NPCID.Crawdad;
+            aiType = NPCID.Crawdad;
             npc.knockBackResist = 1f;
-
             banner = npc.type;
             bannerItem = ModContent.ItemType<SmallTreeEntBanner>();
-
             npc.value = Item.sellPrice(copper: 40);
-
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
         }
@@ -50,11 +43,23 @@ namespace EtherealHorizons.NPCs.Forest
                 npc.frameCounter = 0;
                 npc.frame.Y += frameHeight;
             }
-            if (npc.frame.Y >= frameHeight * 9)
+            if (npc.frame.Y >= frameHeight * Main.npcFrameCount[npc.type])
             {
                 npc.frame.Y = 0;
                 return;
             }
         }
-  }
+
+        public override float SpawnChance(NPCSpawnInfo spawnInfo)
+        {
+            if (EtherealWorld.downedAwakeCheeks)
+            {
+                return SpawnCondition.OverworldDay.Chance * 0.2f;
+            }
+            else
+            {
+                return 0f;
+            }
+        }
+    }
 }

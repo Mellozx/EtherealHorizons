@@ -26,7 +26,7 @@ namespace EtherealHorizons.Items.Weapons.Ranged
             item.useAnimation = 17;
             item.damage = 17;
             item.knockBack = 2f;
-            item.shootSpeed = 14f;
+            item.shootSpeed = 12f;
             item.noMelee = true;
             item.noUseGraphic = true;
             item.shoot = ModContent.ProjectileType<GoldDaggerProjectile>();

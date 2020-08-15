@@ -61,20 +61,20 @@ namespace EtherealHorizons
 
         public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
         {
-            int shiniesIndex = tasks.FindIndex(ae => ae.Name.Equals("Shinies"));
-            if(shiniesIndex != - 1)
+            int shiniesIndex = tasks.FindIndex(index => index.Name.Equals("Shinies"));
+            if (shiniesIndex != - 1)
             {
-                tasks.Insert(shiniesIndex + 1, new PassLegacy("Dustilite Ore", delegate (GenerationProgress generationProgress)
+                tasks.Insert(shiniesIndex + 1, new PassLegacy("Dustilite Ore", delegate (GenerationProgress progress)
                 {
-                    generationProgress.Message = "Generating Dustilite";
-                    for(int i = 0;i<(int)(Main.maxTilesX * Main.maxTilesY * 0.005f);i++)
+                    progress.Message = "Generating Dustilite";
+                    for(int i = 0; i< (int)(Main.maxTilesX * Main.maxTilesY * 0.005f); i++)
                     {
-                        int x = WorldGen.genRand.Next(200,Main.maxTilesX - 200);
-                        int y = WorldGen.genRand.Next((int)WorldGen.rockLayerHigh,Main.maxTilesY - 300);
-                        Tile tile = Framing.GetTileSafely(x,y);
+                        int x = WorldGen.genRand.Next(200, Main.maxTilesX - 200);
+                        int y = WorldGen.genRand.Next((int)WorldGen.rockLayerHigh, Main.maxTilesY - 300);
+                        Tile tile = Framing.GetTileSafely(x, y);
                         if(tile.type == TileID.Sandstone || tile.type == TileID.Sand)
                         {
-                            WorldGen.TileRunner(x,y,3,2,ModContent.TileType<DustiliteOre>());//Replace fossilOre with Dustilite Ore :wegud:
+                            WorldGen.TileRunner(x,y,3,2,ModContent.TileType<DustiliteOreTile>());
                         }
                     }
                 }

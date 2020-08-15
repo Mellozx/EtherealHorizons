@@ -1,12 +1,11 @@
+using EtherealHorizons.Items.Materials;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
-
-namespace EtherealHorizons.Items.Armor.Wild
+namespace EtherealHorizons.Items.Armor.WildWarrior
 {
 	[AutoloadEquip(EquipType.Body)]
-	public class WildGarb : ModItem
+	public class WildWarriorGarb : ModItem
 	{
 		public override void SetStaticDefaults() 
 		{
@@ -19,7 +18,7 @@ namespace EtherealHorizons.Items.Armor.Wild
 			item.width = 38;
 			item.height = 22;
 			item.value = Item.sellPrice(silver: 50);
-			item.rare = 1;
+			item.rare = ItemRarityID.Blue;
 			item.defense = 6;
 		}
 
@@ -29,14 +28,12 @@ namespace EtherealHorizons.Items.Armor.Wild
             player.rangedCrit += 4;
             player.magicCrit += 4;
             player.thrownCrit += 4;
-            
-            //don't feel like adding mod support for modded classes right now
 		}
 
 		public override void AddRecipes() 
 		{
 			var recipe = new ModRecipe(mod);
-			recipe.AddIngredient(mod.ItemType("WildlifeFragment"), 6);
+			recipe.AddIngredient(ModContent.ItemType<WildlifeFragment>(), 6);
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

@@ -1,8 +1,6 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using EtherealHorizons.Items.Materials;
 
 namespace EtherealHorizons.Items.Weapons.Melee
 {
@@ -21,10 +19,10 @@ namespace EtherealHorizons.Items.Weapons.Melee
 			item.height = 42;
 			item.useTime = 23;
 			item.useAnimation = 23;
-			item.useStyle = 1;
-			item.knockBack = 3f;
-			item.value = Item.sellPrice(0, 0, 60, 0);
-			item.rare = 1;
+			item.useStyle = ItemUseStyleID.SwingThrow;
+			item.knockBack = 2f;
+			item.value = Item.sellPrice(silver: 2);
+			item.rare = ItemRarityID.White;
 			item.UseSound = SoundID.Item1;
             item.scale = 1.1f;
 		}

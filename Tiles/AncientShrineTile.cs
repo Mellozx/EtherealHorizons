@@ -1,8 +1,11 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using EtherealHorizons.Items.Placeables;
+using EtherealHorizons.Items.BossSummons;
+using EtherealHorizons.NPCs.Bosses.AwakeCheeks;
 
 namespace EtherealHorizons.Tiles 
 {
@@ -32,5 +35,25 @@ namespace EtherealHorizons.Tiles
         {
             Item.NewItem(i * 16, j * 16, 16, 32, ModContent.ItemType<AncientShrine>());
         }
-	}
+
+        public override bool NewRightClick(int i, int j)
+        {
+			var player = Main.LocalPlayer;
+			if (player.HeldItem.type ==	ModContent.ItemType<SquirrelIdol>())
+            {
+				NPC.SpawnOnPlayer(player.whoAmI, ModContent.NPCType<AwakeCheeks>());
+				Main.PlaySound(SoundID.Roar, player.position, 0);
+				return true;
+            }
+			return false;
+        }
+
+        public override void MouseOver(int i, int j)
+        {
+			var player = Main.LocalPlayer;
+			player.noThrow = 2;
+			player.showItemIcon = true;
+			player.showItemIcon2 = ModContent.ItemType<SquirrelIdol>();
+        }
+    }
 }
