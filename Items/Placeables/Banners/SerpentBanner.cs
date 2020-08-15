@@ -1,15 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+using EtherealHorizons.Tiles;
 
-namespace EtherealHorizons.Items.Tiles
+namespace EtherealHorizons.Items.Placeables.Banners
 {
 	public class SerpentBanner : ModItem
 	{
@@ -27,9 +21,10 @@ namespace EtherealHorizons.Items.Tiles
 			item.autoReuse = true;
 			item.useAnimation = 20;
 			item.useTime = 20;
-			item.useStyle = 1;
+			item.useStyle = ItemUseStyleID.SwingThrow;
 			item.consumable = true;
-			item.createTile = mod.TileType("SerpentBanner");
+			item.createTile = ModContent.TileType<EnemyBanners>();
+			item.placeStyle = 0;
 		}
 	}
 }

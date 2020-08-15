@@ -1,7 +1,7 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
+using EtherealHorizons.Items.Placeables.Banners;
 
 namespace EtherealHorizons.NPCs.Forest
 {
@@ -18,6 +18,7 @@ namespace EtherealHorizons.NPCs.Forest
             npc.noTileCollide = false;
             npc.noGravity = false;
             npc.lavaImmune = false;
+            npc.friendly = false;
 
             npc.buffImmune[BuffID.Confused] = true;
 
@@ -29,15 +30,18 @@ namespace EtherealHorizons.NPCs.Forest
             npc.defense = 2;
             npc.aiStyle = 3;
             aiType = NPCID.GoblinScout;
-            npc.friendly = false;
 
             npc.knockBackResist = 1f;
+
+            banner = npc.type;
+            bannerItem = ModContent.ItemType<SmallTreeEntBanner>();
 
             npc.value = Item.sellPrice(copper: 40);
 
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
         }
+
         public override void FindFrame(int frameHeight)
         {
             npc.spriteDirection = npc.direction;
