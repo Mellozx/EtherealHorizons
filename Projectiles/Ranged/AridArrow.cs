@@ -17,7 +17,6 @@ namespace EtherealHorizons.Projectiles.Ranged
 
 		public override void SetDefaults()
 		{
-            projectile.damage = 4;
             projectile.knockBack = 4f;
 			projectile.width = 14;
 			projectile.height = 36;
@@ -31,7 +30,7 @@ namespace EtherealHorizons.Projectiles.Ranged
         {
             if (Main.rand.Next(15) > 10 && projectile.owner == Main.myPlayer)
 				{
-				Projectile.NewProjectile(target.Center, Vector2.Zero, ProjectileID.SandnadoFriendly, projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+				Projectile.NewProjectile(target.Center, Vector2.Zero, ProjectileID.SandnadoFriendly, 4, projectile.knockBack, projectile.owner, 0f, 0f);
 				}
         }
     }
