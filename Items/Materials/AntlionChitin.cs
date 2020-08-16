@@ -17,8 +17,8 @@ namespace EtherealHorizons.Items.Materials
             item.maxStack = 999;
             item.width = 24;
             item.height = 26;
-            item.rare = ItemRarityID.Blue;
-            item.value = Item.sellPrice(0, 0, 1, 32);
+            item.rare = ItemRarityID.White;
+            item.value = Item.sellPrice(copper: 40);
         }
     }
 }
