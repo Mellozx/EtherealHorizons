@@ -10,6 +10,7 @@ using System.IO;
 using System.Linq;
 using EtherealHorizons.Projectiles.Hostile;
 using EtherealHorizons.Projectiles.Ranged;
+using EtherealHorizons.Items.Materials;
 
 namespace EtherealHorizons.NPCs.Bosses.AwakeCheeks
 {
@@ -93,15 +94,17 @@ namespace EtherealHorizons.NPCs.Bosses.AwakeCheeks
             set => npc.ai[2] = value;
         }
 
-        // States
         public const float Default = 0f;
         public const float Tired = 1f;
         public bool secondPhase;
-        // Attacks
+
         public const float Idle = 0f;
-        // Timers
+        public const float Vomit = 1f;
+
         private int shootTimer;
         private int jumpTimer;
+        private int vomitCooldown;
+        private int vomits;
 
         public override void AI()
         {
@@ -117,7 +120,7 @@ namespace EtherealHorizons.NPCs.Bosses.AwakeCheeks
                 if (Attack == Idle)
                 {
                     npc.TargetClosest(true);
-                    npc.velocity.X = MathHelper.Lerp(npc.velocity.X, 4 * Math.Sign(player.Center.X - npc.Center.X), 0.1f);
+                    npc.velocity.X = MathHelper.Lerp(npc.velocity.X, 4f * Math.Sign(player.Center.X - npc.Center.X), 0.1f);
 
                     int shootCooldown = secondPhase ? 60 : 120;
                     int nutsQuantity = secondPhase ? 2 : 1;
@@ -127,9 +130,46 @@ namespace EtherealHorizons.NPCs.Bosses.AwakeCheeks
                     {
                         for (int k = 0; k < nutsQuantity; k++)
                         {
-                            Vector2 speed = Vector2.Normalize(player.Center - npc.Center) * new Vector2(10);
+                            Vector2 velocity = (player.Center - npc.Center).SafeNormalize(Vector2.UnitX) * 10;
+                            velocity = velocity.RotatedByRandom(MathHelper.ToRadians(10));
                             Vector2 position = npc.position + new Vector2(22f, 27f);
-                            Projectile.NewProjectile(position, speed, ModContent.ProjectileType<HostileNutProjectile>(), npc.damage / 2, 2f);
+
+                            Projectile.NewProjectile(position, velocity, ModContent.ProjectileType<HostileNutProjectile>(), npc.damage / 2, 2f);
+                        }
+                        shootTimer = 0;
+                        npc.netUpdate = true;
+                    }
+                }
+                else if (Attack == Vomit)
+                {
+                    if (!secondPhase)
+                    {
+                        npc.TargetClosest(true);
+                        shootTimer++;
+                        if (shootTimer >= 240)
+                        {
+                            int nutsToVomit = Main.rand.Next(15, 17);
+                            for (int k = 0; k < nutsToVomit; k++)
+                            {
+                                Vector2 velocity = new Vector2(6f, 0f) * npc.direction;
+                                velocity = velocity.RotatedByRandom(MathHelper.ToRadians(20));
+
+                                Projectile.NewProjectile(npc.position, velocity, ModContent.ProjectileType<HostileNutProjectile>(), npc.damage / 2, 1f);
+                            }
+                            shootTimer = 0;
+                            npc.netUpdate = true;
+                        }
+                        else
+                        {
+                            npc.velocity.X = MathHelper.Lerp(npc.velocity.X, 2f * Math.Sign(player.Center.X - npc.Center.X), 0.1f);
+                        }
+                    }
+                    else
+                    {
+                        npc.TargetClosest(false);
+                        shootTimer++;
+                        if (shootTimer >= 240)
+                        {
                             shootTimer = 0;
                             npc.netUpdate = true;
                         }

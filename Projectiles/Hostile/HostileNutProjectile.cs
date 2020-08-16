@@ -26,11 +26,11 @@ namespace EtherealHorizons.Projectiles.Hostile
         public override void AI()
         {
             projectile.rotation += 0.2f * projectile.direction;
-            projectile.velocity.X = 8f;
 
             projectile.ai[1]++;
             if (projectile.ai[1] > 30)
             {
+                projectile.velocity.X *= 0.95f;
                 projectile.velocity.Y += 0.5f;
             }
         }

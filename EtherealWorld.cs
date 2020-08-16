@@ -65,7 +65,7 @@ namespace EtherealHorizons
                 tasks.Insert(shiniesIndex + 1, new PassLegacy("Dustilite Ore", delegate (GenerationProgress progress)
                 {
                     progress.Message = "Generating Dustilite";
-                    for(int i = 0; i< (int)(Main.maxTilesX * Main.maxTilesY * 0.005f); i++)
+                    for(int i = 0, ammount =(int)(Main.maxTilesX * Main.maxTilesY * 0.005f); i < ammount ; i++)
                     {
                         int x = WorldGen.genRand.Next(200, Main.maxTilesX - 200);
                         int y = WorldGen.genRand.Next((int)WorldGen.rockLayerHigh, Main.maxTilesY - 300);
