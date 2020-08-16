@@ -35,6 +35,7 @@ namespace EtherealHorizons.NPCs.Bosses.AwakeCheeks
             npc.lifeMax = 2200;
             npc.damage = 20;
             npc.defense = 4;
+            npc.aiStyle = -1;
             npc.knockBackResist = 0f;
             music = MusicID.Boss2;
             musicPriority = MusicPriority.BossMedium;
@@ -66,6 +67,14 @@ namespace EtherealHorizons.NPCs.Bosses.AwakeCheeks
             }
         }
 
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (npc.life <= 0)
+            {
+
+            }
+        }
+
         public float State
         {
             get => npc.ai[0];
@@ -92,16 +101,23 @@ namespace EtherealHorizons.NPCs.Bosses.AwakeCheeks
         public const float Idle = 0f;
         // Timers
         private int shootTimer;
+        private int jumpTimer;
 
         public override void AI()
         {
             Target();
 
+            if (!player.active || player.dead || player.ghost)
+            {
+                DespawnHandler();
+            }
+
             if (State == Default)
             {
                 if (Attack == Idle)
                 {
-                    npc.velocity.X = 4f * player.direction;
+                    npc.TargetClosest(true);
+                    npc.velocity.X = MathHelper.Lerp(npc.velocity.X, 4 * Math.Sign(player.Center.X - npc.Center.X), 0.1f);
 
                     int shootCooldown = secondPhase ? 60 : 120;
                     int nutsQuantity = secondPhase ? 2 : 1;
@@ -111,14 +127,61 @@ namespace EtherealHorizons.NPCs.Bosses.AwakeCheeks
                     {
                         for (int k = 0; k < nutsQuantity; k++)
                         {
-                            Vector2 speed = Vector2.Normalize(npc.Center - player.Center) * new Vector2(-6f, -4f);
-                            Projectile.NewProjectile(npc.position, speed, ModContent.ProjectileType<HostileNutProjectile>(), npc.damage / 2, 2f);
+                            Vector2 speed = Vector2.Normalize(player.Center - npc.Center) * new Vector2(10);
+                            Vector2 position = npc.position + new Vector2(22f, 27f);
+                            Projectile.NewProjectile(position, speed, ModContent.ProjectileType<HostileNutProjectile>(), npc.damage / 2, 2f);
                             shootTimer = 0;
                             npc.netUpdate = true;
                         }
                     }
                 }
+
+                #region Tile Collision
+                // Thanks for the code, Ben!
+                if (npc.velocity.Y == 0)
+                {
+                    jumpTimer++;
+                }
+                else
+                {
+                    jumpTimer = 0;
+                }
+                if (npc.velocity.Y == 0)
+                {
+                    jumpTimer++;
+                }
+                else
+                {
+                    jumpTimer = 0;
+                }
+
+                if (jumpTimer >= 90 && (HoleBelow() || (npc.collideX && npc.position.X == npc.oldPosition.X)))
+                {
+                    // Jump
+                    npc.velocity.Y = Main.rand.Next(-11, -8);
+                    npc.netUpdate = true;
+                }
+
+                if (npc.velocity.Y >= 0f)
+                {
+                    Collision.StepUp(ref npc.position, ref npc.velocity, npc.width, npc.height, ref npc.stepSpeed, ref npc.gfxOffY, 1, false, 1);
+                }
+                #endregion
             }
+        }
+
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            writer.Write(secondPhase);
+            writer.Write(shootTimer);
+            writer.Write(jumpTimer);
+        }
+
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            secondPhase = reader.ReadBoolean();
+            shootTimer = reader.ReadInt32();
+            jumpTimer = reader.ReadInt32();
         }
 
         private void Target()
@@ -130,8 +193,30 @@ namespace EtherealHorizons.NPCs.Bosses.AwakeCheeks
         {
             npc.TargetClosest(false);
             player = Main.player[npc.target];
-            if(player.active)
-            npc.TargetClosest(false);
+            npc.timeLeft = 300;
+        }
+
+        private bool HoleBelow()
+        {
+            // Width of npc in tiles
+            int tileWidth = (int)Math.Round(npc.width / 16f);
+            int tileX = (int)(npc.Center.X / 16f) - tileWidth;
+            if (npc.velocity.X > 0) // If moving right
+            {
+                tileX += tileWidth;
+            }
+            int tileY = (int)((npc.position.Y + npc.height) / 16f);
+            for (int y = tileY; y < tileY + 2; y++)
+            {
+                for (int x = tileX; x < tileX + tileWidth; x++)
+                {
+                    if (Main.tile[x, y].active())
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
         }
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
