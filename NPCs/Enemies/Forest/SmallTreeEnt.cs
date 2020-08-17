@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 using EtherealHorizons.Items.Placeables.Banners;
 using EtherealHorizons.Items.Materials;
 
-namespace EtherealHorizons.NPCs.Forest
+namespace EtherealHorizons.NPCs.Enemies.Forest
 {
     public class SmallTreeEnt : ModNPC
     {
@@ -53,6 +53,17 @@ namespace EtherealHorizons.NPCs.Forest
             {
                 npc.frame.Y = 0;
                 return;
+            }
+        }
+
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (npc.life <= 0)
+            {
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SmallTreeEntGore1"));
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SmallTreeEntGore2"));
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SmallTreeEntGore3"));
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SmallTreeEntGore4"));
             }
         }
 

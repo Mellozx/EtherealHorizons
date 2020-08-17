@@ -3,7 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using EtherealHorizons.Items.Materials;
 
-namespace EtherealHorizons.NPCs.Forest
+namespace EtherealHorizons.NPCs.Enemies.Forest
 {
     public class WoodLog : ModNPC
     {
@@ -41,6 +41,15 @@ namespace EtherealHorizons.NPCs.Forest
                 {
                     Item.NewItem(npc.getRect(), ModContent.ItemType<AncientTwig>());
                 }
+            }
+        }
+
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (npc.life <= 0)
+            {
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/WoodLogGore1"));
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/WoodLogGore2"));
             }
         }
 

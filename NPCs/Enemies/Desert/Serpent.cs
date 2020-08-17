@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 using Terraria.ID;
 using EtherealHorizons.Items.Placeables.Banners;
 
-namespace EtherealHorizons.NPCs.Desert
+namespace EtherealHorizons.NPCs.Enemies.Desert
 {
     public class Serpent : ModNPC
     {

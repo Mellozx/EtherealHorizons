@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 using EtherealHorizons.Items.Weapons.Melee;
 using System.IO;
 
-namespace EtherealHorizons.NPCs.Forest
+namespace EtherealHorizons.NPCs.Enemies.Forest
 {
     public class StalkingMushroom : ModNPC
     {
@@ -124,6 +124,15 @@ namespace EtherealHorizons.NPCs.Forest
                         ShootTimer = 120;
                     }
                     break;
+            }
+        }
+
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (npc.life <= 0)
+            {
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/StalkingMushroomGore1"));
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/StalkingMushroomGore2"));
             }
         }
 
