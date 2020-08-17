@@ -23,7 +23,7 @@ namespace EtherealHorizons.NPCs.Critters.Forest
 			npc.damage = 0;
 			npc.defense = 0;
 			npc.aiStyle = 7;
-			aiType = NPCID.Duck;
+            aiType = NPCID.Squirrel;
 			npc.HitSound = SoundID.NPCHit1;
 			npc.DeathSound = SoundID.NPCDeath1;
 		}
