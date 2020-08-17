@@ -197,7 +197,7 @@ namespace EtherealHorizons.NPCs.Enemies.Forest
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return SpawnCondition.OverworldDay.Active ? SpawnCondition.OverworldDay.Chance * 0.2f : 0f;
+            return SpawnCondition.OverworldDay.Chance * 0.3f;
         }
 
         public override void NPCLoot()

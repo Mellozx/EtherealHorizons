@@ -18,7 +18,7 @@ namespace EtherealHorizons.Items.Armor.WildWarrior
 			item.height = 16;
 			item.value = Item.sellPrice(silver: 40);
 			item.rare = ItemRarityID.Blue;
-			item.defense = 3;
+			item.defense = 5;
 		}
 
 		public override void AddRecipes() 

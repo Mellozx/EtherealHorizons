@@ -6,6 +6,8 @@ namespace EtherealHorizons.NPCs.Critters.Forest
 {
 	public class Fox : ModNPC
     {
+		public override string Texture => "EtherealHorizons/PLACEHOLDER";
+		
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Fox");
@@ -13,6 +15,7 @@ namespace EtherealHorizons.NPCs.Critters.Forest
 
         public override void SetDefaults()
         {
+            npc.lavaImmune = false;
             npc.friendly = true;
             npc.lifeMax = 20;
             npc.defense = 0;
@@ -31,6 +34,11 @@ namespace EtherealHorizons.NPCs.Critters.Forest
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/FoxGore1"));
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/FoxGore2"));
             }
+        }
+		
+		public override float SpawnChance(NPCSpawnInfo spawnInfo)
+        {
+            return SpawnCondition.OverworldDay.Chance * 0.3f;
         }
     }
 }

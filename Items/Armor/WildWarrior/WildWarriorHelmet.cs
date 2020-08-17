@@ -20,7 +20,7 @@ namespace EtherealHorizons.Items.Armor.WildWarrior
 			item.height = 22;
 			item.value = Item.sellPrice(silver: 30);
 			item.rare = ItemRarityID.Blue;
-			item.defense = 4;
+			item.defense = 5;
 		}
 
 		public override bool IsArmorSet(Item head, Item body, Item legs) 

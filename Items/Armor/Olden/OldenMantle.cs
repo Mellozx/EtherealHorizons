@@ -11,7 +11,7 @@ namespace EtherealHorizons.Items.Armor.Olden
 		public override void SetStaticDefaults() 
 		{
 			DisplayName.SetDefault("Olden Mantle");
-			Tooltip.SetDefault("Increases critical strike chance by 2%");
+			Tooltip.SetDefault("Increases critical strike chance by 4%");
 		}
 
 		public override void SetDefaults() 

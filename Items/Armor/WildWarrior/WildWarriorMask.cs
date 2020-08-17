@@ -20,7 +20,7 @@ namespace EtherealHorizons.Items.Armor.WildWarrior
 			item.height = 22;
 			item.value = Item.sellPrice(silver: 30);
 			item.rare = ItemRarityID.Blue;
-			item.defense = 3;
+			item.defense = 4;
 		}
 		
 		public override void DrawHair(ref bool drawHair, ref bool drawAltHair)

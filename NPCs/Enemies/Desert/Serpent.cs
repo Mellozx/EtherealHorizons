@@ -16,6 +16,7 @@ namespace EtherealHorizons.NPCs.Enemies.Desert
 
         public override void SetDefaults()
         {
+            npc.lavaImmune = false;
             npc.width = 38;
             npc.height = 26;
             npc.damage = 10;
@@ -33,7 +34,7 @@ namespace EtherealHorizons.NPCs.Enemies.Desert
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return SpawnCondition.OverworldDayDesert.Chance * 0.2f;
+            return SpawnCondition.OverworldDayDesert.Chance * 0.3f;
         }
 
         public override void HitEffect(int hitDirection, double damage)

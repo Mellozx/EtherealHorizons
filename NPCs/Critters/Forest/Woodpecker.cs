@@ -6,6 +6,8 @@ namespace EtherealHorizons.NPCs.Critters.Forest
 {
 	public class Woodpecker : ModNPC
     {
+		public override string Texture => "EtherealHorizons/PLACEHOLDER";
+		
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Woodpecker");
@@ -30,6 +32,11 @@ namespace EtherealHorizons.NPCs.Critters.Forest
             {
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/WoodpeckerGore1"));
             }
+        }
+		
+		public override float SpawnChance(NPCSpawnInfo spawnInfo)
+        {
+            return SpawnCondition.OverworldDay.Chance * 0.3f;
         }
     }
 }

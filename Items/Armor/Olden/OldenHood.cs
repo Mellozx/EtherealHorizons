@@ -20,7 +20,7 @@ namespace EtherealHorizons.Items.Armor.Olden
 			item.height = 20;
 			item.value = Item.sellPrice(silver: 20);
 			item.rare = ItemRarityID.Blue;
-			item.defense = 2;
+			item.defense = 3;
 		}
 
 		public override bool IsArmorSet(Item head, Item body, Item legs) 
