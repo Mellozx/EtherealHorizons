@@ -32,7 +32,7 @@ namespace EtherealHorizons.Items.Placeables
 			recipe.AddIngredient(ItemID.Wood, 15);
 			recipe.AddIngredient(ItemID.StoneBlock, 18);
 			recipe.AddIngredient(ItemID.Acorn, 6);
-			recipe.AddIngredient(ModContent.ItemType<WildlifeFragment>());
+			recipe.AddIngredient(ModContent.ItemType<WildlifeFragment>(), 8);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}
