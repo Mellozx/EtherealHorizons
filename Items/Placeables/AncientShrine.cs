@@ -1,6 +1,7 @@
 using Terraria.ModLoader;
 using Terraria.ID;
 using EtherealHorizons.Tiles;
+using EtherealHorizons.Items.Materials;
 
 namespace EtherealHorizons.Items.Placeables
 {
@@ -28,6 +29,10 @@ namespace EtherealHorizons.Items.Placeables
 		public override void AddRecipes()
 		{
 			var recipe = new ModRecipe(mod);
+			recipe.AddIngredient(ItemID.Wood, 15);
+			recipe.AddIngredient(ItemID.StoneBlock, 18);
+			recipe.AddIngredient(ItemID.Acorn, 6);
+			recipe.AddIngredient(ModContent.ItemType<Nut>());
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}
