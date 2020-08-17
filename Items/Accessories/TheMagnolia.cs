@@ -11,7 +11,7 @@ namespace EtherealHorizons.Items.Accessories
         {
             DisplayName.SetDefault("The Magnolia");
             Tooltip.SetDefault("Increases your life regen and movement speed"
-            + "\nIncreases life regen and move speed even more when at low health");
+            + "\nIncreases life regen and move speed even more when at 1/3 health");
         }
 
         public override void SetDefaults()
