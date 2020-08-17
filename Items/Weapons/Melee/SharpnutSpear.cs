@@ -17,7 +17,7 @@ namespace EtherealHorizons.Items.Weapons.Melee
 
 		public override void SetDefaults() 
 		{
-			item.damage = 5;
+			item.damage = 3;
 			item.melee = true;
 			item.width = 32;
 			item.height = 28;

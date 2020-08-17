@@ -18,13 +18,13 @@ namespace EtherealHorizons.Items.Weapons.Ranged
         {
 			item.ranged = true;
 			item.noMelee = true;
-			item.autoReuse = true;
+			item.autoReuse = false;
 			item.width = 48;
 			item.height = 24;
-			item.useTime = 30;
-			item.useAnimation = 30;
+			item.useTime = 32;
+			item.useAnimation = 32;
 			item.UseSound = SoundID.Item5;
-			item.damage = 24;
+			item.damage = 20;
 			item.knockBack = 3f;
 			item.shootSpeed = 7f;
 			item.shoot = 1;

@@ -24,9 +24,9 @@ namespace EtherealHorizons.NPCs.Desert
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.value = Item.sellPrice(copper: 20);
-            npc.knockBackResist = 1f;
+            npc.knockBackResist = 0.80f;
             npc.aiStyle = 3;
-            aiType = NPCID.Crawdad;
+            aiType = NPCID.GoblinScout;
             banner = npc.type;
             bannerItem = ModContent.ItemType<SerpentBanner>();
         }

@@ -38,13 +38,28 @@ namespace EtherealHorizons.NPCs.Bosses.AwakeCheeks
             npc.defense = 4;
             npc.aiStyle = -1;
             npc.knockBackResist = 0f;
-            music = MusicID.Boss2;
+
+            Mod musicMod = ModLoader.GetMod("EtherealHorizonsMusic");
+            if (musicMod != null)
+            {
+                music = musicMod.GetSoundSlot(SoundType.Music, "Sounds/Music/AwakeCheeks");
+            }
+            else
+            {
+                music = MusicID.Boss2;
+            }
             musicPriority = MusicPriority.BossMedium;
         }
 
         public override void FindFrame(int frameHeight)
         {
             npc.spriteDirection = npc.direction;
+        }
+
+        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+        {
+            npc.lifeMax = (int)(npc.lifeMax * 0.6f * bossLifeScale);
+            npc.damage = 28;
         }
 
         public override void NPCLoot()
@@ -94,17 +109,17 @@ namespace EtherealHorizons.NPCs.Bosses.AwakeCheeks
             set => npc.ai[2] = value;
         }
 
-        public const float Default = 0f;
+        public const float FirstPhase = 0f;
         public const float Tired = 1f;
-        public bool secondPhase;
+        public const float SecondPhase = 2f;
 
         public const float Idle = 0f;
         public const float Vomit = 1f;
+        public const float Summon = 2f;
 
         private int shootTimer;
         private int jumpTimer;
-        private int vomitCooldown;
-        private int vomits;
+        private int spawnTimer;
 
         public override void AI()
         {
@@ -115,67 +130,147 @@ namespace EtherealHorizons.NPCs.Bosses.AwakeCheeks
                 DespawnHandler();
             }
 
-            if (State == Default)
+            #region First Phase
+            if (State == FirstPhase)
             {
                 if (Attack == Idle)
                 {
                     npc.TargetClosest(true);
-                    npc.velocity.X = MathHelper.Lerp(npc.velocity.X, 4f * Math.Sign(player.Center.X - npc.Center.X), 0.1f);
+                    npc.velocity.X = MathHelper.Lerp(npc.velocity.X, 4f * Math.Sign(player.Center.X - npc.Center.X), 0.1f); // Moving towards the player
 
-                    int shootCooldown = secondPhase ? 60 : 120;
-                    int nutsQuantity = secondPhase ? 2 : 1;
+                    int shootCooldown = 120;
+                    int nutsQuantity = 1;
 
                     shootTimer++;
-                    if (shootTimer >= shootCooldown)
+                    if (shootTimer >= shootCooldown) // Shooting nuts
                     {
                         for (int k = 0; k < nutsQuantity; k++)
                         {
                             Vector2 velocity = (player.Center - npc.Center).SafeNormalize(Vector2.UnitX) * 10;
                             velocity = velocity.RotatedByRandom(MathHelper.ToRadians(10));
-                            Vector2 position = npc.position + new Vector2(22f, 27f);
+                            Vector2 position = npc.Center; // We should do a offset for the hands once the animation is done    
 
                             Projectile.NewProjectile(position, velocity, ModContent.ProjectileType<HostileNutProjectile>(), npc.damage / 2, 2f);
                         }
                         shootTimer = 0;
                         npc.netUpdate = true;
                     }
+
+                    if (npc.WithinRange(player.Center, 50f * 16f))
+                    {
+                        npc.velocity.X = MathHelper.Lerp(npc.velocity.X, 8f * Math.Sign(player.Center.X - npc.Center.X), 0.1f);
+                    }
                 }
                 else if (Attack == Vomit)
                 {
-                    if (!secondPhase)
+                    npc.TargetClosest(true);
+                    shootTimer++;
+                    if (shootTimer >= 240)
                     {
-                        npc.TargetClosest(true);
-                        shootTimer++;
-                        if (shootTimer >= 240)
+                        int nutsToVomit = Main.rand.Next(15, 17);
+                        for (int k = 0; k < nutsToVomit; k++)
                         {
-                            int nutsToVomit = Main.rand.Next(15, 17);
-                            for (int k = 0; k < nutsToVomit; k++)
-                            {
-                                Vector2 velocity = new Vector2(6f, 0f) * npc.direction;
-                                velocity = velocity.RotatedByRandom(MathHelper.ToRadians(20));
+                            Vector2 velocity = new Vector2(6f, 0f) * npc.direction;
+                            velocity = velocity.RotatedByRandom(MathHelper.ToRadians(20));
 
-                                Projectile.NewProjectile(npc.position, velocity, ModContent.ProjectileType<HostileNutProjectile>(), npc.damage / 2, 1f);
-                            }
-                            shootTimer = 0;
-                            npc.netUpdate = true;
+                            Projectile.NewProjectile(npc.Center, velocity, ModContent.ProjectileType<HostileNutProjectile>(), npc.damage / 2, 1f);
                         }
-                        else
-                        {
-                            npc.velocity.X = MathHelper.Lerp(npc.velocity.X, 2f * Math.Sign(player.Center.X - npc.Center.X), 0.1f);
-                        }
+                        shootTimer = 0;
+                        npc.netUpdate = true;
                     }
                     else
                     {
-                        npc.TargetClosest(false);
-                        shootTimer++;
-                        if (shootTimer >= 240)
+                        npc.velocity.X = MathHelper.Lerp(npc.velocity.X, 2f * Math.Sign(player.Center.X - npc.Center.X), 0.1f);
+                    }                    
+                }
+
+                else if (Attack == Summon)
+                {
+                    npc.TargetClosest(true);
+                    npc.velocity.X = MathHelper.Lerp(npc.velocity.X, 2f * Math.Sign(player.Center.X - npc.Center.X), 0.1f); // Moving towards the player
+
+                    spawnTimer++;
+                    if (spawnTimer >= 300)
+                    {
+                        for (int k = 0; k < 2; k++)
                         {
-                            shootTimer = 0;
-                            npc.netUpdate = true;
+                            NPC.NewNPC((int)npc.position.X - 50 * 16, (int)npc.position.Y + -32, ModContent.NPCType<MeleeCheeksMinion>());
+                            NPC.NewNPC((int)npc.position.X - -50 * 16, (int)npc.position.Y + -32, ModContent.NPCType<MeleeCheeksMinion>());
                         }
+                        spawnTimer = 0;
+                        npc.netUpdate = true;
                     }
                 }
 
+                if (npc.life <= npc.lifeMax / 2)
+                {
+                    State = Tired;
+                    npc.netUpdate = true;
+                }
+            }
+            #endregion
+
+            else if (State == Tired)
+            {
+                npc.TargetClosest(false);
+                npc.velocity = new Vector2(0f, 0f);
+
+                spawnTimer++;
+                if (spawnTimer >= 300)
+                {
+                    for (int k = 0; k < 2; k++)
+                    {
+                        NPC.NewNPC((int)npc.position.X - 50 * 16, (int)npc.position.Y + -32, ModContent.NPCType<MeleeCheeksMinion>());
+                        NPC.NewNPC((int)npc.position.X - -50 * 16, (int)npc.position.Y + -32, ModContent.NPCType<MeleeCheeksMinion>());
+                    }
+                    spawnTimer = 0;
+                    npc.netUpdate = true;
+                }
+
+                AttackTimer += 1f;
+                if (AttackTimer >= 15f * 60f)
+                {
+                    State = SecondPhase;
+                    npc.netUpdate = true;
+                }
+            }
+
+            #region Second Phase
+            else if (State == SecondPhase)
+            {
+                if (Attack == Idle)
+                {
+                    npc.TargetClosest(true);
+                    npc.velocity.X = MathHelper.Lerp(npc.velocity.X, 5f * Math.Sign(player.Center.X - npc.Center.X), 0.1f); // Moving towards the player
+
+                    int shootCooldown = 60;
+                    int nutsQuantity = 2;
+
+                    shootTimer++;
+                    if (shootTimer >= shootCooldown) // Shooting nuts
+                    {
+                        for (int k = 0; k < nutsQuantity; k++)
+                        {
+                            Vector2 velocity = (player.Center - npc.Center).SafeNormalize(Vector2.UnitX) * 10;
+                            velocity = velocity.RotatedByRandom(MathHelper.ToRadians(10));
+                            Vector2 position = npc.Center; // We should do a offset for the hands once the animation is done    
+
+                            Projectile.NewProjectile(position, velocity, ModContent.ProjectileType<HostileNutProjectile>(), npc.damage / 2, 2f);
+                        }
+                        shootTimer = 0;
+                        npc.netUpdate = true;
+                    }
+
+                    if (npc.WithinRange(player.Center, 50f * 16f))
+                    {
+                        npc.velocity.X = MathHelper.Lerp(npc.velocity.X, 8f * Math.Sign(player.Center.X - npc.Center.X), 0.1f);
+                    }
+                }
+            }
+            #endregion
+
+            if (State != Tired)
+            {
                 #region Tile Collision
                 // Thanks for the code, Ben!
                 if (npc.velocity.Y == 0)
@@ -212,14 +307,12 @@ namespace EtherealHorizons.NPCs.Bosses.AwakeCheeks
 
         public override void SendExtraAI(BinaryWriter writer)
         {
-            writer.Write(secondPhase);
             writer.Write(shootTimer);
             writer.Write(jumpTimer);
         }
 
         public override void ReceiveExtraAI(BinaryReader reader)
         {
-            secondPhase = reader.ReadBoolean();
             shootTimer = reader.ReadInt32();
             jumpTimer = reader.ReadInt32();
         }

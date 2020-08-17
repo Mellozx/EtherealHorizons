@@ -27,8 +27,8 @@ namespace EtherealHorizons.NPCs.Forest
             npc.damage = 8;
             npc.defense = 2;
             npc.aiStyle = 3;
-            aiType = NPCID.Crawdad;
-            npc.knockBackResist = 1f;
+            aiType = NPCID.GoblinScout;
+            npc.knockBackResist = 0.50f;
             banner = npc.type;
             bannerItem = ModContent.ItemType<SmallTreeEntBanner>();
             npc.value = Item.sellPrice(copper: 60);

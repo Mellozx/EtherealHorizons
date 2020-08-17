@@ -23,10 +23,10 @@ namespace EtherealHorizons.NPCs.Forest
             npc.damage = 10;
             npc.lifeMax = 50;
             npc.defense = 2;
-            npc.knockBackResist = 2f;
+            npc.knockBackResist = 0.70f;
             npc.value = Item.sellPrice(copper: 20);
             npc.aiStyle = 3;
-            aiType = NPCID.Crawdad;
+            aiType = NPCID.GoblinScout;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             banner = npc.type;

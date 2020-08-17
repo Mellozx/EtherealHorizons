@@ -27,7 +27,7 @@ namespace EtherealHorizons.Items.Weapons.Ranged
 			item.useAmmo = AmmoID.Bullet;
 			item.UseSound = SoundID.Item11;
 			item.shoot = ProjectileID.Bullet;
-			item.shootSpeed = 7f;
+			item.shootSpeed = 6f;
 			item.ranged = true;
 		}
 		

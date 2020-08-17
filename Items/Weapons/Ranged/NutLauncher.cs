@@ -25,9 +25,9 @@ namespace EtherealHorizons.Items.Weapons.Ranged
 			item.useTime = 20;
 			item.useAnimation = 20;
 			item.UseSound = SoundID.Item56;
-			item.damage = 5;
+			item.damage = 3;
 			item.knockBack = 1f;
-			item.shootSpeed = 8f;
+			item.shootSpeed = 6f;
 			item.shoot = ModContent.ProjectileType<FriendlyNutProj>();
 			item.useStyle = ItemUseStyleID.HoldingOut;
 			item.rare = ItemRarityID.White;
