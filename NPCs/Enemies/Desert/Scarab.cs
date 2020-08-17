@@ -28,11 +28,11 @@ namespace EtherealHorizons.NPCs.Enemies.Desert
             npc.DeathSound = SoundID.NPCDeath1;
         }
 
-        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
+        /* public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
         {
             Texture2D texture = mod.GetTexture("NPCs/Enemies/Desert/Scarab_Glowmask");
             spriteBatch.Draw(texture, npc.position, Color.White);
-        }
+        } */
 		
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
