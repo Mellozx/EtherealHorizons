@@ -23,7 +23,7 @@ namespace EtherealHorizons.Items.Placeables.Banners
 			item.useTime = 20;
 			item.useStyle = ItemUseStyleID.SwingThrow;
 			item.consumable = true;
-			item.createTile = ModContent.TileType<EnemyBanners>();
+			item.createTile = ModContent.TileType<MonsterBanner>();
 			item.placeStyle = 0;
 		}
 	}

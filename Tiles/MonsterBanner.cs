@@ -7,12 +7,12 @@ using Terraria.Enums;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using EtherealHorizons.Items.Placeables.Banners;
-using EtherealHorizons.NPCs.Desert;
-using EtherealHorizons.NPCs.Forest;
+using EtherealHorizons.NPCs.Enemies.Desert;
+using EtherealHorizons.NPCs.Enemies.Forest;
 
 namespace EtherealHorizons.Tiles
 {
-	public class EnemyBanners : ModTile
+	public class MonsterBanner : ModTile
     {
         public override void SetDefaults()
         {
