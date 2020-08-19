@@ -20,11 +20,11 @@ namespace EtherealHorizons.Items.Weapons.Melee
 			item.melee = true;
 			item.width = 48;
 			item.height = 48;
-			item.useTime = 18;
-			item.useAnimation = 18;
+			item.useTime = 20;
+			item.useAnimation = 20;
 			item.useStyle = 1;
 			item.knockBack = 5f;
-			item.value = Item.buyPrice(0, 0, 11, 30);
+			item.value = Item.buyPrice(silver: 26);
 			item.rare = 2;
 			item.UseSound = SoundID.Item1;
             item.scale = 1.2f;
@@ -32,7 +32,7 @@ namespace EtherealHorizons.Items.Weapons.Melee
         public override void AddRecipes()
         {
 			var recipe = new ModRecipe(mod);
-			recipe.AddIngredient(mod.ItemType("WildlifeFragment"), 4);
+			recipe.AddIngredient(ModContent.ItemType<WildlifeFragment>(), 4);
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

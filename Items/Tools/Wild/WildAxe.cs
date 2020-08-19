@@ -20,8 +20,8 @@ namespace EtherealHorizons.Items.Tools.Wild
 			item.width = 36;
 			item.height = 32;
 			item.damage = 7;
-			item.useTime = 28;
-			item.useAnimation = 28;
+			item.useTime = 18;
+			item.useAnimation = 18;
 			item.axe = 12;
 			item.knockBack = 4.5f;
 			item.rare = ItemRarityID.Green;
