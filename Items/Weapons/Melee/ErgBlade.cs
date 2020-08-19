@@ -33,7 +33,7 @@ namespace EtherealHorizons.Items.Weapons.Melee
         public override void AddRecipes()
         {
 			var recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ModContent.ItemType<DustiliteShard>(), 12);
+			recipe.AddIngredient(ModContent.ItemType<DustiliteChunk>(), 12);
 			recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

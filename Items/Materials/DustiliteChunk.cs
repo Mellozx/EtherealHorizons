@@ -5,11 +5,11 @@ using Terraria.ModLoader;
 
 namespace EtherealHorizons.Items.Materials
 {
-	public class DustiliteShard : ModItem
+	public class DustiliteChunk : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Dustilite Shard");
+            DisplayName.SetDefault("Dustilite Chunk");
         }
 
         public override void SetDefaults()
