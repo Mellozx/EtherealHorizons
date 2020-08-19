@@ -19,10 +19,10 @@ namespace EtherealHorizons.Items.Tools.Wild
 			item.useTurn = true;
 			item.width = 36;
 			item.height = 32;
-			item.damage = 7;
-			item.useTime = 28;
+			item.damage = 14;
+			item.useTime = 14;
 			item.useAnimation = 28;
-			item.axe = 12;
+			item.axe = 14;
 			item.knockBack = 4.5f;
 			item.rare = ItemRarityID.Green;
 			item.useStyle = ItemUseStyleID.SwingThrow;
