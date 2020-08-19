@@ -20,8 +20,8 @@ namespace EtherealHorizons.Items.Weapons.Melee
 			item.melee = true;
 			item.width = 48;
 			item.height = 48;
-			item.useTime = 18;
-			item.useAnimation = 18;
+			item.useTime = 28;
+			item.useAnimation = 28;
 			item.useStyle = 1;
 			item.knockBack = 5f;
 			item.value = Item.buyPrice(0, 0, 11, 30);
