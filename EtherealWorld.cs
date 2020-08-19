@@ -72,7 +72,7 @@ namespace EtherealHorizons
                         Tile tile = Framing.GetTileSafely(x, y);
                         if(tile.type == TileID.Sandstone || tile.type == TileID.Sand)
                         {
-                            WorldGen.TileRunner(x,y,3,3,ModContent.TileType<DustiliteOreTile>());
+                            WorldGen.TileRunner(x,y,4,5,ModContent.TileType<DustiliteOreTile>());
                         }
                     }
                 }
