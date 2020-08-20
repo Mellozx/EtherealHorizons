@@ -29,15 +29,15 @@ namespace EtherealHorizons.Items.Weapons.Ranged
 			item.shootSpeed = 7f;
 			item.shoot = 1;
 			item.useStyle = ItemUseStyleID.HoldingOut;
-			item.rare = ItemRarityID.Green;
-			item.value = Item.sellPrice(silver: 20);
+			item.rare = ItemRarityID.Blue;
+			item.value = Item.sellPrice(silver: 32);
 			item.useAmmo = AmmoID.Arrow;
         }
 
         public override void AddRecipes()
         {
 			var recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ModContent.ItemType<WildlifeFragment>(), 6);
+			recipe.AddIngredient(ModContent.ItemType<WildlifeFragment>(), 5);
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

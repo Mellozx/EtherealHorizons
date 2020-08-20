@@ -24,7 +24,7 @@ namespace EtherealHorizons.Items.Tools.Wild
 			item.useAnimation = 18;
 			item.axe = 12;
 			item.knockBack = 4.5f;
-			item.rare = ItemRarityID.Green;
+			item.rare = ItemRarityID.Blue;
 			item.useStyle = ItemUseStyleID.SwingThrow;
 			item.UseSound = SoundID.Item1;
 			item.value = Item.buyPrice(0, 0, 26, 0);
