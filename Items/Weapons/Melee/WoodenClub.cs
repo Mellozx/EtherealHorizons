@@ -16,16 +16,16 @@ namespace EtherealHorizons.Items.Weapons.Melee
 
 		public override void SetDefaults() 
 		{
-			item.damage = 8;
+			item.damage = 9;
 			item.melee = true;
 			item.width = 32;
 			item.height = 34;
-			item.useTime = 25;
-			item.useAnimation = 25;
+			item.useTime = 24;
+			item.useAnimation = 24;
 			item.useStyle = 1;
 			item.knockBack = 3f;
-			item.value = Item.sellPrice(copper: 26);
-			item.rare = 1;
+			item.value = Item.sellPrice(copper: 30);
+			item.rare = ItemRarityID.Wood;
 			item.UseSound = SoundID.Item1;
             item.scale = 1.1f;
 		}
