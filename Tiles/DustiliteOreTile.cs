@@ -20,7 +20,7 @@ namespace EtherealHorizons.Tiles
             Main.tileMerge[Type][TileID.Dirt] = true;
             Main.tileMerge[Type][TileID.Stone] = true;
 
-            drop = ModContent.ItemType<DustiliteShard>();
+            drop = ModContent.ItemType<DustiliteChunk>();
             minPick = 55;
             mineResist = 2f;
             soundType = SoundID.Tink;
