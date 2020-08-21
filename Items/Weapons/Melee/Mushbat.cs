@@ -17,8 +17,9 @@ namespace EtherealHorizons.Items.Weapons.Melee
 			item.melee = true;
 			item.width = 34;
 			item.height = 42;
-			item.useTime = 23;
-			item.useAnimation = 23;
+			item.useTime = 18;
+			item.useAnimation = 18;
+            item.autoReuse = true;
 			item.useStyle = ItemUseStyleID.SwingThrow;
 			item.knockBack = 2f;
 			item.value = Item.sellPrice(silver: 2);
