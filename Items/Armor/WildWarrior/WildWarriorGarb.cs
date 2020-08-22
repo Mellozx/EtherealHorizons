@@ -9,7 +9,7 @@ namespace EtherealHorizons.Items.Armor.WildWarrior
 	{
 		public override void SetStaticDefaults() 
 		{
-            DisplayName.SetDefault("Wild Warrior Chestplate");
+            DisplayName.SetDefault("Wild Warrior Garb");
 			Tooltip.SetDefault("Increases critical strike chance by 4%");
 		}
 

@@ -4,6 +4,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using EtherealHorizons.Projectiles;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace EtherealHorizons
 {
@@ -49,5 +50,5 @@ namespace EtherealHorizons
                 player.lifeRegen += 2;
             }
         }
-    }
+    } 
 }

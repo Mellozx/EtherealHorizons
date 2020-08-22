@@ -6,7 +6,7 @@ namespace EtherealHorizons.NPCs.Critters.Forest
 {
 	public class Beaver : ModNPC
 	{
-		public override string Texture => EtherealUtilities.PlaceholderTexture;
+		public override string Texture => EtherealHorizons.PlaceholderTexture;
 		
 		public override void SetStaticDefaults()
 		{
@@ -15,7 +15,6 @@ namespace EtherealHorizons.NPCs.Critters.Forest
 		
 		public override void SetDefaults()
 		{
-			npc.friendly = true;
 			npc.lavaImmune = false;
 			npc.width = 20;
 			npc.height = 20;

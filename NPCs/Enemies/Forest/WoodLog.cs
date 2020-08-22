@@ -35,13 +35,6 @@ namespace EtherealHorizons.NPCs.Enemies.Forest
         public override void NPCLoot()
         {
             Item.NewItem(npc.getRect(), ItemID.Wood, Main.rand.Next(2, 5));
-            if (EtherealWorld.downedAwakeCheeks)
-            {
-                if (Main.rand.NextBool(2))
-                {
-                    Item.NewItem(npc.getRect(), ModContent.ItemType<AncientTwig>());
-                }
-            }
         }
 
         public override void HitEffect(int hitDirection, double damage)

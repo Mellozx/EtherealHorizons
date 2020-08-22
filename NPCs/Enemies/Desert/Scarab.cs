@@ -8,7 +8,8 @@ namespace EtherealHorizons.NPCs.Enemies.Desert
 {
     public class Scarab : ModNPC
     {
-        public override string Texture => EtherealUtilities.PlaceholderTexture;
+        public override string Texture => EtherealHorizons.PlaceholderTexture;
+		
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Scarab");

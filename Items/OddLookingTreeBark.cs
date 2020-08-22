@@ -6,8 +6,8 @@ namespace EtherealHorizons.Items
 {
 	public class OddLookingTreeBark : ModItem
 	{
-		public override string Texture => "EtherealHorizons/PLACEHOLDER";
-		
+		public override string Texture => EtherealHorizons.PlaceholderTexture;
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Odd Looking Tree Bark");

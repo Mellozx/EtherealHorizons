@@ -100,7 +100,6 @@ namespace EtherealHorizons.NPCs.Enemies.Forest
             }
             else if (State == ClawAttack)
             {
-                Main.NewText("Claw Attack is working!");
                 // If the NPC's velocity is bigger than 0
                 if (npc.velocity.X > 0f)
                 {

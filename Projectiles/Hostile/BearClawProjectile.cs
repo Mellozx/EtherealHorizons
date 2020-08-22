@@ -6,7 +6,7 @@ namespace EtherealHorizons.Projectiles.Hostile
 {
     public class BearClawProjectile : ModProjectile
     {
-        public override string Texture => EtherealUtilities.PlaceholderTexture;
+        public override string Texture => EtherealHorizons.PlaceholderTexture;
 
         public override void SetDefaults()
         {

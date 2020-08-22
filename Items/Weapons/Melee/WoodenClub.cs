@@ -25,7 +25,7 @@ namespace EtherealHorizons.Items.Weapons.Melee
 			item.useStyle = 1;
 			item.knockBack = 3f;
 			item.value = Item.sellPrice(copper: 30);
-			item.rare = ItemRarityID.Wood;
+			item.rare = ItemRarityID.White;
 			item.UseSound = SoundID.Item1;
             item.scale = 1.1f;
 		}

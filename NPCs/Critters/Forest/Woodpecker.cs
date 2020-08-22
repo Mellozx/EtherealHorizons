@@ -6,7 +6,7 @@ namespace EtherealHorizons.NPCs.Critters.Forest
 {
 	public class Woodpecker : ModNPC
     {
-		public override string Texture => "EtherealHorizons/PLACEHOLDER";
+		public override string Texture => EtherealHorizons.PlaceholderTexture;
 		
         public override void SetStaticDefaults()
         {
@@ -15,7 +15,7 @@ namespace EtherealHorizons.NPCs.Critters.Forest
 
         public override void SetDefaults()
         {
-            npc.friendly = true;    
+			npc.lavaImmune = false;
             npc.width = 20;
             npc.height = 20;
             npc.lifeMax = 10;

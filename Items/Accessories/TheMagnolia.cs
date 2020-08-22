@@ -6,12 +6,11 @@ namespace EtherealHorizons.Items.Accessories
 {
 	public class TheMagnolia : ModItem
     {
-        public override string Texture => "EtherealHorizons/PLACEHOLDER";
+        public override string Texture => EtherealHorizons.PlaceholderTexture;
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("The Magnolia");
-            Tooltip.SetDefault("Increases your life regen and movement speed"
-            + "\nIncreases life regen and move speed even more when at 1/3 health");
+            Tooltip.SetDefault("Increases your life regen and movement speed" + "\nIncreases life regen and move speed even more when at 1/3 health");
         }
 
         public override void SetDefaults()

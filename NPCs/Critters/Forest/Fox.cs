@@ -6,7 +6,7 @@ namespace EtherealHorizons.NPCs.Critters.Forest
 {
 	public class Fox : ModNPC
     {
-		public override string Texture => "EtherealHorizons/PLACEHOLDER";
+		public override string Texture => EtherealHorizons.PlaceholderTexture;
 		
         public override void SetStaticDefaults()
         {
@@ -16,7 +16,6 @@ namespace EtherealHorizons.NPCs.Critters.Forest
         public override void SetDefaults()
         {
             npc.lavaImmune = false;
-            npc.friendly = true;
             npc.lifeMax = 20;
             npc.defense = 0;
             npc.aiStyle = 7;

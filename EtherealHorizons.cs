@@ -2,7 +2,7 @@ using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-// using EtherealHorizons.NPCs.Bosses.AwakeCheeks;
+using EtherealHorizons.NPCs.Bosses.AwakeCheeks;
 using System.Collections.Generic;
 using Terraria.Localization;
 using EtherealHorizons.Items.BossSummons;
@@ -12,7 +12,8 @@ namespace EtherealHorizons
     public class EtherealHorizons : Mod
     {
         public static EtherealHorizons instance;
-
+		public static string PlaceholderTexture = "EtherealHorizons/PLACEHOLDER";
+		
         public EtherealHorizons()
         {
             Properties = new ModProperties()
@@ -27,6 +28,11 @@ namespace EtherealHorizons
         public override void Load()
         {
             instance = this;
+			
+			if (!Main.dedServ)
+			{
+				// Music boxes
+			}
 		}
 
         public override void Unload()
@@ -39,7 +45,7 @@ namespace EtherealHorizons
             Mod bossChecklist = ModLoader.GetMod("BossChecklist");
             if (bossChecklist != null)
             {
-                // bossChecklist.Call("AddBoss", 1.1f, ModContent.NPCType<AwakeCheeks>(), this, "Awake Cheeks", (Func<bool>)(() => EtherealWorld.downedAwakeCheeks), ModContent.ItemType<SquirrelIdol>()); // Mask and Trophy, Normal Loot, Spawn Info, Despawn Message
+                bossChecklist.Call("AddBoss", 1.1f, ModContent.NPCType<AwakeCheeks>(), this, "Awake Cheeks", (Func<bool>)(() => EtherealWorld.downedAwakeCheeks), ModContent.ItemType<SquirrelIdol>()); // Mask and Trophy, Normal Loot, Spawn Info, Despawn Message
             }
         }
 

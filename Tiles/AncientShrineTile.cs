@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 using Terraria.ObjectData;
 using EtherealHorizons.Items.Placeables;
 using EtherealHorizons.Items.BossSummons;
-// using EtherealHorizons.NPCs.Bosses.AwakeCheeks;
+using EtherealHorizons.NPCs.Bosses.AwakeCheeks;
 
 namespace EtherealHorizons.Tiles 
 {
@@ -41,7 +41,7 @@ namespace EtherealHorizons.Tiles
 			var player = Main.LocalPlayer;
 			if (player.HeldItem.type ==	ModContent.ItemType<SquirrelIdol>())
             {
-				// NPC.SpawnOnPlayer(player.whoAmI, ModContent.NPCType<AwakeCheeks>());
+				NPC.SpawnOnPlayer(player.whoAmI, ModContent.NPCType<AwakeCheeks>());
 				Main.PlaySound(SoundID.Roar, player.position, 0);
 				return true;
             }
