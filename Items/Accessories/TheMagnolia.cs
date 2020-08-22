@@ -6,7 +6,6 @@ namespace EtherealHorizons.Items.Accessories
 {
 	public class TheMagnolia : ModItem
     {
-        public override string Texture => EtherealHorizons.PlaceholderTexture;
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("The Magnolia");

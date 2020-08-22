@@ -6,7 +6,6 @@ namespace EtherealHorizons.Items.BossSummons
 {
 	public class SquirrelIdol : ModItem
     {
-        public override string Texture => "EtherealHorizons/PLACEHOLDER";
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Squirrel Idol");

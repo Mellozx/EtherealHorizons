@@ -6,8 +6,6 @@ namespace EtherealHorizons.Items.Weapons.Melee
 {
 	public class AdventurersSword : ModItem
     {
-        public override string Texture => EtherealHorizons.PlaceholderTexture;
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Adventurer's Sword");
@@ -21,8 +19,8 @@ namespace EtherealHorizons.Items.Weapons.Melee
             item.knockBack = 1f;
             item.useTime = 22;
             item.useAnimation = 22;
-            item.width = 20;
-            item.height = 20;
+            item.width = 28;
+            item.height = 30;
             item.useStyle = ItemUseStyleID.SwingThrow;
             item.rare = ItemRarityID.White;
         }
