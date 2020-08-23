@@ -15,11 +15,11 @@ namespace EtherealHorizons.Projectiles.Magic
 		{
 			projectile.width = 10;
 			projectile.height = 16;
-			projectile.aiStyle = 2;
+			projectile.aiStyle = 1;
 			projectile.friendly = true;
-			projectile.penetrate = 5;
+			projectile.penetrate = 2;
 			projectile.magic = true;
-			projectile.timeLeft = 100;
+			projectile.timeLeft = 600;
 			projectile.arrow = false;
 		}
 	}
