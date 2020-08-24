@@ -27,7 +27,7 @@ namespace EtherealHorizons.Items.Weapons.Ranged
 			item.damage = 12;
 			item.knockBack = 3f;
 			item.shootSpeed = 7f;
-			item.shoot = 1;
+			item.shoot = ProjectileID.WoodenArrowFriendly;
 			item.useStyle = ItemUseStyleID.HoldingOut;
 			item.rare = ItemRarityID.Blue;
 			item.value = Item.sellPrice(silver: 26);

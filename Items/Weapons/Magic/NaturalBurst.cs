@@ -3,6 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using EtherealHorizons.Items.Materials;
 using Microsoft.Xna.Framework;
+using EtherealHorizons.Projectiles.Magic;
 
 namespace EtherealHorizons.Items.Weapons.Magic
 {
@@ -20,14 +21,14 @@ namespace EtherealHorizons.Items.Weapons.Magic
 			item.height = 36;
 			item.useTime = 16;
 			item.useAnimation = 16;
-			item.useStyle = 5;
-			item.value = Item.buyPrice(0, 0, 10, 50);
-			item.rare = 2;
+			item.useStyle = ItemUseStyleID.HoldingOut;
+			item.value = Item.buyPrice(silver: 26);
+			item.rare = ItemRarityID.Blue;
 			item.knockBack = 5;
 			item.noMelee = true;
 			item.mana = 8;
 			item.UseSound = SoundID.Item20;
-			item.shoot = mod.ProjectileType("SineWaveLeaf");
+			item.shoot = ModContent.ProjectileType<SineWaveLeaf>();
 			item.shootSpeed = 8f;
 			item.autoReuse = true;
 			item.magic = true;
@@ -36,7 +37,7 @@ namespace EtherealHorizons.Items.Weapons.Magic
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ModContent.ItemType<WildlifeFragment>(), 3); //modded materials
+			recipe.AddIngredient(ModContent.ItemType<WildlifeFragment>(), 3);
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

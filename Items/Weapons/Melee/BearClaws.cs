@@ -19,13 +19,12 @@ namespace EtherealHorizons.Items.Weapons.Melee
 			item.height = 28;
 			item.useTime = 9;
 			item.useAnimation = 9;
-			item.useStyle = 1;
-			item.knockBack = 3f;
-			item.value = Item.sellPrice(silver: 30);
-			item.rare = 1;
+			item.useStyle = ItemUseStyleID.SwingThrow;
+			item.knockBack = 2f;
+			item.value = Item.sellPrice(silver: 20);
+			item.rare = ItemRarityID.White;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
-            item.scale = 1.1f;
 		}
 	}
 }

@@ -13,7 +13,7 @@ namespace EtherealHorizons.Items.Weapons.Ranged
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("The Sahara");
-			Tooltip.SetDefault("Converts wooden arrows to arid arrows");
+			Tooltip.SetDefault("Converts Wooden Arrows to Arid Arrows");
 		}
 		public override void SetDefaults()
 		{
@@ -24,13 +24,13 @@ namespace EtherealHorizons.Items.Weapons.Ranged
 			item.useTime = 25;
 			item.useAnimation = 25;
 			item.useStyle = ItemUseStyleID.HoldingOut;
-			item.knockBack = 1;
+			item.knockBack = 1f;
 			item.value = Item.sellPrice(silver: 20);
-			item.rare = ItemRarityID.Blue;
+			item.rare = ItemRarityID.White;
 			item.UseSound = SoundID.Item5;
 			item.autoReuse = true;
 			item.useAmmo = AmmoID.Arrow;;
-			item.shoot = 1;
+			item.shoot = ProjectileID.WoodenArrowFriendly;
 			item.shootSpeed = 10f;
 		}
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

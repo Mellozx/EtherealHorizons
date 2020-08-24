@@ -25,13 +25,13 @@ namespace EtherealHorizons.Items.Weapons.Ranged
 			item.useTime = 22;
 			item.useAnimation = 22;
 			item.useStyle = ItemUseStyleID.HoldingOut;
-			item.knockBack = 1;
-			item.value = Item.sellPrice(silver: 2);
+			item.knockBack = 1f;
+			item.value = Item.sellPrice(copper: 80);
 			item.rare = ItemRarityID.Blue;
 			item.UseSound = SoundID.Item5;
 			item.autoReuse = true;
 			item.useAmmo = AmmoID.Arrow;
-			item.shoot = 1;
+			item.shoot = ProjectileID.WoodenArrowFriendly;
 			item.shootSpeed = 5f;
 		}
 
@@ -46,9 +46,8 @@ namespace EtherealHorizons.Items.Weapons.Ranged
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.Sandstone, 13);
-			recipe.AddIngredient(ItemID.Cactus, 8);
+			var recipe = new ModRecipe(mod);
+			recipe.AddIngredient(ItemID.Cactus, 10);
 			recipe.AddIngredient(ModContent.ItemType<Thorn>(), 4);
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.SetResult(this);

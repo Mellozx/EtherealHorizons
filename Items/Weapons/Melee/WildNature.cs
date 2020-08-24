@@ -22,12 +22,11 @@ namespace EtherealHorizons.Items.Weapons.Melee
 			item.height = 48;
 			item.useTime = 24;
 			item.useAnimation = 24;
-			item.useStyle = 1;
-			item.knockBack = 5f;
+			item.useStyle = ItemUseStyleID.SwingThrow;
+			item.knockBack = 4f;
 			item.value = Item.buyPrice(silver: 26);
 			item.rare = ItemRarityID.Blue;
 			item.UseSound = SoundID.Item1;
-            item.scale = 1.2f;
 		}
         public override void AddRecipes()
         {

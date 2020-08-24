@@ -8,8 +8,6 @@ namespace EtherealHorizons.NPCs.Bosses.AwakeCheeks
 {
     public class AwakeCheeks : ModNPC
     {
-        private Player player;
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Awake Cheeks");
@@ -49,91 +47,6 @@ namespace EtherealHorizons.NPCs.Bosses.AwakeCheeks
             npc.lifeMax = (int)(npc.lifeMax * 0.6f * bossLifeScale);
         }
 
-        public float State
-        {
-            get => npc.ai[0];
-            set => npc.ai[0] = value;
-        }
-
-        public float AttackTimer
-        {
-            get => npc.ai[2];
-            set => npc.ai[2] = value;
-        }
-
-        public const float Sleep = 0f;
-        public const float Idle = 1f;
-
-        private int textTimer;
-        private int moveTimer;
-
-        public override void AI()
-        {
-            Target();
-
-            switch (State)
-            {
-                #region Sleep State
-                case Sleep:
-                {
-                    int textCount = 0;
-
-                    npc.TargetClosest(false); 
-                    npc.dontTakeDamage = true; 
-
-                    textTimer++;
-                    if (textTimer >= 180 && textCount < 3)
-                    {
-                        CombatText.NewText(npc.getRect(), Color.Yellow, "Zzz...", false, false);
-
-                        textTimer = 0; 
-                        textCount++;
-                        npc.netUpdate = true;
-                    }
-                    else if (textCount >= 3)
-                    {
-                        textTimer++;
-                        switch (textTimer)
-                        {
-                            case 180:
-                                CombatText.NewText(npc.getRect(), Color.Yellow, "Huh, who are you?");
-                                break;
-                            case 360:
-                                CombatText.NewText(npc.getRect(), Color.Yellow, "Who dares to interrupt my rest?");
-                                break;
-                            case 540: 
-                                CombatText.NewText(npc.getRect(), Color.Yellow, "If you proceed, prove me you're worthy at least!");
-                                State = Idle;
-                                break;
-                        }
-                        npc.netUpdate = true;
-                    } 
-                }
-                break;
-                #endregion
-               
-                #region Idle State
-                case Idle:
-                {
-                        // Boss Text
-                        npc.TargetClosest(true);
-                        npc.dontTakeDamage = false;
-                }
-                break;
-                #endregion
-            }
-        }
-
-
-        private void Target()
-        {
-            player = Main.player[npc.target];
-        }
-
-        public override void NPCLoot()
-        {
-        }
-
         public override void BossLoot(ref string name, ref int potionType)
         {
             potionType = ItemID.LesserHealingPotion;
@@ -142,6 +55,33 @@ namespace EtherealHorizons.NPCs.Bosses.AwakeCheeks
             if (Main.netMode == NetmodeID.Server)
             {
                 NetMessage.SendData(MessageID.WorldData);
+            }
+        }
+
+        public override void NPCLoot()
+        {
+            switch (Main.rand.Next(1, 3))
+            {
+                case 1:
+                    //Item.NewItem(npc.getRect(), ModContent.ItemType<CheekCrusher>());
+                    break;
+                case 2:
+                    //Item.NewItem(npc.getRect(), ModContent.ItemType<Vonut>());
+                    break;
+            }
+        }
+
+        public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
+        {
+            scale = 1.5f;
+            return null;
+        }
+
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (npc.life <= 0)
+            {
+
             }
         }
     }
