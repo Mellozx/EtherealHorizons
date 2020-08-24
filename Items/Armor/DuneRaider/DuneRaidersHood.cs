@@ -7,7 +7,6 @@ namespace EtherealHorizons.Items.Armor.DuneRaider
 {
 	public class DuneRaidersHood : ModItem
     {
-		public override string Texture => EtherealHorizons.PlaceholderTexture;
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Dune Raider's Hood");

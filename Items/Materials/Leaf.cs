@@ -6,7 +6,6 @@ namespace EtherealHorizons.Items.Materials
 {
 	public class Leaf : ModItem
     {
-        public override string Texture => EtherealHorizons.PlaceholderTexture;
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Leaf");
