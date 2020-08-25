@@ -24,7 +24,7 @@ namespace EtherealHorizons.NPCs.Enemies.Forest
             npc.width = 38;
             npc.height = 32;
             npc.damage = 10;
-            npc.lifeMax = 100;
+            npc.lifeMax = 20;
             npc.knockBackResist = 0f;
             npc.value = Item.sellPrice(copper: 20);
             npc.aiStyle = -1;

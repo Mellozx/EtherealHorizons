@@ -23,7 +23,7 @@ namespace EtherealHorizons.NPCs.Enemies.Forest
             npc.buffImmune[BuffID.Confused] = true;
             npc.width = 38;
             npc.height = 38;
-            npc.lifeMax = 80;
+            npc.lifeMax = 40;
             npc.damage = 8;
             npc.defense = 2;
             npc.aiStyle = 3;
