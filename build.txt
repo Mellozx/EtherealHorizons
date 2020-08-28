@@ -1,6 +1,0 @@
-displayName = Ethereal Horizons
-author = The Developers
-version = 0.01
-hideCode = false
-hideResources = false
-include Source = true
