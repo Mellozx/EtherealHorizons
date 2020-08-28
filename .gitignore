@@ -1,0 +1,14 @@
+﻿.vs
+.vs/*
+bin
+bin/*
+obj
+obj/*
+.DS_Store
+Items/.DS_Store
+Items/Weapons/.DS_Store
+Projectiles/.DS_Store
+Tiles/.DS_Store
+Items/.DS_Store
+Items/.DS_Store
+AwakeCheeks.png
