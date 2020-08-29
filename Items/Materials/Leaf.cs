@@ -1,14 +1,13 @@
-using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace EtherealHorizons.Items.Materials
 {
-	public class AncientTwig : ModItem
+	public class Leaf : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ancient Twig");
+			DisplayName.SetDefault("Leaf");
 		}
 		
 		public override void SetDefaults()
@@ -16,8 +15,7 @@ namespace EtherealHorizons.Items.Materials
 			item.material = true;
 			item.width = 20;
 			item.height = 20;
-			item.rare = ItemRarityID.Blue;
-			item.value = Item.sellPrice(silver: 20);
+			item.rare = ItemRarityID.White;
 		}
 	}
 }
