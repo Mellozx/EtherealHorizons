@@ -14,8 +14,8 @@ namespace EtherealHorizons.Items.Materials
 		{
 			item.material = true;
 			item.maxStack = 999;
-			item.width = 16;
-			item.height = 16;
+			item.width = 20;
+			item.height = 20;
 			item.rare = ItemRarityID.White;
 		}
 	}

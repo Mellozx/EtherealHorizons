@@ -14,8 +14,8 @@ namespace EtherealHorizons.Items.Materials
 		public override void SetDefaults()
 		{
 			item.material = true;
-			item.width = 16;
-			item.height = 16;
+			item.width = 20;
+			item.height = 20;
 			item.rare = ItemRarityID.Blue; // Post KS
 			item.value = Item.sellPrice(silver: 20); // Platinum bar is 18
 		}
