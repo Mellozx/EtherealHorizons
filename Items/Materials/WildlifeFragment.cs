@@ -26,7 +26,7 @@ namespace EtherealHorizons.Items.Materials
 			recipe.AddIngredient(ModContent.ItemType<Leaf>(), 4);
 			recipe.AddIngredient(ModContent.ItemType<Nut>(), 2);
 			recipe.AddIngredient(ModContent.ItemType<AncientTwig>(), 1);
-			recipe.AddTile(TileID.Workbenches);
+			recipe.AddTile(TileID.WorkBenches);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

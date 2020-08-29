@@ -37,7 +37,7 @@ namespace EtherealHorizons.Items.Weapons.Ranged
 		{
 			var recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ModContent.ItemType<WildlifeFragment>(), 4);
-			recipe.AddTile(TileID.Workbenches);
+			recipe.AddTile(TileID.WorkBenches);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}
