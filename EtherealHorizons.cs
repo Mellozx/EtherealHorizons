@@ -27,11 +27,6 @@ namespace EtherealHorizons
         public override void Load()
         {
             instance = this;
-			
-			if (!Main.dedServ)
-			{
-				// Music boxes
-			}
 		}
 
         public override void Unload()
