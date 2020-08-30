@@ -19,8 +19,8 @@ namespace EtherealHorizons.Items.Weapons.Melee
 			item.useTurn = false;
 			item.width = 20;
 			item.height = 20;
-			item.useTime = 20;
-			item.useAnimation = 20;
+			item.useTime = 24;
+			item.useAnimation = 24;
 			item.damage = 5;
 			item.knockBack = 3f;
 			item.useStyle = ItemUseStyleID.SwingThrow;
