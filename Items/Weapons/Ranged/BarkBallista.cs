@@ -30,14 +30,14 @@ namespace EtherealHorizons.Items.Weapons.Ranged
 			item.shoot = ProjectileID.WoodenArrowFriendly;
 			item.useStyle = ItemUseStyleID.HoldingOut;
 			item.rare = ItemRarityID.Blue;
-			item.value = Item.sellPrice(silver: 32);
+			item.value = Item.sellPrice(silver: 50);
 			item.useAmmo = AmmoID.Arrow;
         }
 
         public override void AddRecipes()
         {
 			var recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ModContent.ItemType<WildlifeFragment>(), 5);
+			recipe.AddIngredient(ModContent.ItemType<WildlifeFragment>(), 4);
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

@@ -3,7 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using EtherealHorizons.Items.Materials;
 
-namespace EtherealHorizons.Items.Tools.Wild
+namespace EtherealHorizons.Items.Tools
 { 
 	public class WildPickaxe : ModItem 
 	{ 
