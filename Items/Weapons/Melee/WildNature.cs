@@ -1,40 +1,41 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
 using EtherealHorizons.Items.Materials;
-using EtherealHorizons.Projectiles.Melee;
 
 namespace EtherealHorizons.Items.Weapons.Melee
 {
 	public class WildNature : ModItem
 	{
-		public override void SetStaticDefaults() 
+		public override void SetStaticDefaults()
 		{
-            DisplayName.SetDefault("Wild Nature");
+			DisplayName.SetDefault("Wild Nature");
 		}
-
-		public override void SetDefaults() 
+		
+		public override void SetDefaults()
 		{
-			item.damage = 21;
 			item.melee = true;
-			item.width = 48;
-			item.height = 48;
-			item.useTime = 24;
-			item.useAnimation = 24;
-			item.useStyle = ItemUseStyleID.SwingThrow;
+			item.autoReuse = false;
+			item.useTurn = false;
+			item.width = 20;
+			item.height = 20;
+			item.useTime = 20;
+			item.useAnimation = 20;
+			item.damage = 18;
 			item.knockBack = 4f;
-			item.value = Item.buyPrice(silver: 26);
-			item.rare = ItemRarityID.Blue;
 			item.UseSound = SoundID.Item1;
+			item.useStyle = ItemUseStyleID.SwingThrow;
+			item.rare = ItemRarityID.Blue;
+			item.value = Item.sellPrice(silver: 30);
 		}
-        public override void AddRecipes()
-        {
+		
+		public override void AddRecipes()
+		{
 			var recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ModContent.ItemType<WildlifeFragment>(), 4);
+			recipe.AddIngredient(ModContent.ItemType<WildlifeFragment>(), 3);
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
-        }
+		}
 	}
 }

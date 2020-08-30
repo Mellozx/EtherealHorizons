@@ -1,4 +1,3 @@
-using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -32,7 +31,6 @@ namespace EtherealHorizons
         {
             instance = null;
         }
-
         public override void AddRecipeGroups()
         {
             var group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + "Gold Crown", new int[]

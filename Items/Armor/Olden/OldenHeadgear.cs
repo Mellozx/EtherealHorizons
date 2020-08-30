@@ -25,7 +25,7 @@ namespace EtherealHorizons.Items.Armor.Olden
 
 		public override bool IsArmorSet(Item head, Item body, Item legs) 
 		{
-			return body.type == ModContent.ItemType<OldenMantle>();
+			return body.type == ModContent.ItemType<OldenMantle>() && legs.type == ModContent.ItemType<OldenGreaves>();
 		}
 		
 		public override void UpdateEquip(Player player) 

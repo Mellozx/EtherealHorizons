@@ -11,29 +11,29 @@ namespace EtherealHorizons.Items.Tools
 		{
 			DisplayName.SetDefault("Wild Hammer");
 		}
-
+		
 		public override void SetDefaults()
 		{
-			item.melee = true;
 			item.autoReuse = true;
 			item.useTurn = true;
-			item.width = 34;
-			item.height = 34;
-			item.damage = 7;
-			item.useTime = 22;
-			item.useAnimation = 22;
-			item.hammer = 60;
-			item.knockBack = 5.5f;
-			item.rare = ItemRarityID.Blue;
-			item.useStyle = ItemUseStyleID.SwingThrow;
+			item.melee = true;
+			item.damage = 12;
+			item.hammer = 59;
+			item.width = 20;
+			item.height = 20;
+			item.useTime = 25;
+			item.useAnimation = 25;
+			item.knockBack = 5f;
 			item.UseSound = SoundID.Item1;
-			item.value = Item.buyPrice(0, 0, 26, 0);
-		}
-
+			item.useStyle = ItemUseStyleID.SwingThrow;
+			item.rare = ItemRarityID.Blue;
+			item.value = Item.sellPrice(silver: 30);
+		}	
+		
 		public override void AddRecipes()
 		{
 			var recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ModContent.ItemType<WildlifeFragment>(), 4);
+			recipe.AddIngredient(ModContent.ItemType<WildlifeFragment>(), 3);
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
