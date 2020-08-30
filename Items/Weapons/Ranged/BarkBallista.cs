@@ -1,6 +1,12 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+<<<<<<< HEAD
+using Microsoft.Xna.Framework;
+using System;
+using EtherealHorizons.Projectiles.Ranged;
+=======
+>>>>>>> master
 using EtherealHorizons.Items.Materials;
 
 namespace EtherealHorizons.Items.Weapons.Ranged
@@ -11,6 +17,30 @@ namespace EtherealHorizons.Items.Weapons.Ranged
 		{
 			DisplayName.SetDefault("Bark Ballista");
 		}
+<<<<<<< HEAD
+		public override void SetDefaults()
+        {
+			item.ranged = true;
+			item.noMelee = true;
+			item.autoReuse = false;
+			item.width = 48;
+			item.height = 24;
+			item.useTime = 32;
+			item.useAnimation = 32;
+			item.UseSound = SoundID.Item5;
+			item.damage = 20;
+			item.knockBack = 4f;
+			item.shootSpeed = 7f;
+			item.shoot = ProjectileID.WoodenArrowFriendly;
+			item.useStyle = ItemUseStyleID.HoldingOut;
+			item.rare = ItemRarityID.Blue;
+			item.value = Item.sellPrice(silver: 50);
+			item.useAmmo = AmmoID.Arrow;
+        }
+
+        public override void AddRecipes()
+        {
+=======
 		
 		public override void SetDefaults()
 		{
@@ -35,11 +65,18 @@ namespace EtherealHorizons.Items.Weapons.Ranged
 		
 		public override void AddRecipes()
 		{
+>>>>>>> master
 			var recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ModContent.ItemType<WildlifeFragment>(), 4);
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
+<<<<<<< HEAD
+        }
+    }
+}            
+=======
 		}
 	}
 }
+>>>>>>> master
