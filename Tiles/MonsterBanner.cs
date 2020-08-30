@@ -47,9 +47,6 @@ namespace EtherealHorizons.Tiles
 				case 0:
 					item = ModContent.ItemType<SerpentBanner>();
 					break;
-				case 1:
-					item = ModContent.ItemType<SmallTreeEntBanner>();
-					break;
 				default:
 					return;
             }
@@ -67,9 +64,6 @@ namespace EtherealHorizons.Tiles
 				{
 					case 0:
 						type = ModContent.NPCType<Serpent>();
-						break;
-					case 1:
-						type = ModContent.NPCType<SmallTreeEnt>();
 						break;
 					default:
 						return;
