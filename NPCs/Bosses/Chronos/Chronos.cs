@@ -18,7 +18,11 @@ namespace EtherealHorizons.NPCs.Bosses.Chronos
 
         public override void BossLoot(ref string name, ref int potionType)
         {
-            
+            if (Main.netMode == NetmodeID.Server)
+            {
+                // EtherealWorld.downedChronos = true;
+                NetMessage.SendData(MessageID.WorldData);
+            }
         }
 
         public override void AI()
