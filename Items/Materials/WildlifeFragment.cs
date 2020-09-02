@@ -1,3 +1,4 @@
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -8,15 +9,14 @@ namespace EtherealHorizons.Items.Materials
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Wildlife Fragment");
-            Tooltip.SetDefault("");
         }
 
         public override void SetDefaults()
         {
-            item.width = 30;
-            item.height = 28;
+            item.width = 20;
+            item.height = 20;
             item.maxStack = 999;
-            item.value = 1000;
+            item.value = Item.sellPrice(silver: 30);;
             item.rare = ItemRarityID.Blue;
         }
 
