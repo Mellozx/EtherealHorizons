@@ -1,3 +1,4 @@
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -8,7 +9,6 @@ namespace EtherealHorizons.Items.Materials
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Ancient Twig");
-            Tooltip.SetDefault("");
         }
 
         public override void SetDefaults()
@@ -16,7 +16,7 @@ namespace EtherealHorizons.Items.Materials
             item.width = 26;
             item.height = 28;
             item.maxStack = 999;
-            item.value = 1000;
+            item.value = Item.sellPrice(silver: 20);
             item.rare = ItemRarityID.Blue;
         }
 
