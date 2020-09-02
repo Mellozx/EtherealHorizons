@@ -16,6 +16,24 @@ namespace EtherealHorizons.NPCs.Bosses.Chronos
             DisplayName.SetDefault("Chronos");
         }
 
+        public override void SetDefaults()
+        {
+            npc.boss = true;
+            npc.noTileCollide = true;
+            npc.lavaImmune = true;
+            npc.noGravity = true;
+            npc.lifeMax = 10000;
+            npc.damage = 36;
+            npc.defense = 16;
+            npc.width = 50;
+            npc.height = 50;
+            npc.knockBackResist = 0f;
+            npc.HitSound = SoundID.NPCHit1;
+            npc.DeathSound = SoundID.NPCDeath1;
+            music = MusicID.Boss2;
+            musicPriority = MusicPriority.BossMedium;
+        }
+
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
             npc.lifeMax = (int)npc.lifeMax * 0.6f * bossLifeScale;
@@ -30,6 +48,7 @@ namespace EtherealHorizons.NPCs.Bosses.Chronos
         {
             if (npc.life <= 0) 
             {
+                // Gore shit
             }
         }
 
@@ -46,6 +65,13 @@ namespace EtherealHorizons.NPCs.Bosses.Chronos
 
         public override void NPCLoot()
         {
+            // Loot shit
+        }
+
+        public float State
+        {
+            get => npc.ai[0];
+            set => npc.ai[0] = value;
         }
 
         public override void AI()
