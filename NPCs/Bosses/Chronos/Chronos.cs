@@ -16,6 +16,11 @@ namespace EtherealHorizons.NPCs.Bosses.Chronos
             DisplayName.SetDefault("Chronos");
         }
 
+        public override void BossLoot(ref string name, ref int potionType)
+        {
+            
+        }
+
         public override void AI()
         {
             Target();
