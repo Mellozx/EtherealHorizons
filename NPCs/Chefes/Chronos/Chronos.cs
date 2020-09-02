@@ -28,6 +28,7 @@ namespace EtherealHorizons.NPCs.Bosses.Chronos
             npc.width = 50;
             npc.height = 50;
             npc.knockBackResist = 0f;
+            npc.value = Item.sellPrice(gold: 10);
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             music = MusicID.Boss2;
