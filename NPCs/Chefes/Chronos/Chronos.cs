@@ -69,15 +69,17 @@ namespace EtherealHorizons.NPCs.Bosses.Chronos
             // Loot shit
         }
 
-        public float State
-        {
-            get => npc.ai[0];
-            set => npc.ai[0] = value;
-        }
-
         public override void AI()
         {
             Target();
+
+            if (npc.ai[0] == 0f)
+            {
+                if (npc.ai[1] == 0f) 
+                {
+                    // Yes
+                }
+            }
         }
 
         private void Target()
