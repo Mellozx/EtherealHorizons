@@ -13,19 +13,15 @@ namespace EtherealHorizons.Items.Materials
 
         public override void SetDefaults()
         {
-            item.width = 18;
-            item.height = 22;
+            item.width = 20;
+            item.height = 20;
             item.maxStack = 999;
             item.useTurn = true;
             item.autoReuse = true;
             item.useAnimation = 15;
             item.useTime = 10;
-
-            item.value = 1000;
+            item.value = Item.sellPrice(silver: 30);
             item.rare = ItemRarityID.Blue;
-        }
-
-    
-        
+        }     
     }
 }
