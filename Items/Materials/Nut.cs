@@ -8,16 +8,14 @@ namespace EtherealHorizons.Items.Materials
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Nut");
-            Tooltip.SetDefault("");
         }
 
         public override void SetDefaults()
         {
-            item.width = 22;
-            item.height = 28;
+            item.width = 20;
+            item.height = 20;
             item.maxStack = 999;
-            item.value = 1000;
-            item.rare = ItemRarityID.Blue;
+            item.rare = ItemRarityID.White;
         }
 
     
