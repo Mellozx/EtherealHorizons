@@ -3,17 +3,17 @@ using Terraria.ModLoader;
 
 namespace EtherealHorizons.Items.Materials
 {
-    public class AncientTwig : ModItem
+    public class Nut : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Ancient Twig");
+            DisplayName.SetDefault("Nut");
             Tooltip.SetDefault("");
         }
 
         public override void SetDefaults()
         {
-            item.width = 26;
+            item.width = 22;
             item.height = 28;
             item.maxStack = 999;
             item.value = 1000;
