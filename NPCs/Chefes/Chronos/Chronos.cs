@@ -72,12 +72,18 @@ namespace EtherealHorizons.NPCs.Bosses.Chronos
         public override void AI()
         {
             Target();
-
+            
+            // First Phase / State
             if (npc.ai[0] == 0f)
             {
                 if (npc.ai[1] == 0f) 
                 {
                     // Yes
+                }
+
+                else if (npc.ai[1] == 1f) // Magic Clocks Spawn
+                {
+                    
                 }
             }
         }
