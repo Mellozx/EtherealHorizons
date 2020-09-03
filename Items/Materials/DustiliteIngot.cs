@@ -1,3 +1,4 @@
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -22,6 +23,6 @@ namespace EtherealHorizons.Items.Materials
             item.useTime = 10;
             item.value = Item.sellPrice(silver: 30);
             item.rare = ItemRarityID.Blue;
-        }     
+        }
     }
 }

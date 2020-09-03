@@ -37,7 +37,7 @@ namespace EtherealHorizons.NPCs.Bosses.Chronos
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
-            npc.lifeMax = (int)npc.lifeMax * 0.6f * bossLifeScale;
+            npc.lifeMax = (int)(npc.lifeMax * 0.6f * bossLifeScale);
         }
 
         public override void FindFrame(int frameHeight)
@@ -93,9 +93,9 @@ namespace EtherealHorizons.NPCs.Bosses.Chronos
             player = Main.player[npc.target];
         }
 
-        public override bool DrawHealthBar (byte hbPosition, ref float scale, ref Vector2 position)
+        public override bool? DrawHealthBar (byte hbPosition, ref float scale, ref Vector2 position)
         {
-            scale = 1.5f
+            scale = 1.5f;
             return null;
         }
     }

@@ -11,7 +11,7 @@ namespace EtherealHorizons.Items.Weapons.Melee
             DisplayName.SetDefault("Wooden Club");
             Tooltip.SetDefault("Ooga Booga");
         }
-         
+
         public override void SetDefaults()
         {
             item.melee = true;

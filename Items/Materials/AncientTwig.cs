@@ -19,8 +19,5 @@ namespace EtherealHorizons.Items.Materials
             item.value = Item.sellPrice(silver: 20);
             item.rare = ItemRarityID.Blue;
         }
-
-    
-        
     }
 }
