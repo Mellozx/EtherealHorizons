@@ -13,8 +13,10 @@ namespace EtherealHorizons.Projectiles.Ranged
 
         public override void SetDefaults()
         {
+            projectile.tileCollide = false; 
             projectile.ranged = true; 
             proejctile.ignoreWater = true; 
+            projectile.timeLeft = 180;
             projectile.width = 20;
             projectile.height = 20;
             projectile.aiStyle = 0;
