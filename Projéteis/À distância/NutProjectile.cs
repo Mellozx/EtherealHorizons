@@ -29,7 +29,7 @@ namespace EtherealHorizons.Projectiles.Ranged
             projectile.velocity.Y += 0.10f; 
         }
 
-        public override Kill(int timeLeft) 
+        public override void Kill(int timeLeft) 
         {
             Main.PlaySound(SoundID.Dig, projectile.position); 
         }
