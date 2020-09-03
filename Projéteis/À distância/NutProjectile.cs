@@ -22,9 +22,14 @@ namespace EtherealHorizons.Projectiles.Ranged
 
         public override void AI()
         {
-            projectile.rotation = projectile.direction * 0.4f; 
+            projectile.rotation = 0.2f * projectile.direction; 
             projectile.velocity.X *= 0.90f; 
             projectile.velocity.Y += 0.10f; 
+        }
+
+        public override Kill(int timeLeft) 
+        {
+            Main.PlaySound(SoundID.Dig, projectile.position); 
         }
     }
 }
