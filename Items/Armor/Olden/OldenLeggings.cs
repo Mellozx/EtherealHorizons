@@ -33,7 +33,7 @@ namespace EtherealHorizons.Items.Armor.Olden
 	        public override void AddRecipes()
                 {
                     var recipe = new ModRecipe(mod);
-                    recipe.AddIngredient(ModContent.ItemType<WildlifeFragment>(), 4);
+                    recipe.AddIngredient(ModContent.ItemType<WildlifeFragment>(), 3);
 		    recipe.AddTile(TileID.Anvils);
                     recipe.SetResult(this);
                     recipe.AddRecipe();
