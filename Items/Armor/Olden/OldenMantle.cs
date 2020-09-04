@@ -33,7 +33,7 @@ namespace EtherealHorizons.Items.Armor.Olden
                 public override void AddRecipes()
                 {
                     ModRecipe recipe = new ModRecipe(mod);
-                    recipe.AddIngredient(mod, "AncientTwig",25);
+                    recipe.AddIngredient(ModContent.ItemType<AncientTwig>(), 6);
 		    recipe.AddTile(TileID.Anvils);
                     recipe.SetResult(this);
                     recipe.AddRecipe();
