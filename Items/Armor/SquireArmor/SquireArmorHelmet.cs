@@ -5,7 +5,7 @@ using System;
 using static Terraria.ModLoader.ModContent;
 
 
-namespace EtherealHorizons.Items.Armors.SquireArmor
+namespace EtherealHorizons.Items.Armor.SquireArmor
 {
 	[AutoloadEquip(EquipType.Head)]
 	public class SquireArmorHelmet : ModItem
