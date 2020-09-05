@@ -6,6 +6,8 @@ namespace EtherealHorizons.Projectiles.Ranged
 {
 	public class NutProjectile : ModProjectile
     {
+    public class NutProjectile : ModProjectile
+    {
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Nut");
@@ -13,12 +15,12 @@ namespace EtherealHorizons.Projectiles.Ranged
 
         public override void SetDefaults()
         {
-            projectile.tileCollide = true;
+            projectile.ranged = true;
             projectile.ignoreWater = true;
-            projectile.hostile = false;
+            projectile.tileCollide = true;
+            projectile.timeLeft = 180;
             projectile.width = 20;
             projectile.height = 20;
-            projectile.penetrate = 0;
             projectile.aiStyle = 0;
         }
 
@@ -35,4 +37,3 @@ namespace EtherealHorizons.Projectiles.Ranged
             Main.PlaySound(SoundID.Dig, projectile.position);
         }
     }
-}

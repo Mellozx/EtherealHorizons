@@ -1,47 +1,41 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using EtherealHorizons.Projectiles.Ranged;
 using EtherealHorizons.Items.Materials;
 
 namespace EtherealHorizons.Items.Weapons.Ranged
 {
-
-namespace EtherealHorizons.Items.Weapons.Ranged
-{
-    public class NutLauncher : ModItem
+    public class BarkBallista : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Nut Launcher");
+            DisplayName.SetDefault("Bark Ballista");
         }
 
         public override void SetDefaults()
         {
             item.ranged = true;
-            item.useTurn = false;
             item.autoReuse = true;
             item.noMelee = true;
             item.width = 20;
             item.height = 20;
-            item.useTime = 25;
-            item.useAnimation = 25;
-            item.damage = 3;
-            item.knockBack = 0f;
+            item.useTime = 30;
+            item.useAnimation = 30;
+            item.damage = 20;
+            item.knockBack = 4f;
             item.shootSpeed = 6f;
-            item.shoot = ModContent.ProjectileType<NutProjectile>();
-            item.useAmmo = ModContent.ItemType<Nut>();
+            item.shoot = AmmoID.Arrow; // Might be wrong
+            item.useAmmo = ProjectileID.WoodenArrowFriendly;
             item.useStyle = ItemUseStyleID.HoldingOut;
-            item.rare = ItemRarityID.White;
-            item.UseSound = SoundID.Item56;
-            item.value = Item.sellPrice(copper: 30);
+            item.rare = ItemRarityID.Blue;
+            item.UseSound = SoundID.Item11;
+            item.value = Item.sellPrice(silver: 40);
         }
 
         public override void AddRecipes()
         {
             var recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Wood, 15);
-            recipe.AddIngredient(ModContent.ItemType<Nut>(), 3);
+            recipe.AddIngredient(ModContent.ItemType<WildlifeFragment>(), 3);
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this);
             recipe.AddRecipe();
