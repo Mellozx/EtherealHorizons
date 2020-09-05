@@ -4,8 +4,6 @@ using Terraria.ModLoader;
 
 namespace EtherealHorizons.Projectiles.Ranged
 {
-	public class NutProjectile : ModProjectile
-    {
     public class NutProjectile : ModProjectile
     {
         public override void SetStaticDefaults()
@@ -37,3 +35,4 @@ namespace EtherealHorizons.Projectiles.Ranged
             Main.PlaySound(SoundID.Dig, projectile.position);
         }
     }
+	}
