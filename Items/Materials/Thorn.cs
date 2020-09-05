@@ -1,7 +1,6 @@
 ﻿using Terraria.ModLoader;
 using Terraria;
 using Terraria.ID;
-using static Terraria.ModLoader.ModContent;
 
 namespace EtherealHorizons.Items.Materials
 {
@@ -9,11 +8,11 @@ namespace EtherealHorizons.Items.Materials
     {
         public override void SetDefaults()
         {
-            item.width = 24;
-            item.height = 22;
+            item.width = 20;
+            item.height = 20;
             item.maxStack = 999;
             item.rare = ItemRarityID.White;
-            item.value = Item.sellPrice(0, 0, 0, 25);
+            item.value = Item.sellPrice(copper: 5);
         }
     }
 }
