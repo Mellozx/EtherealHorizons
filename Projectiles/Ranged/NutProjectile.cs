@@ -6,6 +6,7 @@ namespace EtherealHorizons.Projectiles.Ranged
 {
     public class NutProjectile : ModProjectile
     {
+        public override string Texture => EtherealHorizons.Placeholder;
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Nut");

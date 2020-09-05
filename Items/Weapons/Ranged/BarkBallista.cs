@@ -1,6 +1,6 @@
-using Terraria; 
-using Terraria.ID; 
-using Terraria.ModLoader; 
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 using EtherealHorizons.Items.Materials;
 
 namespace EtherealHorizons.Items.Weapons.Ranged
@@ -35,7 +35,7 @@ namespace EtherealHorizons.Items.Weapons.Ranged
         public override void AddRecipes()
         {
             var recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ModContent.ItemType<WidlifeFragment>(), 3);
+            recipe.AddIngredient(ModContent.ItemType<WildlifeFragment>(), 3);
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this);
             recipe.AddRecipe();

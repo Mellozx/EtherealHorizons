@@ -6,7 +6,6 @@ namespace EtherealHorizons.Items.Tools
 {
     public class ThornPickaxe : ModItem
     {
-
         public override void SetDefaults()
         {
             item.width = 32;
@@ -21,6 +20,7 @@ namespace EtherealHorizons.Items.Tools
             item.value = Item.sellPrice(0, 0, 540, 80);
             item.autoReuse = false;
         }
+
         public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
         {
             target.AddBuff(BuffID.Poisoned, 300);

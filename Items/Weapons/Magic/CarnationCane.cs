@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Microsoft.Xna.Framework;
 using EtherealHorizons.Items.Materials;
 using EtherealHorizons.Projectiles.Magic;
 
@@ -8,6 +9,7 @@ namespace EtherealHorizons.Items.Weapons.Magic
 {
     public class CarnationCane : ModItem
     {
+        public override string Texture => EtherealHorizons.Placeholder;
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Carnation Cane");
@@ -35,16 +37,17 @@ namespace EtherealHorizons.Items.Weapons.Magic
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            int projNum = 4;
-            float rotation = MathHelper.ToRadians(30);
+            const int projNum = 4;
+            const float rotation = (MathHelper.TwoPi / 360f) * 30; //2Pi / 360 == Pi/180 == 1 degree in radians //MathHelper.ToRadians(30);
             float randSpeed = Main.rand.NextFloat(0.5f, 0.2f);
-            position += Vector2.Normalize(new Vector2(speedX, speedY)) * 30f;
+            Vector2 speed = new Vector2(speedX, speedY);
+            position += Vector2.Normalize(speed) * 30f;
             for (int i = 0; i < projNum; i++)
-	    {
-	        Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (projNum - 1))) * randSpeed;
-                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
-	    }
-	    return false;
+            {
+                Vector2 perturbedSpeed = speed.RotatedBy(MathHelper.Lerp(-rotation, rotation, 1f / projNum * i)) * randSpeed;
+                Projectile.NewProjectile(position, perturbedSpeed, type, damage, knockBack, player.whoAmI);
+            }
+            return false;
         }
 
         public override void AddRecipes()

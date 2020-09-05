@@ -6,7 +6,6 @@ namespace EtherealHorizons.Items.Tools
 {
     public class ThornHammer : ModItem
     {
-
         public override void SetDefaults()
         {
             item.width = 34;

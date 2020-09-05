@@ -10,8 +10,6 @@ namespace EtherealHorizons.NPCs
 {
     public class BigTreeEnt : ModNPC
     {
-
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("BigTreeEnt");
@@ -35,7 +33,7 @@ namespace EtherealHorizons.NPCs
             npc.DeathSound = SoundID.NPCDeath1;
             npc.aiStyle = -1;
         }
-        
+
         public override void FindFrame(int frameHeight)
         {
             int FrameMax = npc.ai[0] == 0f ? 18 : 26;
@@ -45,16 +43,16 @@ namespace EtherealHorizons.NPCs
             {
                 npc.frameCounter = 0;
                 npc.frame.Y += frameHeight;
-              
+
             }
-            
+
             if (npc.frame.Y >= frameHeight * FrameMax)
             {
                 npc.frame.Y = 0;
                 return;
             }
 
-           
+
         }
 
         int Timer;
@@ -65,12 +63,12 @@ namespace EtherealHorizons.NPCs
             //Npc.ai[1] used for timers
 
             Timer++;
-            if(Timer > 30)
+            if (Timer > 30)
             {
                 Main.PlaySound(SoundID.DD2_SkeletonHurt);
                 Timer = 0;
             }
-           
+
             Player player = Main.player[npc.target]; // declare player
 
             if (npc.ai[0] == 0f)

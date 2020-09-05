@@ -25,7 +25,7 @@ namespace EtherealHorizons.Items.Tools
             item.useStyle = ItemUseStyleID.SwingThrow;
             item.rare = ItemRarityID.Blue;
             item.UseSound = SoundID.Item1;
-            item.value = Item.sellPrice(silver:);
+            item.value = Item.sellPrice(silver:0); // ?
         }
     }
 }
