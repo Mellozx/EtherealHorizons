@@ -18,37 +18,21 @@ namespace EtherealHorizons.NPCs.Enemies.Forest
         {
             npc.noTileCollide = false;
             npc.noGravity = false;
+			npc.lavaImmune = false;
             npc.lifeMax = 20;
             npc.damage = 4;
             npc.defense = 0;
             npc.width = 30;
             npc.height = 10;
-            npc.aiStyle = 3; // Fighter
-            aiType = -1; // Unique for this NPC (?)
+            npc.aiStyle = -1; 
+			npc.knockBackResist = 0.5f;
+            aiType = -1;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
         }
 
         public override void FindFrame(int frameHeight)
         {
-            if (State <= Fight)
-            {
-                npc.spriteDirection = npc.direction;
-                if (++npc.frameCounter > 4)
-                {
-                    npc.frameCounter = 0;
-                    npc.frame.Y += frameHeight;
-                }
-                if (npc.frameCounter >= frameHeight * Main.npcFrameCount[npc.type])
-                {
-                    npc.frame.Y = 0;
-                    return;
-                }
-            }
-            else
-            {
-                npc.frame.Y = 0;
-            }
         }
 
         public override void NPCLoot()
@@ -83,27 +67,12 @@ namespace EtherealHorizons.NPCs.Enemies.Forest
         {
             if (State == Fight)
             {
-                AttackTimer++; // No need to sync this because it is npc.ai and it is auto synced :yaby:
-                if (AttackTimer >= 480f)
-                {
-                    State = Hide;
-                    AttackTimer = 0f;
-                    npc.netUpdate = true;
-                }
+                
             }
 
             else if (State == Hide)
             {
-                npc.TargetClosest(false);
-                npc.velocity = Vector2.Zero;
 
-                AttackTimer++;
-                if (AttackTimer >= 240f)
-                {
-                    State = Fight;
-                    AttackTimer = 0f;
-                    npc.netUpdate = true;
-                } 
             }
         }
     }

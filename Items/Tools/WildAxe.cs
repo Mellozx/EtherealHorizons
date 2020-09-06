@@ -1,6 +1,6 @@
 using Terraria;
 using Terraria.ID;
-using Terraria.ModLoader
+using Terraria.ModLoader;
 using EtherealHorizons.Items.Materials;
 
 namespace EtherealHorizons.Items.Tools

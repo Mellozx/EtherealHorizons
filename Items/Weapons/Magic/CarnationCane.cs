@@ -9,7 +9,6 @@ namespace EtherealHorizons.Items.Weapons.Magic
 {
     public class CarnationCane : ModItem
     {
-        public override string Texture => EtherealHorizons.Placeholder;
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Carnation Cane");
@@ -27,7 +26,8 @@ namespace EtherealHorizons.Items.Weapons.Magic
             item.useAnimation = 35;
             item.damage = 10;
             item.knockBack = 1f;
-            item.shootSpeed = 6f;
+            item.shootSpeed = 12f;
+			item.mana = 6;
             item.shoot = ModContent.ProjectileType<PetalProjectile>();
             item.rare = ItemRarityID.Blue;
             item.UseSound = SoundID.Item1; // Placeholder Sound
@@ -37,9 +37,9 @@ namespace EtherealHorizons.Items.Weapons.Magic
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            int projNum = 4; // Doesnt matter if it is a const or not, we arent change it anyways
-            float rotation = (MathHelper.TwoPi / 360f) * 30; //2Pi / 360 == Pi/180 == 1 degree in radians //MathHelper.ToRadians(30);
-            float randSpeed = Main.rand.NextFloat(0.5f, 0.2f);
+            int projNum = 3;
+            float rotation = (MathHelper.TwoPi / 360f) * 30; 
+            float randSpeed = Main.rand.NextFloat(0.25f, 0.3f);
             Vector2 speed = new Vector2(speedX, speedY);
             position += Vector2.Normalize(speed) * 30f;
             for (int i = 0; i < projNum; i++)

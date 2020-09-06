@@ -17,6 +17,7 @@ namespace EtherealHorizons.Projectiles.Melee
 			projectile.height = 28;
 			projectile.aiStyle = 19;
 			projectile.penetrate = -1;
+			projectile.scale = 1.1f;
 			projectile.alpha = 0;
 			projectile.hide = true;
 			projectile.ownerHitCheck = true;

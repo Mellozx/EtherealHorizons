@@ -6,6 +6,8 @@ namespace EtherealHorizons.Items.Tools
 {
 	public class Hoe : ModItem 
     {
+		public override string Texture => EtherealHorizons.PlaceholderTexture;
+		
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Hoe");

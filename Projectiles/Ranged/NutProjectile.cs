@@ -16,6 +16,7 @@ namespace EtherealHorizons.Projectiles.Ranged
             projectile.ranged = true;
             projectile.ignoreWater = true;
             projectile.tileCollide = true;
+			projectile.friendly = true;
             projectile.timeLeft = 180;
             projectile.width = 20;
             projectile.height = 20;
@@ -24,9 +25,8 @@ namespace EtherealHorizons.Projectiles.Ranged
 
         public override void AI()
         {
-            projectile.rotation += 0.2f * projectile.direction;
-            projectile.velocity.Y += 0.10f;
-            projectile.velocity.X *= 0.90f;
+			projectile.rotation += 0.1f * projectile.direction;
+			projectile.velocity.Y = projectile.velocity.Y + 0.15f;
         }
 
         public override void Kill(int timeLeft)
@@ -35,4 +35,4 @@ namespace EtherealHorizons.Projectiles.Ranged
             Main.PlaySound(SoundID.Dig, projectile.position);
         }
     }
-	}
+}

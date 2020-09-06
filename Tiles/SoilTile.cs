@@ -1,4 +1,4 @@
-using Terraria;
+/* using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -11,4 +11,4 @@ namespace EtherealHorizons.Tiles
             Main.tileBlockLight[Type] = false;
         }
     }
-}
+} */

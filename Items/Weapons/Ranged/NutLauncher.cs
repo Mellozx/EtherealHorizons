@@ -6,9 +6,6 @@ using EtherealHorizons.Items.Materials;
 
 namespace EtherealHorizons.Items.Weapons.Ranged
 {
-
-namespace EtherealHorizons.Items.Weapons.Ranged
-{
     public class NutLauncher : ModItem
     {
         public override void SetStaticDefaults()
@@ -28,7 +25,7 @@ namespace EtherealHorizons.Items.Weapons.Ranged
             item.useAnimation = 25;
             item.damage = 3;
             item.knockBack = 0f;
-            item.shootSpeed = 6f;
+            item.shootSpeed = 4f;
             item.shoot = ModContent.ProjectileType<NutProjectile>();
             item.useAmmo = ModContent.ItemType<Nut>();
             item.useStyle = ItemUseStyleID.HoldingOut;

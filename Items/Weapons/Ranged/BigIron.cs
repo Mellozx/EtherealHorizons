@@ -19,8 +19,8 @@ namespace EtherealHorizons.Items.Weapons.Ranged
             item.useTurn = false;
             item.width = 20;
             item.height = 20;
-            item.useTime = 30;
-            item.useAnimation = 30;
+            item.useTime = 40;
+            item.useAnimation = 40;
             item.damage = 16; // Low use time, high damage, equivalent exchange :yaby:
             item.knockBack = 3f;
             item.shootSpeed = 8f;

@@ -7,7 +7,6 @@ namespace EtherealHorizons.Projectiles.Magic
 {
     public class PetalProjectile : ModProjectile
     {
-        public override string Texture => base.Texture.Replace(nameof(PetalProjectile), "SmolPetal"); // missing image?
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Petal");
@@ -23,16 +22,15 @@ namespace EtherealHorizons.Projectiles.Magic
             projectile.width = 10;
             projectile.height = 10;
             projectile.aiStyle = 0;
+			projectile.extraUpdates = 1;
         }
 
         public override void AI()
         {
             projectile.rotation = projectile.velocity.ToRotation() + MathHelper.PiOver2;
-            projectile.velocity.X *= 0.99f;
-            projectile.velocity.Y = MathHelper.Lerp(projectile.velocity.Y, 16f, 0.005f);
-            //projectile.rotation = projectile.velocity.ToRotation();
-            //projectile.velocity.X *= 0.99f;
-            //projectile.velocity.Y += 0.20f;
+			projectile.velocity.X *= 0.99f;
+            projectile.velocity.Y += 0.05f;
+
         }
 
         public override void Kill(int timeLeft)
