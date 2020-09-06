@@ -2,6 +2,7 @@ using EtherealHorizons.Items.Materials;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using EtherealHorizons.Items.Tools;
 
 namespace EtherealHorizons.Tiles
 {
@@ -20,6 +21,18 @@ namespace EtherealHorizons.Tiles
                 }
             }
             return true;
+        }
+
+        public override void RightClick(int i, int j, int type)
+        {
+            Player player = Main.LocalPlayer;
+            if (type == TileID.Grass || type == TileID.Dirt)
+            {
+                if (player.HeldItem.type == ModContent.ItemType<Hoe>())
+                {
+
+                }
+            }
         }
     }
 }

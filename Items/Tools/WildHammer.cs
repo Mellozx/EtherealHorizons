@@ -1,15 +1,15 @@
 using Terraria;
 using Terraria.ID;
-using Terraria.ModLoader;
+using Terraria.ModLoader
 using EtherealHorizons.Items.Materials;
 
 namespace EtherealHorizons.Items.Tools
 {
-    public class WildPickaxe : ModItem
+    public class WildHammer : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Wild Pickaxe");
+            DisplayName.SetDefault("Wild Hammer");
         }
 
         public override void SetDefaults()
@@ -19,10 +19,11 @@ namespace EtherealHorizons.Items.Tools
             item.useTurn = true;
             item.width = 20;
             item.height = 20;
-            item.useTime = 18;
-            item.useAnimation = 18;
-            item.pick = 54;
-            item.knockBack = 2f;
+            item.useTime = 25;
+            item.useAnimation = 25;
+            item.hammer = 55;
+			item.damage = 9;
+            item.knockBack = 5f;
             item.useStyle = ItemUseStyleID.SwingThrow;
             item.rare = ItemRarityID.Blue;
             item.UseSound = SoundID.Item1;

@@ -29,7 +29,7 @@ namespace EtherealHorizons.Items.Weapons.Ranged
             item.useStyle = ItemUseStyleID.HoldingOut;
             item.rare = ItemRarityID.Blue;
             item.UseSound = SoundID.Item11;
-            item.value = Item.sellPrice(silver: 40);
+            item.value = Item.sellPrice(silver: 20);
         }
 
         public override void AddRecipes()

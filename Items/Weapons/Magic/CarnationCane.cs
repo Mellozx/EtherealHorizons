@@ -32,13 +32,13 @@ namespace EtherealHorizons.Items.Weapons.Magic
             item.rare = ItemRarityID.Blue;
             item.UseSound = SoundID.Item1; // Placeholder Sound
             item.useStyle = ItemUseStyleID.HoldingOut;
-            item.value = Item.sellPrice(silver: 40);
+            item.value = Item.sellPrice(silver: 20);
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            const int projNum = 4;
-            const float rotation = (MathHelper.TwoPi / 360f) * 30; //2Pi / 360 == Pi/180 == 1 degree in radians //MathHelper.ToRadians(30);
+            int projNum = 4; // Doesnt matter if it is a const or not, we arent change it anyways
+            float rotation = (MathHelper.TwoPi / 360f) * 30; //2Pi / 360 == Pi/180 == 1 degree in radians //MathHelper.ToRadians(30);
             float randSpeed = Main.rand.NextFloat(0.5f, 0.2f);
             Vector2 speed = new Vector2(speedX, speedY);
             position += Vector2.Normalize(speed) * 30f;

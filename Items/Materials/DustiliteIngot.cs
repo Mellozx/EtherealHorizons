@@ -9,7 +9,6 @@ namespace EtherealHorizons.Items.Materials
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Dustilite Ingot");
-            Tooltip.SetDefault("");
         }
 
         public override void SetDefaults()
@@ -21,7 +20,7 @@ namespace EtherealHorizons.Items.Materials
             item.autoReuse = true;
             item.useAnimation = 15;
             item.useTime = 10;
-            item.value = Item.sellPrice(silver: 30);
+            item.value = Item.sellPrice(silver: 10);
             item.rare = ItemRarityID.Blue;
         }
     }
